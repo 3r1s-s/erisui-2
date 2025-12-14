@@ -1,0 +1,51 @@
+/* Custom Stuff */
+
+.eui-page {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 0 auto;
+    box-sizing: border-box;
+    height: max-content;
+}
+
+.button-link:hover {
+    text-decoration: none;
+}
+
+.button-link {
+    display: block;
+    width: fit-content;
+}
+
+.flex-card {
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: var(--app-200);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.flex-card.row {
+    flex-direction: row;
+}
+
+.flex-card.c {
+    justify-content: center;
+}
+
+.flex-card.outlined {
+    border: 1px solid var(--app-300);
+    background-color: transparent;
+}
+
+.flex-card p {
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}

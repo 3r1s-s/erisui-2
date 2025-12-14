@@ -1,0 +1,16 @@
+{
+  "name": "erisui",
+  "version": "1.0.0",
+  "description": "awesome",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "Eris S",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "vite": "^7.2.7"
+  }
+}

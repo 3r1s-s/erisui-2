@@ -1,0 +1,244 @@
+<div class="eui-page">
+    <style>
+        header {
+            font-size: 5.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 16px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        a.card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--app-200);
+            border-radius: 1.5rem;
+            overflow: hidden;
+
+            color: var(--app-text);
+            text-decoration: none;
+
+            transition: background-color 0.2s var(--transition-function);
+        }
+
+        .card:hover {
+            background-color: var(--app-300);
+            text-decoration: none;
+        }
+
+        .comp-card-thumbnail {
+            overflow: hidden;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+
+        .card picture,
+        .card img {
+            display: block;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .comp-card-content {
+            padding: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .comp-card-content h3 {
+            font-size: 1.75rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .comp-card-content p {
+            margin: 0;
+        }
+    </style>
+    <eui-header type="hero" title="ErisUI 2" subtitle="ErisUI is a very cool UI framework for the web."
+        img="/assets/cover.png"></eui-header>
+    <p>ErisUI is a library of <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">web
+            components</a> that make it easy to build modern web applications.</p>
+    <a href="/getting-started" class="button-link">
+        <eui-button type="filled" width="150" height="75" border-radius="18">
+            <font style="font-size: 1.25rem;">Get Started</font>
+        </eui-button>
+    </a>
+    <h2>Components</h2>
+    <div class="grid">
+        <a href="/components/avatar" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/avatar.jpg" alt="avatar">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Avatar</h3>
+                <p>Avatars represent people, groups, or organizations.</p>
+            </div>
+        </a>
+        <a href="/components/checkboxes" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/checkboxes.jpg" alt="switch">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Checkboxes</h3>
+                <p>Checkboxes allow users to select one or more items from a set.</p>
+            </div>
+        </a>
+        <a href="/components/switch" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/switch.jpg" alt="switch">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Switch</h3>
+                <p>Switches allow users to toggle between two options.</p>
+            </div>
+        </a>
+        <a href="/components/progressbars" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/progress.jpg" alt="progressbars">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Progress Bars</h3>
+                <p>Progress bars inform users about the status of ongoing processes, such as loading an app or
+                    submitting a form.</p>
+            </div>
+        </a>
+        <a href="/components/textfields" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/input.jpg" alt="textfields">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Text Fields</h3>
+                <p>Text fields allow users to enter and edit text.</p>
+            </div>
+        </a>
+        <a href="/components/button" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/button.jpg" alt="button">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Buttons</h3>
+                <p>Buttons prompt most actions in a UI.</p>
+            </div>
+        </a>
+        <a href="/components/icons" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/icon.jpg" alt="icons">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Icons</h3>
+                <p>Icons represent concepts, objects, or actions.</p>
+            </div>
+        </a>
+        <a href="/components/chips" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/chips.jpg" alt="chips">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Chips</h3>
+                <p>Chips are compact, interactive elements that allow users to select or filter options.</p>
+            </div>
+        </a>
+        <a href="/components/app-nav" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/navigation.jpg" alt="app-nav">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>App Navigation</h3>
+                <p>The main navigation drawer.</p>
+            </div>
+        </a>
+    </div>
+    <h2>App</h2>
+    <div class="grid">
+        <a href="/core/architecture" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/html.jpg" alt="architecture">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Architecture</h3>
+                <p>Learn about the architecture of ErisUI.</p>
+            </div>
+        </a>
+        <a href="/core/router" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/router.jpg" alt="router">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Router</h3>
+                <p>Learn about the router of ErisUI.</p>
+            </div>
+        </a>
+        <a href="/core/styling" class="card">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/css.jpg" alt="styling">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Styling</h3>
+                <p>Learn about the styling of ErisUI.</p>
+            </div>
+        </a>
+    </div>
+    <h2>Resources</h2>
+    <div class="grid">
+        <a href="https://github.com/3r1s-s/erisui" class="card" target="_blank">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/github.jpg" alt="github">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>GitHub</h3>
+                <p>View the source code on GitHub.</p>
+            </div>
+        </a>
+        <a href="https://eris.cafe" class="card" target="_blank">
+            <div class="comp-card-thumbnail">
+                <picture>
+                    <img src="/assets/banners/es.jpg" alt="github">
+                </picture>
+            </div>
+            <div class="comp-card-content">
+                <h3>Eris.Cafe</h3>
+                <p>My cool website. hmu</p>
+            </div>
+        </a>
+    </div>
+</div>
