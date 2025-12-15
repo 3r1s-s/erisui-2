@@ -102,39 +102,30 @@ export const router = (() => {
         navigate(path, false);
     });
 
-    // Intercept clicks for SPA navigation
     window.addEventListener('click', (event) => {
-        // 1. Only left clicks
         if (event.button !== 0) return;
 
-        // 2. No modifier keys
         if (event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) return;
 
-        // 3. Find closest anchor
         const link = event.target.closest('a');
         if (!link) return;
 
-        // 4. Check specific attributes to ignore
         if (link.hasAttribute('download') || link.getAttribute('target') === '_blank') return;
 
         const href = link.getAttribute('href');
         if (!href) return;
 
-        // 5. Check if external
         const isExternal = href.startsWith('http') && !href.startsWith(window.location.origin);
         if (isExternal) return;
 
-        // 6. Handle Navigation
         event.preventDefault();
 
-        // Handle anchor-only links on the same page
         if (href.startsWith('#')) {
             history.pushState({}, '', href);
             _scrollToHash(href);
             return;
         }
 
-        // Handle full paths
         navigate(href);
     });
 
@@ -145,22 +136,17 @@ export async function loadPage(path) {
     try {
         const main = document.getElementById("main");
 
-        // Start fade out
         main.classList.add("fade-out");
 
-        // Wait for animation
         await new Promise(resolve => setTimeout(resolve, 200));
 
         const html = await fetch(`/src/pages/${path}.html`).then(r => r.text());
         main.innerHTML = html;
 
-        // Remove fade out and add fade in
         main.classList.remove("fade-out");
         main.classList.add("fade-in");
 
-        // Handle hash scrolling for deep links or cross-page hash navigation
         if (window.location.hash) {
-            // Small delay to ensure layout is ready
             setTimeout(() => {
                 try {
                     const el = document.querySelector(window.location.hash);
@@ -171,7 +157,6 @@ export async function loadPage(path) {
             if (main) main.scrollTo(0, 0);
         }
 
-        // Cleanup fade in class
         setTimeout(() => {
             main.classList.remove("fade-in");
         }, 200);
