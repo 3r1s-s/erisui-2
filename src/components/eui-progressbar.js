@@ -58,6 +58,10 @@ class EUIProgressBar extends HTMLElement {
         this.setAttribute("value", val);
     }
 
+    attributeChangedCallback() {
+        this.connectedCallback();
+    }
+    
     connectedCallback() {
         const progress = this.shadowRoot.querySelector(".progress");
 
