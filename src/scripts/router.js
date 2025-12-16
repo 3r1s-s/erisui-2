@@ -35,10 +35,8 @@ export const router = (() => {
             path = BASE_PATH + (path.startsWith('/') ? '' : '/') + path;
         }
 
-        // Extract pathname for matching, ignoring query and hash for routing logic
         const pathname = path.split(/[?#]/)[0];
 
-        // OPTIMIZATION: If same page and has hash, just scroll
         if (pathname === window.location.pathname && path.includes('#')) {
             if (push) history.pushState({}, '', path);
             const hash = '#' + path.split('#')[1];
@@ -48,14 +46,10 @@ export const router = (() => {
 
         const result = match(pathname);
 
-
-        // dont use window
         if (result) {
             if (push) history.pushState({}, '', path);
             result.renderFn(result.params);
             window.dispatchEvent(new CustomEvent('route-changed', { detail: { path } }));
-
-            // Handle scrolling if there's a hash
             if (path.includes('#')) {
                 const hash = '#' + path.split('#')[1];
                 setTimeout(() => _scrollToHash(hash), 100);
