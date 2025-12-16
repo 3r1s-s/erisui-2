@@ -35,16 +35,58 @@ export const router = (() => {
             path = BASE_PATH + (path.startsWith('/') ? '' : '/') + path;
         }
 
-        const [pathname, queryString] = path.split('?');
+        // Extract pathname for matching, ignoring query and hash for routing logic
+        const pathname = path.split(/[?#]/)[0];
+
+        // OPTIMIZATION: If same page and has hash, just scroll
+        if (pathname === window.location.pathname && path.includes('#')) {
+            if (push) history.pushState({}, '', path);
+            const hash = '#' + path.split('#')[1];
+            _scrollToHash(hash);
+            return;
+        }
+
         const result = match(pathname);
 
+
+        // dont use window
         if (result) {
             if (push) history.pushState({}, '', path);
             result.renderFn(result.params);
             window.dispatchEvent(new CustomEvent('route-changed', { detail: { path } }));
+
+            // Handle scrolling if there's a hash
+            if (path.includes('#')) {
+                const hash = '#' + path.split('#')[1];
+                setTimeout(() => _scrollToHash(hash), 100);
+            } else {
+                const main = document.getElementById("main");
+                if (main) main.scrollTo(0, 0);
+            }
+        } else if (notFoundHandler) {
+            if (push) history.pushState({}, '', path);
+            notFoundHandler();
         } else {
             console.warn(`No route found for ${pathname}`);
         }
+    }
+
+    function _scrollToHash(hash) {
+        if (!hash) return;
+        try {
+            const element = document.querySelector(hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        } catch (e) {
+            console.warn('Invalid hash:', hash);
+        }
+    }
+
+    let notFoundHandler = null;
+
+    function setNotFound(fn) {
+        notFoundHandler = fn;
     }
 
     function back() {
@@ -56,11 +98,38 @@ export const router = (() => {
     }
 
     window.addEventListener('popstate', () => {
-        const path = window.location.pathname;
+        const path = window.location.pathname + window.location.search + window.location.hash;
         navigate(path, false);
     });
 
-    return { add, navigate, back, location };
+    window.addEventListener('click', (event) => {
+        if (event.button !== 0) return;
+
+        if (event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) return;
+
+        const link = event.target.closest('a');
+        if (!link) return;
+
+        if (link.hasAttribute('download') || link.getAttribute('target') === '_blank') return;
+
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        const isExternal = href.startsWith('http') && !href.startsWith(window.location.origin);
+        if (isExternal) return;
+
+        event.preventDefault();
+
+        if (href.startsWith('#')) {
+            history.pushState({}, '', href);
+            _scrollToHash(href);
+            return;
+        }
+
+        navigate(href);
+    });
+
+    return { add, navigate, back, location, setNotFound };
 })();
 
 export async function loadPage(path) {
@@ -76,6 +145,17 @@ export async function loadPage(path) {
 
         main.classList.remove("fade-out");
         main.classList.add("fade-in");
+
+        if (window.location.hash) {
+            setTimeout(() => {
+                try {
+                    const el = document.querySelector(window.location.hash);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                } catch (e) { }
+            }, 100);
+        } else {
+            if (main) main.scrollTo(0, 0);
+        }
 
         setTimeout(() => {
             main.classList.remove("fade-in");
