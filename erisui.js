@@ -392,6 +392,13 @@
                 width: 28px;
                 height: 28px;
                 flex-shrink: 0;
+                border-radius: 100px;
+            }
+
+            :host([active]) .icon-container eui-avatar {
+                outline: 2px solid var(--app-link);
+                outline-offset: 1px;
+                border-radius: 50%;
             }
 
             .label {
