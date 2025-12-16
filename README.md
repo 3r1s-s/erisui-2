@@ -24,6 +24,14 @@ ErisUI 2 has many custom elements to speed up your development:
 *   **`eui-progressbar`**: Visual progress indicators.
 *   **`eui-switch`**: Toggle switch component.
 
+## Adding to your project
+ErisUI is available using JSDelivr CDN
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.css">
+<script src="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.js"></script>
+```
+
 ## Resources
 
 *   [Docs](https://eui.eris.cafe/)
