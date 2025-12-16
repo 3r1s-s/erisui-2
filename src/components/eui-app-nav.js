@@ -12,6 +12,7 @@ class AppNav extends HTMLElement {
 
         window.addEventListener('popstate', () => this.updateActiveState());
         window.addEventListener('route-changed', () => this.updateActiveState());
+        window.addEventListener('toggle-nav', () => this.classList.toggle("expanded"));
     }
 
     render() {
@@ -19,9 +20,9 @@ class AppNav extends HTMLElement {
         <style>
             :host {
                 position: fixed;
-                top: 0;
+                top: var(--titlebar-height, 65px);
                 left: 0;
-                height: 100%;
+                height: calc(100% - var(--titlebar-height, 65px));
                 z-index: 100;
 
                 width: var(--nav-width, 75px);
@@ -41,17 +42,6 @@ class AppNav extends HTMLElement {
                 overflow-x: hidden;
                 display: flex;
                 flex-direction: column;
-            }
-
-            .nav-top {
-                width: 100%;
-                height: var(--titlebar-height, 65px);
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 0 1rem;
-                box-sizing: border-box;
-                flex-shrink: 0;
             }
 
             .nav-items {
@@ -124,12 +114,6 @@ class AppNav extends HTMLElement {
 
         <div class="app-nav-container">
             <a href="#content" id="skip_navigation_link">Skip To Content</a>
-            <div class="nav-top">
-                <eui-button class="menu-button" id="nav-toggle" aria-label="Toggle Navigation" aria-expanded="false"
-                    aria-controls="nav-items" tabindex="0" type="transparent" border-radius="100">
-                    <eui-icon width="24" height="24" name="menu"></eui-icon>
-                </eui-button>
-            </div>
             <div class="nav-items">
                 ${this.navItems.map(item => {
             if (item.type === 'divider') {
@@ -147,20 +131,11 @@ class AppNav extends HTMLElement {
     set navItems(items) {
         this._navItems = items;
         this.render();
-        this.setupEventListeners();
         this.updateActiveState();
     }
 
     get navItems() {
         return this._navItems || [];
-    }
-
-    setupEventListeners() {
-        const toggleBtn = this.shadowRoot.querySelector("#nav-toggle");
-
-        toggleBtn.addEventListener("click", () => {
-            this.classList.toggle("expanded");
-        });
     }
 
     updateActiveState(currentPath) {

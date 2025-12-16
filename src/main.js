@@ -8,6 +8,7 @@ import "./components/eui-progressbar.js";
 import "./components/eui-switch.js";
 import "./components/eui-chip.js";
 import "./components/eui-app-nav.js";
+import "./components/eui-app-titlebar.js";
 import "./components/eui-header.js";
 import "./components/eui-checkbox.js";
 import "./components/eui-button.js";

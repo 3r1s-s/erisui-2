@@ -91,7 +91,7 @@ body {
     color: var(--app-text);
     overflow: hidden;
 
-    font-family: "GG Sans", sans-serif;
+    font-family: sans-serif;
 }
 
 a {
@@ -133,7 +133,7 @@ button {
     margin-left: var(--nav-width);
     display: flex;
     flex-direction: column;
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    padding: var(--titlebar-height) 0.5rem 0.5rem 0rem;
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
@@ -167,31 +167,6 @@ eui-app-nav.expanded+.app-wrapper {
     background-color: var(--app-100);
 
     overflow: hidden;
-}
-
-.titlebar {
-    height: var(--titlebar-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
-}
-
-.titlebar.hide {
-    height: 0.25rem;
-    opacity: 0;
-    user-select: none;
-    pointer-events: none;
-}
-
-.titlebar-title {
-    font-size: 1.25rem;
-    font-weight: 400;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
 /* Content */
