@@ -36,3 +36,18 @@ ErisUI is available using JSDelivr CDN
 
 *   [Docs](https://eui.eris.cafe/)
 *   [Getting Started](https://eui.eris.cafe/getting-started)
+
+## Quick Start
+
+```html
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.css">
+    <script src="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.js"></script>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h1>Hello World!</h1>
+        <eui-button>Button</eui-button>
+    </div>
+</body>
+```
