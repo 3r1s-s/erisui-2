@@ -39,6 +39,8 @@ ErisUI is available using JSDelivr CDN
 
 ## Quick Start
 
+This code snippet is a buildless example that loads ErisUI from a CDN.
+
 ```html
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.css">
