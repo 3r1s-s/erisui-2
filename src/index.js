@@ -14,6 +14,7 @@ import './components/eui-checkbox.js';
 import './components/eui-button.js';
 import './components/eui-heading.js';
 import './components/eui-code.js';
+import './components/eui-app-titlebar.js';
 
 import { router, loadPage } from './scripts/router.js';
 import * as device from './scripts/device.js';

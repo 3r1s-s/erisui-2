@@ -10,11 +10,11 @@ class AppTitlebar extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ["title"];
+        return ["name"];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "title") {
+        if (name === "name") {
             this.render();
             this.setupEventListeners();
         }
@@ -30,7 +30,7 @@ class AppTitlebar extends HTMLElement {
     }
 
     render() {
-        const title = this.getAttribute("title") || "Title";
+        const title = this.getAttribute("name") || "Title";
 
         this.shadowRoot.innerHTML = `
         <style>
