@@ -25,6 +25,8 @@ import * as utils from './scripts/utils.js';
 
 export { router, loadPage, device, haptics, icons, storage, utils };
 
+export const version = "1.0.5";
+
 if (typeof window !== 'undefined') {
     console.log('ErisUI loaded successfully');
 }

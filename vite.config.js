@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
-      name: 'ErisUI',
+      name: 'eui',
       formats: ['umd'],
       fileName: (format) => `erisui.js`
     },
