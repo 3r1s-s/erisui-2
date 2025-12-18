@@ -53,3 +53,29 @@ This code snippet is a buildless example that loads ErisUI from a CDN.
     </div>
 </body>
 ```
+
+### Quick Start App
+
+This code snippet is an example of a basic app using ErisUI.
+
+```html
+<head>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.css?cache">
+    <script src="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.js?cache"></script>
+</head>
+
+<body class="">
+    <div id="app">
+        <eui-app-titlebar name="Title"></eui-app-titlebar>
+        <eui-app-nav></eui-app-nav>
+        <div class="app-wrapper">
+            <div class="main-wrapper">
+                <div class="main" id="main">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
