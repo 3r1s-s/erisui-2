@@ -18,6 +18,8 @@ router.add("/", () => loadPage("index"));
 
 router.setNotFound(() => loadPage("404"));
 
+storage.name("eui-data");
+
 const navItems = [
     { label: "Home", path: "/", icon: "home" },
 ];

@@ -1,6 +1,6 @@
 export const storage = (() => {
     let storageData = {};
-    let storageName = 'eui-data';
+    let storageName;
 
     try {
         storageData = JSON.parse(localStorage.getItem(storageName) || '{}');
@@ -30,6 +30,15 @@ export const storage = (() => {
         clear() {
             storageData = {};
             localStorage.setItem(storageName, JSON.stringify(storageData));
+        },
+
+        name(n) {
+            storageName = n;
+            try {
+                storageData = JSON.parse(localStorage.getItem(storageName) || '{}');
+            } catch (e) {
+                console.error(e);
+            }
         },
 
         settings: {
