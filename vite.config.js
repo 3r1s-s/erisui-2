@@ -6,8 +6,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'eui',
-      formats: ['umd'],
-      fileName: (format) => `erisui.js`
+      formats: ['es', 'umd'],
+      fileName: (format) => format === 'es' ? `erisui.mjs` : `erisui.js`
     },
     rollupOptions: {
       output: {

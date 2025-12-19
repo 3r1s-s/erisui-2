@@ -15,6 +15,7 @@ import './components/eui-button.js';
 import './components/eui-heading.js';
 import './components/eui-code.js';
 import './components/eui-app-titlebar.js';
+import './components/eui-surface.js';
 
 import { router, loadPage } from './scripts/router.js';
 import * as device from './scripts/device.js';
@@ -24,8 +25,6 @@ import * as storage from './scripts/storage.js';
 import * as utils from './scripts/utils.js';
 
 export { router, loadPage, device, haptics, icons, storage, utils };
-
-export const version = "1.0.5";
 
 if (typeof window !== 'undefined') {
     console.log('ErisUI loaded successfully');

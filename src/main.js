@@ -1,4 +1,5 @@
 import { router, loadPage } from "./scripts/router.js";
+import { storage } from "./scripts/storage.js";
 
 import "./components/eui-avatar.js";
 import "./components/eui-icon.js";
@@ -13,6 +14,7 @@ import "./components/eui-checkbox.js";
 import "./components/eui-button.js";
 import "./components/eui-heading.js";
 import "./components/eui-code.js";
+import "./components/eui-surface.js";
 
 router.add("/", () => loadPage("index"));
 
