@@ -13,9 +13,20 @@
         &lt;eui-app-nav&gt;&lt;/eui-app-nav&gt;
     </eui-code>
 
-    <p>Unlike other components, <code>eui-app-nav</code> automatically populates itself based on the routing
-        configuration or internal logic (in this demo app). in a real scenario, you might modify
-        `src/components/eui-app-nav.js` to define your links.</p>
+    <p>To populate the links, you set the <code>navItems</code> property on the element using JavaScript.</p>
+
+    <eui-code copy language="javascript">
+        import { icons } from "@3r1s_s/erisui";
+
+        const navItems = [
+        { label: "Home", path: "/", icon: "home" },
+        { label: "Settings", path: "/settings", icon: "settings" },
+        { type: "divider" },
+        { label: "About", path: "/about", icon: "info" }
+        ];
+
+        document.querySelector("eui-app-nav").navItems = navItems;
+    </eui-code>
 
     <eui-heading type="h2" anchor="customization" id="customization">Customization</eui-heading>
     <p>You can customize the width of the navigation drawer using CSS variables.</p>
@@ -31,33 +42,12 @@
         </div>
     </div>
 
-    <eui-heading type="h2" anchor="children" id="children">Navigation Items</eui-heading>
-    <p>The nav uses <code>eui-nav-item</code> for individual links.</p>
-
-    <eui-code copy language="html">
-        &lt;eui-nav-item path="/" icon="home" label="Home"&gt;&lt;/eui-nav-item&gt;
-    </eui-code>
-
-    <table class="eui-table" style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 1rem;">
-        <thead>
-            <tr style="border-bottom: 1px solid #333;">
-                <th style="padding: 8px;">Attribute</th>
-                <th style="padding: 8px;">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr style="border-bottom: 1px solid #333;">
-                <td style="padding: 8px;"><code>path</code></td>
-                <td style="padding: 8px;">The URL path to navigate to.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #333;">
-                <td style="padding: 8px;"><code>icon</code></td>
-                <td style="padding: 8px;">The name of the icon to display.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #333;">
-                <td style="padding: 8px;"><code>label</code></td>
-                <td style="padding: 8px;">The text label for the item.</td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+        <a href="/core/styling" class="button-link">
+            <eui-button><eui-icon name="back"></eui-icon> Back</eui-button>
+        </a>
+        <a href="/" class="button-link">
+            <eui-button type="filled">Home <eui-icon name="arrow"></eui-icon></eui-button>
+        </a>
+    </div>
 </div>

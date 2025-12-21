@@ -11,6 +11,7 @@
   "author": "Eris S",
   "license": "Apache-2.0",
   "dependencies": {
+    "@3r1s_s/erisui": "^1.0.10",
     "vite": "^7.2.7"
   }
 }

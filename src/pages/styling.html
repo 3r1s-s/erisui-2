@@ -2,26 +2,33 @@
     <eui-header type="large" title="Styling" subtitle="A flexible design system built on CSS Variables."></eui-header>
 
     <eui-heading type="h2" anchor="overview" id="overview">Overview</eui-heading>
-    <p>ErisUI styling is handled via standard CSS and extensive use of CSS Variables (Custom Properties). This allows
-        for easy theming and dynamic updates at runtime.</p>
+    <p>ErisUI comes with a pre-built design system that handles colors, typography, and layout. It relies heavily on CSS
+        Variables (Custom Properties), making it extremely easy to customize at runtime or via your own CSS.</p>
 
-    <eui-heading type="h2" anchor="files" id="files">Key Files</eui-heading>
-    <div class="grid two">
-        <div class="flex-card outlined">
-            <h3>styles.css</h3>
-            <p>Contains the core system variables (colors, spacing, typography) and the global reset. Do not modify this
-                heavily if you want to stay consistent with updates.</p>
-        </div>
-        <div class="flex-card outlined">
-            <h3>public/css/custom.css</h3>
-            <p>Intended for <strong>your</strong> custom styles and overrides. The predefined classes like
-                <code>flex-card</code> are just starter helpers; feel free to replace or extend them.
-            </p>
-        </div>
-    </div>
+    <eui-heading type="h2" anchor="usage" id="usage">Usage</eui-heading>
+    <p>To use the styles, you simply need to include the CSS file in your project options.</p>
 
-    <eui-heading type="h2" anchor="variables" id="variables">Theme Variables</eui-heading>
-    <p>Commonly used variables you might want to override in <code>:root</code>:</p>
+    <h3>NPM</h3>
+    <eui-code copy language="javascript">
+        import "@3r1s_s/erisui/style.css";
+    </eui-code>
+
+    <h3>CDN</h3>
+    <eui-code copy language="html">
+        &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/3r1s-s/erisui-2@dist/erisui.css"&gt;
+    </eui-code>
+
+    <eui-heading type="h2" anchor="theme" id="theme">Theme Variables</eui-heading>
+    <p>You can override any of these variables in your own <code>:root</code> block to change the look of the
+        application.</p>
+
+    <eui-code copy language="css">
+        :root {
+        --app-accent: #ff5bff; /* Change global accent color */
+        --app-text: #ffffff;
+        }
+    </eui-code>
+
     <table class="eui-table" style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 1rem;">
         <thead>
             <tr style="border-bottom: 1px solid #333;">
@@ -48,6 +55,11 @@
             </tr>
         </tbody>
     </table>
+
+    <h3>Light Mode</h3>
+    <p>ErisUI supports light mode out of the box. Simply add the <code>.light</code> class to your <code>:root</code> or
+        <code>html</code> element.
+    </p>
 
     <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
         <a href="/core/router" class="button-link">

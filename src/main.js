@@ -1,18 +1,5 @@
-import { router, loadPage } from "./scripts/router.js";
-
-import "./components/eui-avatar.js";
-import "./components/eui-icon.js";
-import "./components/eui-input.js";
-import "./components/eui-loader.js";
-import "./components/eui-progressbar.js";
-import "./components/eui-switch.js";
-import "./components/eui-chip.js";
-import "./components/eui-app-nav.js";
-import "./components/eui-header.js";
-import "./components/eui-checkbox.js";
-import "./components/eui-button.js";
-import "./components/eui-heading.js";
-import "./components/eui-code.js";
+import { router, loadPage, icons } from "@3r1s_s/erisui";
+import "@3r1s_s/erisui/style.css";
 
 router.add("/", () => loadPage("index"));
 router.add("/components/checkboxes", () => loadPage("checkboxes"));
@@ -32,9 +19,16 @@ router.add("/core/styling", () => loadPage("styling"));
 
 router.setNotFound(() => loadPage("404"));
 
+icons.register("star", `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.785 3.10866L15.9287 7.45093L20.7219 8.14933C22.3552 8.38578 23.0066 10.3917 21.8259 11.5442L18.3559 14.925L19.1748 19.6995C19.4536 21.3249 17.7467 22.5651 16.2873 21.7978L11.9998 19.5429L7.71237 21.7978C6.25138 22.5651 4.5461 21.3249 4.82327 19.6995L5.6438 14.925L2.17531 11.5442C0.993053 10.3917 1.64447 8.38578 3.27771 8.14933L8.07253 7.45093L10.2147 3.10866C10.946 1.63045 13.0537 1.63045 13.785 3.10866Z" fill="currentColor"/></svg>`);
+icons.register("home", `<svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.5258 0.204649C11.2291 -0.0682165 10.7709 -0.0682161 10.4742 0.204649L0.249923 9.68588C-0.266994 10.1612 0.0714693 11.0197 0.775759 11.0197L3.48971 11.0197V18.6923C3.48971 19.542 4.18295 20.2308 5.03811 20.2308H16.9619C17.8171 20.2308 18.5103 19.542 18.5103 18.6923V11.0197L21.2242 11.0197C21.9285 11.0197 22.267 10.1612 21.7501 9.68588L11.5258 0.204649Z" fill="currentColor"/></svg>`);
+icons.register("copy", `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11C2 11.7956 2.31607 12.5587 2.87868 13.1213C3.44129 13.6839 4.20435 14 5 14H11C11.7956 14 12.5587 13.6839 13.1213 13.1213C13.6839 12.5587 14 11.7956 14 11V8H11.75C10.7554 8 9.80161 7.60491 9.09835 6.90165C8.39509 6.19839 8 5.24456 8 4.25V2H5C4.20435 2 3.44129 2.31607 2.87868 2.87868C2.31607 3.44129 2 4.20435 2 5V11Z" fill="currentColor"/><path d="M13.7975 6.49965C13.6881 6.25457 13.5357 6.03105 13.3475 5.83965L10.16 2.65965C9.96921 2.4688 9.74565 2.31384 9.5 2.20215V4.24965C9.5 4.54512 9.5582 4.8377 9.67127 5.11069C9.78434 5.38367 9.95008 5.63171 10.159 5.84064C10.3679 6.04957 10.616 6.2153 10.889 6.32838C11.1619 6.44145 11.4545 6.49965 11.75 6.49965H13.7975Z" fill="currentColor"/></svg>`);
+icons.register("arrow", `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>`);
+icons.register("back", `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg)"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>`);
+
 const navItems = [
     { label: "Home", path: "/", icon: "home" },
     { label: "Getting Started", path: "/getting-started", icon: "star" },
+
 ];
 
 window.addEventListener("DOMContentLoaded", () => {
