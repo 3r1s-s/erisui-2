@@ -20,12 +20,11 @@ import './components/eui-surface.js';
 import { router, loadPage } from './scripts/router.js';
 import * as device from './scripts/device.js';
 import * as haptics from './scripts/haptics.js';
-import * as icons from './scripts/icons.js';
+import * as icon from './scripts/icons.js';
 import * as storage from './scripts/storage.js';
 import * as utils from './scripts/utils.js';
-import * as icons from './scripts/icons.js';
 
-export { router, loadPage, device, haptics, icons, storage, utils };
+export { router, loadPage, device, haptics, icon, storage, utils };
 
 if (typeof window !== 'undefined') {
     console.log('ErisUI loaded successfully');
