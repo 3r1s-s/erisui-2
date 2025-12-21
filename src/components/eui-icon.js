@@ -20,7 +20,7 @@ class UIIcon extends HTMLElement {
 
     render() {
         const name = this.getAttribute("name");
-        const svg = icon[name];
+        const svg = icon.get(name);
 
         if (!svg) {
             this.shadowRoot.innerHTML = `<span style="color:red;">?</span>`;
