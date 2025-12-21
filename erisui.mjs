@@ -1,4 +1,12 @@
-(function(h,u){typeof exports=="object"&&typeof module<"u"?u(exports):typeof define=="function"&&define.amd?define(["exports"],u):(h=typeof globalThis<"u"?globalThis:h||self,u(h.eui={}))})(this,(function(h){"use strict";var G=Object.defineProperty;var Q=(h,u,b)=>u in h?G(h,u,{enumerable:!0,configurable:!0,writable:!0,value:b}):h[u]=b;var C=(h,u,b)=>Q(h,typeof u!="symbol"?u+"":u,b);class u extends HTMLElement{static get observedAttributes(){return["size","border-radius","name","color"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+var S = Object.defineProperty;
+var z = (o, t, i) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : o[t] = i;
+var v = (o, t, i) => z(o, typeof t != "symbol" ? t + "" : t, i);
+class M extends HTMLElement {
+  static get observedAttributes() {
+    return ["size", "border-radius", "name", "color"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     aspect-ratio: 1 / 1;
@@ -43,7 +51,79 @@
                 <slot></slot>
                 <span id="initials"></span>
             </div>
-        `}connectedCallback(){this.avatar=this.shadowRoot.querySelector(".avatar"),this.initials=this.shadowRoot.querySelector("#initials");const t=this.shadowRoot.querySelector("slot"),i=t&&t.assignedNodes().length>0;if(i){const e=t.assignedNodes()[0];e&&e.tagName==="IMG"&&(this.initials.style.display="none",this.avatar.style.backgroundColor="transparent")}else this.hasAttribute("color")&&(this.avatar.style.backgroundColor=this.getAttribute("color"));if(this.hasAttribute("color")&&(this.avatar.style.backgroundColor=this.getAttribute("color")),this.hasAttribute("size")){const e=this.getAttribute("size");this.avatar.style.width=e+"px",this.avatar.style.height=e+"px",this.initials.style.fontSize=e/2+"px"}if(this.hasAttribute("border-radius")&&(this.avatar.style.borderRadius=this.getAttribute("border-radius")+"px"),this.hasAttribute("name")&&(this.avatar.title=this.getAttribute("name")),!i&&this.hasAttribute("name")){const s=this.getAttribute("name").trim().split(/\s+/);let n="";s.length===1?n=s[0][0]||"":n=(s[0][0]||"")+(s[s.length-1][0]||""),this.initials.textContent=n.toUpperCase()}}}customElements.define("eui-avatar",u);const b=(()=>{let o={};return{register(t,i){o[t]=i},get(t){return o[t]||""}}})();b.register("menu",'<svg width="24" height="24" viewBox="0 0 24 24" focusable="false"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"></path></svg>'),b.register("home",'<svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.5258 0.204649C11.2291 -0.0682165 10.7709 -0.0682161 10.4742 0.204649L0.249923 9.68588C-0.266994 10.1612 0.0714693 11.0197 0.775759 11.0197L3.48971 11.0197V18.6923C3.48971 19.542 4.18295 20.2308 5.03811 20.2308H16.9619C17.8171 20.2308 18.5103 19.542 18.5103 18.6923V11.0197L21.2242 11.0197C21.9285 11.0197 22.267 10.1612 21.7501 9.68588L11.5258 0.204649Z" fill="currentColor"/></svg>'),b.register("kit",'<svg width="26" height="28" viewBox="0 0 26 28" xmlns="http://www.w3.org/2000/svg"><path d="m13.118 14.831c0.433 0 1.257-0.024 1.795-0.344l9.151-4.057c0.869-0.59 1.051-1.255 1.067-1.773 0.02-0.662-0.313-1.634-1.181-2.15l-8.515-3.921c-0.537-0.309-2.096-0.552-2.529-0.552-0.444 0-1.958 0.42-2.496 0.73l-8.643 4.034c-0.85 0.602-1.022 1.284-0.951 1.942 0.098 0.887 0.206 0.857 0.889 1.503l9.577 4.212c0.537 0.32 1.391 0.376 1.836 0.376zm-0.12 5.467c0.403 0 1.443-0.068 1.928-0.345l8.858-3.991c0.497-0.3 1.448-1.117 1.382-1.952-0.091-1.138-0.598-1.7-0.948-1.906l-9.22 3.888c-0.454 0.261-1.417 0.478-1.916 0.478-0.542 0-1.539-0.228-1.766-0.362l-9.395-4.012c-0.462 0.022-1.174 0.911-1.201 1.642-0.03 0.761 0.7 1.62 1.135 1.839l9.408 4.384c0.485 0.278 1.322 0.337 1.735 0.337zm0.09 5.344c0.403 0 1.296-0.053 1.781-0.342l9.147-4.299c0.485-0.289 1.129-0.789 1.053-1.879-0.056-0.794-0.071-1.123-0.918-1.765l-9.203 4.113c-0.228 0.134-0.948 0.39-1.853 0.39-0.939 0-1.603-0.224-1.831-0.359l-9.451-4.017c-0.979 0.247-1.005 1.45-1.005 1.947 0 0.455 0.403 1.279 0.9 1.568l9.465 4.262c0.486 0.29 1.502 0.381 1.915 0.381z" fill="currentColor"></path></svg>'),icons.register("settings",'<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.644169 15.2044C0.751639 15.4175 0.866389 15.627 0.988219 15.8323C1.34503 16.445 1.76284 17.0223 2.23048 17.545C2.3967 17.7307 2.65856 17.7968 2.89375 17.7126L5.25826 16.8621C5.96645 16.608 6.74841 17.07 6.87902 17.8018L7.32018 20.2764C7.36418 20.5227 7.55119 20.7167 7.79454 20.7688C8.86201 20.9976 9.95753 21.057 11.0418 20.9452C11.427 20.9061 11.8095 20.8457 12.1863 20.7643C12.375 20.7232 12.5303 20.5969 12.6121 20.4275C12.6441 20.37 12.6671 20.3068 12.6794 20.2397L13.132 17.7739C13.1978 17.4162 13.4191 17.1252 13.7102 16.9498C13.7478 16.9275 13.7867 16.9072 13.8264 16.8889C14.1041 16.7654 14.426 16.7408 14.7301 16.8496L17.0889 17.6938C17.2068 17.7362 17.3318 17.7406 17.4482 17.7107C17.5805 17.6872 17.7044 17.6208 17.7983 17.5172C18.2857 16.9783 18.7189 16.3833 19.0875 15.7497C19.4503 15.1137 19.748 14.4403 19.9703 13.7471C20.0128 13.6142 20.0083 13.4742 19.9629 13.3481C19.9307 13.2315 19.8646 13.1245 19.7685 13.043L17.8596 11.4179C17.6114 11.2067 17.4714 10.912 17.4409 10.6065C17.4371 10.563 17.4355 10.5194 17.4361 10.4758C17.444 10.1379 17.5847 9.80337 17.8591 9.56905L19.7638 7.94348C19.8146 7.90007 19.857 7.84958 19.8904 7.7944C19.9978 7.63842 20.0299 7.43844 19.9706 7.25291C19.8534 6.88733 19.7151 6.52704 19.5572 6.17466C19.1114 5.17572 18.5115 4.2528 17.7787 3.43934C17.612 3.25429 17.3509 3.18886 17.1161 3.27382L14.7569 4.12827C14.0592 4.38082 13.2679 3.93321 13.1344 3.19155L12.6871 0.714256C12.6423 0.468053 12.4542 0.273849 12.2106 0.22246C11.5182 0.0764882 10.803 0.00250031 10.088 0.000608251C9.88769 -0.0015584 9.68739 0.002064 9.48735 0.0114648C8.92415 0.0369819 8.36389 0.107332 7.81778 0.222459C7.78135 0.230146 7.74615 0.241028 7.71249 0.2548C7.5098 0.328781 7.35888 0.505679 7.31996 0.723547L6.8788 3.19817C6.81394 3.56157 6.58834 3.85866 6.29097 4.03446C5.98991 4.2061 5.61923 4.25412 5.27153 4.12827L2.91237 3.27382C2.70694 3.1995 2.48138 3.24016 2.31657 3.37545C2.2857 3.39886 2.25676 3.42543 2.23026 3.45505C1.81793 3.91588 1.44433 4.4192 1.11714 4.95183C1.05788 5.04799 1.00019 5.14513 0.944072 5.24319C0.878302 5.35619 0.814661 5.4704 0.753186 5.58577C0.464267 6.12611 0.222113 6.69081 0.0338354 7.26739C0.0213426 7.30567 0.0127871 7.34455 0.00802709 7.38352C-0.0257478 7.59364 0.0518458 7.809 0.218337 7.94974L2.13633 9.56992C2.41146 9.80242 2.55518 10.1364 2.56469 10.4743C2.56917 10.8294 2.42529 11.1857 2.13611 11.4301L0.218115 13.0503C0.0484589 13.1937 -0.0289685 13.4145 0.00982709 13.6284C0.0147983 13.6634 0.0228404 13.6982 0.0340542 13.7326C0.198098 14.235 0.403035 14.7283 0.644169 15.2044ZM10 14.5C12.2091 14.5 14 12.7091 14 10.5C14 8.29086 12.2091 6.5 10 6.5C7.79086 6.5 6 8.29086 6 10.5C6 12.7091 7.79086 14.5 10 14.5Z" fill="currentColor"></path></svg>');class z extends HTMLElement{static get observedAttributes(){return["name","width","height"]}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}attributeChangedCallback(){this.render()}render(){const t=this.getAttribute("name"),i=b.get(t);if(!i){this.shadowRoot.innerHTML='<span style="color:red;">?</span>';return}const e=document.createElement("template");e.innerHTML=i.trim();const s=e.content.cloneNode(!0),n=s.firstElementChild;if(n&&n.style){const l=this.getAttribute("width"),c=this.getAttribute("height");l&&n.setAttribute("width",l),c&&n.setAttribute("height",c),n.style.display="block"}this.shadowRoot.innerHTML="",this.shadowRoot.appendChild(s)}}customElements.define("eui-icon",z);class M extends HTMLElement{static get observedAttributes(){return["label","value","id","type","filled"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+  connectedCallback() {
+    this.avatar = this.shadowRoot.querySelector(".avatar"), this.initials = this.shadowRoot.querySelector("#initials");
+    const t = this.shadowRoot.querySelector("slot"), i = t && t.assignedNodes().length > 0;
+    if (i) {
+      const e = t.assignedNodes()[0];
+      e && e.tagName === "IMG" && (this.initials.style.display = "none", this.avatar.style.backgroundColor = "transparent");
+    } else
+      this.hasAttribute("color") && (this.avatar.style.backgroundColor = this.getAttribute("color"));
+    if (this.hasAttribute("color") && (this.avatar.style.backgroundColor = this.getAttribute("color")), this.hasAttribute("size")) {
+      const e = this.getAttribute("size");
+      this.avatar.style.width = e + "px", this.avatar.style.height = e + "px", this.initials.style.fontSize = e / 2 + "px";
+    }
+    if (this.hasAttribute("border-radius") && (this.avatar.style.borderRadius = this.getAttribute("border-radius") + "px"), this.hasAttribute("name") && (this.avatar.title = this.getAttribute("name")), !i && this.hasAttribute("name")) {
+      const s = this.getAttribute("name").trim().split(/\s+/);
+      let r = "";
+      s.length === 1 ? r = s[0][0] || "" : r = (s[0][0] || "") + (s[s.length - 1][0] || ""), this.initials.textContent = r.toUpperCase();
+    }
+  }
+}
+customElements.define("eui-avatar", M);
+const b = /* @__PURE__ */ (() => {
+  let o = {};
+  return {
+    register(t, i) {
+      o[t] = i;
+    },
+    get(t) {
+      return o[t] || "";
+    }
+  };
+})();
+b.register("menu", '<svg width="24" height="24" viewBox="0 0 24 24" focusable="false"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"></path></svg>');
+b.register("home", '<svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.5258 0.204649C11.2291 -0.0682165 10.7709 -0.0682161 10.4742 0.204649L0.249923 9.68588C-0.266994 10.1612 0.0714693 11.0197 0.775759 11.0197L3.48971 11.0197V18.6923C3.48971 19.542 4.18295 20.2308 5.03811 20.2308H16.9619C17.8171 20.2308 18.5103 19.542 18.5103 18.6923V11.0197L21.2242 11.0197C21.9285 11.0197 22.267 10.1612 21.7501 9.68588L11.5258 0.204649Z" fill="currentColor"/></svg>');
+b.register("kit", '<svg width="26" height="28" viewBox="0 0 26 28" xmlns="http://www.w3.org/2000/svg"><path d="m13.118 14.831c0.433 0 1.257-0.024 1.795-0.344l9.151-4.057c0.869-0.59 1.051-1.255 1.067-1.773 0.02-0.662-0.313-1.634-1.181-2.15l-8.515-3.921c-0.537-0.309-2.096-0.552-2.529-0.552-0.444 0-1.958 0.42-2.496 0.73l-8.643 4.034c-0.85 0.602-1.022 1.284-0.951 1.942 0.098 0.887 0.206 0.857 0.889 1.503l9.577 4.212c0.537 0.32 1.391 0.376 1.836 0.376zm-0.12 5.467c0.403 0 1.443-0.068 1.928-0.345l8.858-3.991c0.497-0.3 1.448-1.117 1.382-1.952-0.091-1.138-0.598-1.7-0.948-1.906l-9.22 3.888c-0.454 0.261-1.417 0.478-1.916 0.478-0.542 0-1.539-0.228-1.766-0.362l-9.395-4.012c-0.462 0.022-1.174 0.911-1.201 1.642-0.03 0.761 0.7 1.62 1.135 1.839l9.408 4.384c0.485 0.278 1.322 0.337 1.735 0.337zm0.09 5.344c0.403 0 1.296-0.053 1.781-0.342l9.147-4.299c0.485-0.289 1.129-0.789 1.053-1.879-0.056-0.794-0.071-1.123-0.918-1.765l-9.203 4.113c-0.228 0.134-0.948 0.39-1.853 0.39-0.939 0-1.603-0.224-1.831-0.359l-9.451-4.017c-0.979 0.247-1.005 1.45-1.005 1.947 0 0.455 0.403 1.279 0.9 1.568l9.465 4.262c0.486 0.29 1.502 0.381 1.915 0.381z" fill="currentColor"></path></svg>');
+icons.register("settings", '<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.644169 15.2044C0.751639 15.4175 0.866389 15.627 0.988219 15.8323C1.34503 16.445 1.76284 17.0223 2.23048 17.545C2.3967 17.7307 2.65856 17.7968 2.89375 17.7126L5.25826 16.8621C5.96645 16.608 6.74841 17.07 6.87902 17.8018L7.32018 20.2764C7.36418 20.5227 7.55119 20.7167 7.79454 20.7688C8.86201 20.9976 9.95753 21.057 11.0418 20.9452C11.427 20.9061 11.8095 20.8457 12.1863 20.7643C12.375 20.7232 12.5303 20.5969 12.6121 20.4275C12.6441 20.37 12.6671 20.3068 12.6794 20.2397L13.132 17.7739C13.1978 17.4162 13.4191 17.1252 13.7102 16.9498C13.7478 16.9275 13.7867 16.9072 13.8264 16.8889C14.1041 16.7654 14.426 16.7408 14.7301 16.8496L17.0889 17.6938C17.2068 17.7362 17.3318 17.7406 17.4482 17.7107C17.5805 17.6872 17.7044 17.6208 17.7983 17.5172C18.2857 16.9783 18.7189 16.3833 19.0875 15.7497C19.4503 15.1137 19.748 14.4403 19.9703 13.7471C20.0128 13.6142 20.0083 13.4742 19.9629 13.3481C19.9307 13.2315 19.8646 13.1245 19.7685 13.043L17.8596 11.4179C17.6114 11.2067 17.4714 10.912 17.4409 10.6065C17.4371 10.563 17.4355 10.5194 17.4361 10.4758C17.444 10.1379 17.5847 9.80337 17.8591 9.56905L19.7638 7.94348C19.8146 7.90007 19.857 7.84958 19.8904 7.7944C19.9978 7.63842 20.0299 7.43844 19.9706 7.25291C19.8534 6.88733 19.7151 6.52704 19.5572 6.17466C19.1114 5.17572 18.5115 4.2528 17.7787 3.43934C17.612 3.25429 17.3509 3.18886 17.1161 3.27382L14.7569 4.12827C14.0592 4.38082 13.2679 3.93321 13.1344 3.19155L12.6871 0.714256C12.6423 0.468053 12.4542 0.273849 12.2106 0.22246C11.5182 0.0764882 10.803 0.00250031 10.088 0.000608251C9.88769 -0.0015584 9.68739 0.002064 9.48735 0.0114648C8.92415 0.0369819 8.36389 0.107332 7.81778 0.222459C7.78135 0.230146 7.74615 0.241028 7.71249 0.2548C7.5098 0.328781 7.35888 0.505679 7.31996 0.723547L6.8788 3.19817C6.81394 3.56157 6.58834 3.85866 6.29097 4.03446C5.98991 4.2061 5.61923 4.25412 5.27153 4.12827L2.91237 3.27382C2.70694 3.1995 2.48138 3.24016 2.31657 3.37545C2.2857 3.39886 2.25676 3.42543 2.23026 3.45505C1.81793 3.91588 1.44433 4.4192 1.11714 4.95183C1.05788 5.04799 1.00019 5.14513 0.944072 5.24319C0.878302 5.35619 0.814661 5.4704 0.753186 5.58577C0.464267 6.12611 0.222113 6.69081 0.0338354 7.26739C0.0213426 7.30567 0.0127871 7.34455 0.00802709 7.38352C-0.0257478 7.59364 0.0518458 7.809 0.218337 7.94974L2.13633 9.56992C2.41146 9.80242 2.55518 10.1364 2.56469 10.4743C2.56917 10.8294 2.42529 11.1857 2.13611 11.4301L0.218115 13.0503C0.0484589 13.1937 -0.0289685 13.4145 0.00982709 13.6284C0.0147983 13.6634 0.0228404 13.6982 0.0340542 13.7326C0.198098 14.235 0.403035 14.7283 0.644169 15.2044ZM10 14.5C12.2091 14.5 14 12.7091 14 10.5C14 8.29086 12.2091 6.5 10 6.5C7.79086 6.5 6 8.29086 6 10.5C6 12.7091 7.79086 14.5 10 14.5Z" fill="currentColor"></path></svg>');
+class T extends HTMLElement {
+  static get observedAttributes() {
+    return ["name", "width", "height"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.render();
+  }
+  attributeChangedCallback() {
+    this.render();
+  }
+  render() {
+    const t = this.getAttribute("name"), i = b.get(t);
+    if (!i) {
+      this.shadowRoot.innerHTML = '<span style="color:red;">?</span>';
+      return;
+    }
+    const e = document.createElement("template");
+    e.innerHTML = i.trim();
+    const s = e.content.cloneNode(!0), r = s.firstElementChild;
+    if (r && r.style) {
+      const l = this.getAttribute("width"), c = this.getAttribute("height");
+      l && r.setAttribute("width", l), c && r.setAttribute("height", c), r.style.display = "block";
+    }
+    this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(s);
+  }
+}
+customElements.define("eui-icon", T);
+class R extends HTMLElement {
+  static get observedAttributes() {
+    return ["label", "value", "id", "type", "filled"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 .form {
                     display: flex;
@@ -143,7 +223,38 @@
                 <input class="form-input" placeholder=" ">
                 <label></label>
             </div>
-        `}connectedCallback(){this.form=this.shadowRoot.querySelector(".form"),this.inputEl=this.shadowRoot.querySelector(".form-input"),this.labelEl=this.shadowRoot.querySelector("label"),this.hasAttribute("value")&&(this.inputEl.value=this.getAttribute("value")),this.hasAttribute("id")&&(this.inputEl.id=this.getAttribute("id")),this.hasAttribute("label")&&(this.labelEl.textContent=this.getAttribute("label")),this.hasAttribute("type")&&(this.inputEl.type=this.getAttribute("type")),this.hasAttribute("filled")&&this.form.classList.add("filled"),this.inputEl.addEventListener("input",()=>{this.setAttribute("value",this.inputEl.value)})}attributeChangedCallback(t,i,e){if(!(!this.inputEl||!this.labelEl))switch(t){case"value":this.inputEl.value!==e&&(this.inputEl.value=e);break;case"id":this.inputEl.id=e;break;case"label":this.labelEl.textContent=e;break}}get value(){return this.inputEl.value}set value(t){this.setAttribute("value",t)}}customElements.define("eui-input",M);class T extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+  connectedCallback() {
+    this.form = this.shadowRoot.querySelector(".form"), this.inputEl = this.shadowRoot.querySelector(".form-input"), this.labelEl = this.shadowRoot.querySelector("label"), this.hasAttribute("value") && (this.inputEl.value = this.getAttribute("value")), this.hasAttribute("id") && (this.inputEl.id = this.getAttribute("id")), this.hasAttribute("label") && (this.labelEl.textContent = this.getAttribute("label")), this.hasAttribute("type") && (this.inputEl.type = this.getAttribute("type")), this.hasAttribute("filled") && this.form.classList.add("filled"), this.inputEl.addEventListener("input", () => {
+      this.setAttribute("value", this.inputEl.value);
+    });
+  }
+  attributeChangedCallback(t, i, e) {
+    if (!(!this.inputEl || !this.labelEl))
+      switch (t) {
+        case "value":
+          this.inputEl.value !== e && (this.inputEl.value = e);
+          break;
+        case "id":
+          this.inputEl.id = e;
+          break;
+        case "label":
+          this.labelEl.textContent = e;
+          break;
+      }
+  }
+  get value() {
+    return this.inputEl.value;
+  }
+  set value(t) {
+    this.setAttribute("value", t);
+  }
+}
+customElements.define("eui-input", R);
+class $ extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 .loader {
                     width: 24px;
@@ -188,7 +299,16 @@
             <span class="loader animate">
                 <svg viewBox="0 0 16 16"><circle class="loader-icon" cx="8px" cy="8px" r="7px"></circle></svg>
             </span>
-        `}}customElements.define("eui-loader",T);class R extends HTMLElement{static get observedAttributes(){return["value","intermediate","id"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+}
+customElements.define("eui-loader", $);
+class H extends HTMLElement {
+  static get observedAttributes() {
+    return ["value", "intermediate", "id"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 .progressbar {
                     width: 100%;
@@ -232,7 +352,119 @@
             <div class="progressbar">
                 <span class="progress"></span>
             </div>
-        `}set value(t){this.setAttribute("value",t)}attributeChangedCallback(){this.connectedCallback()}connectedCallback(){const t=this.shadowRoot.querySelector(".progress");this.hasAttribute("id")&&(this.progress.id=this.getAttribute("id")),this.hasAttribute("intermediate")&&t.classList.add("intermediate"),this.hasAttribute("value")&&(t.style.width=this.getAttribute("value")+"%")}}customElements.define("eui-progressbar",R);const v={is:{iPhone:/iPhone/.test(navigator.userAgent),iPad:/iPad/.test(navigator.userAgent),iOS:/iPhone|iPad|iPod/.test(navigator.userAgent),android:/Android/.test(navigator.userAgent),mobile:/Mobi|Android/i.test(navigator.userAgent)},prefers:{language:navigator.language||navigator.userLanguage,reducedMotion:window.matchMedia("(prefers-reduced-motion: reduce)").matches,reducedTransparency:window.matchMedia("(prefers-reduced-transparency: reduce)").matches},supports:{share:typeof navigator.share=="function",directDownload:"download"in document.createElement("a"),haptics:"vibrate"in navigator||"Vibrate"in window||typeof window.navigator.vibrate=="function"},userAgent:navigator.userAgent},$=Object.freeze(Object.defineProperty({__proto__:null,device:v},Symbol.toStringTag,{value:"Module"}));function H(){try{const o=document.createElement("label");o.ariaHidden="true",o.style.display="none";const t=document.createElement("input");t.type="checkbox",t.setAttribute("switch",""),o.appendChild(t),document.head.appendChild(o),o.click(),document.head.removeChild(o)}catch{}}function x(o){v.supports.haptics?navigator.vibrate(o||50):v.is.iPhone&&H()}const _=Object.freeze(Object.defineProperty({__proto__:null,haptic:x},Symbol.toStringTag,{value:"Module"})),E=(()=>{let o={},t;try{o=JSON.parse(localStorage.getItem(t)||"{}")}catch(i){console.error(i)}return{get(i){return o[i]},set(i,e){o[i]=e,localStorage.setItem(t,JSON.stringify(o))},delete(i){delete o[i],localStorage.setItem(t,JSON.stringify(o))},all(){return o},clear(){o={},localStorage.setItem(t,JSON.stringify(o))},name(i){t=i;try{o=JSON.parse(localStorage.getItem(t)||"{}")}catch(e){console.error(e)}},settings:{get(i){return o&&o.settings&&o.settings[i]},set(i,e){o.settings||(o.settings={}),o.settings[i]=e,localStorage.setItem(t,JSON.stringify(o))},delete(i){o.settings&&(delete o.settings[i],localStorage.setItem(t,JSON.stringify(o)))},all(){return o.settings||{}},clear(){o.settings&&(o.settings={},localStorage.setItem(t,JSON.stringify(o)))}}}})(),A=E.settings,I=Object.freeze(Object.defineProperty({__proto__:null,settings:A,storage:E},Symbol.toStringTag,{value:"Module"}));class F extends HTMLElement{static get observedAttributes(){return["selected"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+  set value(t) {
+    this.setAttribute("value", t);
+  }
+  attributeChangedCallback() {
+    this.connectedCallback();
+  }
+  connectedCallback() {
+    const t = this.shadowRoot.querySelector(".progress");
+    this.hasAttribute("id") && (this.progress.id = this.getAttribute("id")), this.hasAttribute("intermediate") && t.classList.add("intermediate"), this.hasAttribute("value") && (t.style.width = this.getAttribute("value") + "%");
+  }
+}
+customElements.define("eui-progressbar", H);
+const x = {
+  is: {
+    iPhone: /iPhone/.test(navigator.userAgent),
+    iPad: /iPad/.test(navigator.userAgent),
+    iOS: /iPhone|iPad|iPod/.test(navigator.userAgent),
+    android: /Android/.test(navigator.userAgent),
+    mobile: /Mobi|Android/i.test(navigator.userAgent)
+    // matches most mobile browsers
+  },
+  prefers: {
+    language: navigator.language || navigator.userLanguage,
+    reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    reducedTransparency: window.matchMedia("(prefers-reduced-transparency: reduce)").matches
+  },
+  supports: {
+    share: typeof navigator.share == "function",
+    directDownload: "download" in document.createElement("a"),
+    haptics: "vibrate" in navigator || "Vibrate" in window || typeof window.navigator.vibrate == "function"
+  },
+  userAgent: navigator.userAgent
+}, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  device: x
+}, Symbol.toStringTag, { value: "Module" }));
+function _() {
+  try {
+    const o = document.createElement("label");
+    o.ariaHidden = "true", o.style.display = "none";
+    const t = document.createElement("input");
+    t.type = "checkbox", t.setAttribute("switch", ""), o.appendChild(t), document.head.appendChild(o), o.click(), document.head.removeChild(o);
+  } catch {
+  }
+}
+function w(o) {
+  x.supports.haptics ? navigator.vibrate(o || 50) : x.is.iPhone && _();
+}
+const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  haptic: w
+}, Symbol.toStringTag, { value: "Module" })), y = (() => {
+  let o = {}, t;
+  try {
+    o = JSON.parse(localStorage.getItem(t) || "{}");
+  } catch (i) {
+    console.error(i);
+  }
+  return {
+    get(i) {
+      return o[i];
+    },
+    set(i, e) {
+      o[i] = e, localStorage.setItem(t, JSON.stringify(o));
+    },
+    delete(i) {
+      delete o[i], localStorage.setItem(t, JSON.stringify(o));
+    },
+    all() {
+      return o;
+    },
+    clear() {
+      o = {}, localStorage.setItem(t, JSON.stringify(o));
+    },
+    name(i) {
+      t = i;
+      try {
+        o = JSON.parse(localStorage.getItem(t) || "{}");
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    settings: {
+      get(i) {
+        return o && o.settings && o.settings[i];
+      },
+      set(i, e) {
+        o.settings || (o.settings = {}), o.settings[i] = e, localStorage.setItem(t, JSON.stringify(o));
+      },
+      delete(i) {
+        o.settings && (delete o.settings[i], localStorage.setItem(t, JSON.stringify(o)));
+      },
+      all() {
+        return o.settings || {};
+      },
+      clear() {
+        o.settings && (o.settings = {}, localStorage.setItem(t, JSON.stringify(o)));
+      }
+    }
+  };
+})(), k = y.settings, Z = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  settings: k,
+  storage: y
+}, Symbol.toStringTag, { value: "Module" }));
+class I extends HTMLElement {
+  static get observedAttributes() {
+    return ["selected"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 .switch {
                     background-color: var(--app-200);
@@ -301,7 +533,35 @@
                 <input type="checkbox" role="switch">
                 <span class="handle"></span>
             </div>
-        `}connectedCallback(){this.inputEl=this.shadowRoot.querySelector("input"),this.switchEl=this.shadowRoot.querySelector(".switch"),this.updateFromAttribute(),this.switchEl.addEventListener("click",()=>this.toggle())}toggle(){this.selected=!this.selected,x()}updateFromAttribute(){const t=this.hasAttribute("selected");this.inputEl.checked=t,this.switchEl.classList.toggle("selected",t)}attributeChangedCallback(t,i,e){t==="selected"&&this.inputEl&&this.updateFromAttribute()}get selected(){return this.hasAttribute("selected")}set selected(t){t?this.setAttribute("selected",""):this.removeAttribute("selected")}}customElements.define("eui-switch",F);class q extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.shadowRoot.innerHTML=`
+        `;
+  }
+  connectedCallback() {
+    this.inputEl = this.shadowRoot.querySelector("input"), this.switchEl = this.shadowRoot.querySelector(".switch"), this.updateFromAttribute(), this.switchEl.addEventListener("click", () => this.toggle());
+  }
+  toggle() {
+    this.selected = !this.selected, w();
+  }
+  updateFromAttribute() {
+    const t = this.hasAttribute("selected");
+    this.inputEl.checked = t, this.switchEl.classList.toggle("selected", t);
+  }
+  attributeChangedCallback(t, i, e) {
+    t === "selected" && this.inputEl && this.updateFromAttribute();
+  }
+  get selected() {
+    return this.hasAttribute("selected");
+  }
+  set selected(t) {
+    t ? this.setAttribute("selected", "") : this.removeAttribute("selected");
+  }
+}
+customElements.define("eui-switch", I);
+class F extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     display: inline-flex;
@@ -346,7 +606,164 @@
                 }
             </style>
             <slot></slot>
-        `,this.addEventListener("pointerdown",t=>{const i=document.createElement("span"),e=t.currentTarget,s=Math.max(e.offsetWidth,e.offsetHeight);i.classList.add("ripple"),i.style.left=t.clientX-e.getBoundingClientRect().left-s/2+"px",i.style.top=t.clientY-e.getBoundingClientRect().top-s/2+"px",i.style.width=s+"px",i.style.height=s+"px",this.shadowRoot.appendChild(i),setTimeout(()=>{i.remove()},600)})}}customElements.define("eui-chip",q);const m="",w=(()=>{const o=[];function t(r,a){const p=[],f=r.replace(/:([^/]+)/g,(y,k)=>(p.push(k),"([^/]+)")).replace(/\//g,"\\/"),g=new RegExp(`^${m}${f}$`);o.push({regex:g,paramNames:p,renderFn:a})}function i(r){for(const{regex:a,paramNames:p,renderFn:f}of o){const g=r.match(a);if(g){const y={};return p.forEach((k,Z)=>{y[k]=decodeURIComponent(g[Z+1])}),{renderFn:f,params:y}}}return null}function e(r,a=!0){r.startsWith(m)||(r=m+(r.startsWith("/")?"":"/")+r);const p=r.split(/[?#]/)[0];if(p===window.location.pathname&&r.includes("#")){a&&history.pushState({},"",r);const g="#"+r.split("#")[1];s(g);return}const f=i(p);if(f)if(a&&history.pushState({},"",r),f.renderFn(f.params),window.dispatchEvent(new CustomEvent("route-changed",{detail:{path:r}})),r.includes("#")){const g="#"+r.split("#")[1];setTimeout(()=>s(g),100)}else{const g=document.getElementById("main");g&&g.scrollTo(0,0)}else n?(a&&history.pushState({},"",r),n()):console.warn(`No route found for ${p}`)}function s(r){if(r)try{const a=document.querySelector(r);a&&a.scrollIntoView({behavior:"smooth"})}catch{console.warn("Invalid hash:",r)}}let n=null;function l(r){n=r}function c(){history.back()}function d(){return window.location.pathname.replace(m,"")||"/"}return window.addEventListener("popstate",()=>{const r=window.location.pathname+window.location.search+window.location.hash;e(r,!1)}),window.addEventListener("click",r=>{if(r.button!==0||r.metaKey||r.altKey||r.ctrlKey||r.shiftKey)return;const a=r.target.closest("a");if(!a||a.hasAttribute("download")||a.getAttribute("target")==="_blank")return;const p=a.getAttribute("href");if(!(!p||p.startsWith("http")&&!p.startsWith(window.location.origin))){if(r.preventDefault(),p.startsWith("#")){history.pushState({},"",p),s(p);return}e(p)}}),{add:t,navigate:e,back:c,location:d,setNotFound:l}})();async function j(o){try{const t=document.getElementById("main");t.classList.add("fade-out"),await new Promise(e=>setTimeout(e,200));const i=await fetch(`/src/pages/${o}.html`).then(e=>e.text());t.innerHTML=i,t.classList.remove("fade-out"),t.classList.add("fade-in"),window.location.hash?setTimeout(()=>{try{const e=document.querySelector(window.location.hash);e&&e.scrollIntoView({behavior:"smooth"})}catch{}},100):t&&t.scrollTo(0,0),setTimeout(()=>{t.classList.remove("fade-in")},200)}catch(t){console.error("Page load failed:",t)}}class N extends HTMLElement{constructor(){super();C(this,"handleClick",()=>{const i=this.getAttribute("path");i&&w.navigate(i)});this.attachShadow({mode:"open"})}static get observedAttributes(){return["path","icon","label","badge","active","avatar-src","avatar-name"]}connectedCallback(){this.hasRendered||(this.render(),this.setupEventListeners(),this.hasRendered=!0),this.updateContent(),this.addEventListener("click",this.handleClick)}disconnectedCallback(){this.removeEventListener("click",this.handleClick)}attributeChangedCallback(i,e,s){if(e!==s&&this.hasRendered){if(i==="active")return;this.updateContent()}}setupEventListeners(){this.addEventListener("pointerdown",i=>{const e=document.createElement("span"),s=i.currentTarget,n=s.getBoundingClientRect(),l=Math.max(s.offsetWidth,s.offsetHeight),c=l/2;e.classList.add("ripple"),e.style.width=`${l}px`,e.style.height=`${l}px`,e.style.left=`${i.clientX-n.left-c}px`,e.style.top=`${i.clientY-n.top-c}px`,this.shadowRoot.appendChild(e),e.addEventListener("animationend",()=>{e.remove()})})}updateContent(){const i=this.getAttribute("icon"),e=this.getAttribute("avatar-src"),s=this.getAttribute("avatar-name"),n=this.getAttribute("label")||"",l=this.getAttribute("badge"),c=this.shadowRoot.querySelector(".badge");if(l)if(c)c.textContent=l;else{const a=document.createElement("span");a.className="badge",a.textContent=l,this.shadowRoot.appendChild(a)}else c&&c.remove();const d=this.shadowRoot.querySelector("slot[name='icon']");if(d)if(e||s){let a='<eui-avatar size="24"';s&&(a+=` name="${s}"`),a+=">",e&&(a+=`<img src="${e}" alt="${s||"Avatar"}" />`),a+="</eui-avatar>",d.innerHTML=a}else{const a=d.querySelector("eui-icon");i&&a?a.getAttribute("name")!==i&&a.setAttribute("name",i):i?d.innerHTML=`<eui-icon width="24" height="24" name="${i}"></eui-icon>`:d.innerHTML=""}const r=this.shadowRoot.querySelector(".label");r&&(r.textContent=n)}render(){this.shadowRoot.innerHTML=`
+        `, this.addEventListener("pointerdown", (t) => {
+      const i = document.createElement("span"), e = t.currentTarget, s = Math.max(e.offsetWidth, e.offsetHeight);
+      i.classList.add("ripple"), i.style.left = t.clientX - e.getBoundingClientRect().left - s / 2 + "px", i.style.top = t.clientY - e.getBoundingClientRect().top - s / 2 + "px", i.style.width = s + "px", i.style.height = s + "px", this.shadowRoot.appendChild(i), setTimeout(() => {
+        i.remove();
+      }, 600);
+    });
+  }
+}
+customElements.define("eui-chip", F);
+const g = "", C = (() => {
+  const o = [];
+  function t(n, a) {
+    const h = [], u = n.replace(/:([^/]+)/g, (m, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${g}${u}$`);
+    o.push({ regex: p, paramNames: h, renderFn: a });
+  }
+  function i(n) {
+    for (const { regex: a, paramNames: h, renderFn: u } of o) {
+      const p = n.match(a);
+      if (p) {
+        const m = {};
+        return h.forEach((f, L) => {
+          m[f] = decodeURIComponent(p[L + 1]);
+        }), { renderFn: u, params: m };
+      }
+    }
+    return null;
+  }
+  function e(n, a = !0) {
+    n.startsWith(g) || (n = g + (n.startsWith("/") ? "" : "/") + n);
+    const h = n.split(/[?#]/)[0];
+    if (h === window.location.pathname && n.includes("#")) {
+      a && history.pushState({}, "", n);
+      const p = "#" + n.split("#")[1];
+      s(p);
+      return;
+    }
+    const u = i(h);
+    if (u)
+      if (a && history.pushState({}, "", n), u.renderFn(u.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: n } })), n.includes("#")) {
+        const p = "#" + n.split("#")[1];
+        setTimeout(() => s(p), 100);
+      } else {
+        const p = document.getElementById("main");
+        p && p.scrollTo(0, 0);
+      }
+    else r ? (a && history.pushState({}, "", n), r()) : console.warn(`No route found for ${h}`);
+  }
+  function s(n) {
+    if (n)
+      try {
+        const a = document.querySelector(n);
+        a && a.scrollIntoView({ behavior: "smooth" });
+      } catch {
+        console.warn("Invalid hash:", n);
+      }
+  }
+  let r = null;
+  function l(n) {
+    r = n;
+  }
+  function c() {
+    history.back();
+  }
+  function d() {
+    return window.location.pathname.replace(g, "") || "/";
+  }
+  return window.addEventListener("popstate", () => {
+    const n = window.location.pathname + window.location.search + window.location.hash;
+    e(n, !1);
+  }), window.addEventListener("click", (n) => {
+    if (n.button !== 0 || n.metaKey || n.altKey || n.ctrlKey || n.shiftKey) return;
+    const a = n.target.closest("a");
+    if (!a || a.hasAttribute("download") || a.getAttribute("target") === "_blank") return;
+    const h = a.getAttribute("href");
+    if (!(!h || h.startsWith("http") && !h.startsWith(window.location.origin))) {
+      if (n.preventDefault(), h.startsWith("#")) {
+        history.pushState({}, "", h), s(h);
+        return;
+      }
+      e(h);
+    }
+  }), { add: t, navigate: e, back: c, location: d, setNotFound: l };
+})();
+async function G(o) {
+  try {
+    const t = document.getElementById("main");
+    t.classList.add("fade-out"), await new Promise((e) => setTimeout(e, 200));
+    const i = await fetch(`/src/pages/${o}.html`).then((e) => e.text());
+    t.innerHTML = i, t.classList.remove("fade-out"), t.classList.add("fade-in"), window.location.hash ? setTimeout(() => {
+      try {
+        const e = document.querySelector(window.location.hash);
+        e && e.scrollIntoView({ behavior: "smooth" });
+      } catch {
+      }
+    }, 100) : t && t.scrollTo(0, 0), setTimeout(() => {
+      t.classList.remove("fade-in");
+    }, 200);
+  } catch (t) {
+    console.error("Page load failed:", t);
+  }
+}
+class q extends HTMLElement {
+  constructor() {
+    super();
+    v(this, "handleClick", () => {
+      const i = this.getAttribute("path");
+      i && C.navigate(i);
+    });
+    this.attachShadow({ mode: "open" });
+  }
+  static get observedAttributes() {
+    return ["path", "icon", "label", "badge", "active", "avatar-src", "avatar-name"];
+  }
+  connectedCallback() {
+    this.hasRendered || (this.render(), this.setupEventListeners(), this.hasRendered = !0), this.updateContent(), this.addEventListener("click", this.handleClick);
+  }
+  disconnectedCallback() {
+    this.removeEventListener("click", this.handleClick);
+  }
+  attributeChangedCallback(i, e, s) {
+    if (e !== s && this.hasRendered) {
+      if (i === "active")
+        return;
+      this.updateContent();
+    }
+  }
+  setupEventListeners() {
+    this.addEventListener("pointerdown", (i) => {
+      const e = document.createElement("span"), s = i.currentTarget, r = s.getBoundingClientRect(), l = Math.max(s.offsetWidth, s.offsetHeight), c = l / 2;
+      e.classList.add("ripple"), e.style.width = `${l}px`, e.style.height = `${l}px`, e.style.left = `${i.clientX - r.left - c}px`, e.style.top = `${i.clientY - r.top - c}px`, this.shadowRoot.appendChild(e), e.addEventListener("animationend", () => {
+        e.remove();
+      });
+    });
+  }
+  updateContent() {
+    const i = this.getAttribute("icon"), e = this.getAttribute("avatar-src"), s = this.getAttribute("avatar-name"), r = this.getAttribute("label") || "", l = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
+    if (l)
+      if (c)
+        c.textContent = l;
+      else {
+        const a = document.createElement("span");
+        a.className = "badge", a.textContent = l, this.shadowRoot.appendChild(a);
+      }
+    else c && c.remove();
+    const d = this.shadowRoot.querySelector("slot[name='icon']");
+    if (d)
+      if (e || s) {
+        let a = '<eui-avatar size="24"';
+        s && (a += ` name="${s}"`), a += ">", e && (a += `<img src="${e}" alt="${s || "Avatar"}" />`), a += "</eui-avatar>", d.innerHTML = a;
+      } else {
+        const a = d.querySelector("eui-icon");
+        i && a ? a.getAttribute("name") !== i && a.setAttribute("name", i) : i ? d.innerHTML = `<eui-icon width="24" height="24" name="${i}"></eui-icon>` : d.innerHTML = "";
+      }
+    const n = this.shadowRoot.querySelector(".label");
+    n && (n.textContent = r);
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
         <style>
             :host {
                 position: relative;
@@ -451,7 +868,19 @@
             </slot>
         </div>
         <span class="label"></span>
-        `}}customElements.define("eui-nav-item",N);class B extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.updateActiveState(),window.addEventListener("popstate",()=>this.updateActiveState()),window.addEventListener("route-changed",()=>this.updateActiveState()),window.addEventListener("toggle-nav",()=>this.classList.toggle("expanded"))}render(){this.shadowRoot.innerHTML=`
+        `;
+  }
+}
+customElements.define("eui-nav-item", q);
+class j extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.updateActiveState(), window.addEventListener("popstate", () => this.updateActiveState()), window.addEventListener("route-changed", () => this.updateActiveState()), window.addEventListener("toggle-nav", () => this.classList.toggle("expanded"));
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
         <style>
             :host {
                 position: fixed;
@@ -550,10 +979,36 @@
         <div class="app-nav-container">
             <a href="#content" id="skip_navigation_link">Skip To Content</a>
             <div class="nav-items">
-                ${this.navItems.map(t=>{var s,n;if(t.type==="divider")return'<div style="height: 1px; background: var(--app-300); margin: 0.5rem 0;"></div>';const i=((s=t.avatar)==null?void 0:s.src)||"",e=((n=t.avatar)==null?void 0:n.name)||"";return`<eui-nav-item path="${t.path}" icon="${t.icon}" avatar-src="${i}" avatar-name="${e}" label="${t.label}"></eui-nav-item>`}).join("")}
+                ${this.navItems.map((t) => {
+      var s, r;
+      if (t.type === "divider")
+        return '<div style="height: 1px; background: var(--app-300); margin: 0.5rem 0;"></div>';
+      const i = ((s = t.avatar) == null ? void 0 : s.src) || "", e = ((r = t.avatar) == null ? void 0 : r.name) || "";
+      return `<eui-nav-item path="${t.path}" icon="${t.icon}" avatar-src="${i}" avatar-name="${e}" label="${t.label}"></eui-nav-item>`;
+    }).join("")}
             </div>
         </div>
-        `}set navItems(t){this._navItems=t,this.render(),this.updateActiveState()}get navItems(){return this._navItems||[]}updateActiveState(t){t||(t=w.location()),t.startsWith("/")||(t="/"+t),this.shadowRoot.querySelectorAll("eui-nav-item").forEach(e=>{e.getAttribute("path")===t?e.setAttribute("active",""):e.removeAttribute("active")})}}customElements.define("eui-app-nav",B);class O extends HTMLElement{static get observedAttributes(){return["type","title","subtitle","img"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+  set navItems(t) {
+    this._navItems = t, this.render(), this.updateActiveState();
+  }
+  get navItems() {
+    return this._navItems || [];
+  }
+  updateActiveState(t) {
+    t || (t = C.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((e) => {
+      e.getAttribute("path") === t ? e.setAttribute("active", "") : e.removeAttribute("active");
+    });
+  }
+}
+customElements.define("eui-app-nav", j);
+class N extends HTMLElement {
+  static get observedAttributes() {
+    return ["type", "title", "subtitle", "img"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     border-radius: 24px;
@@ -622,7 +1077,23 @@
                     <p></p>
                 </div>
             </div>
-        `}connectedCallback(){this.hd=this.shadowRoot.querySelector(".header"),this.hasAttribute("type")&&this.hd.classList.add(this.getAttribute("type"))}attributeChangedCallback(t,i,e){const s=this.shadowRoot.querySelector("h1"),n=this.shadowRoot.querySelector("p"),l=this.shadowRoot.querySelector(".img");t==="title"&&(s.textContent=e),t==="subtitle"&&(n.textContent=e),t==="img"&&(l.style.backgroundImage=e?`url(${e})`:"")}}customElements.define("eui-header",O);class P extends HTMLElement{static get observedAttributes(){return["selected"]}constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML=`
+        `;
+  }
+  connectedCallback() {
+    this.hd = this.shadowRoot.querySelector(".header"), this.hasAttribute("type") && this.hd.classList.add(this.getAttribute("type"));
+  }
+  attributeChangedCallback(t, i, e) {
+    const s = this.shadowRoot.querySelector("h1"), r = this.shadowRoot.querySelector("p"), l = this.shadowRoot.querySelector(".img");
+    t === "title" && (s.textContent = e), t === "subtitle" && (r.textContent = e), t === "img" && (l.style.backgroundImage = e ? `url(${e})` : "");
+  }
+}
+customElements.define("eui-header", N);
+class B extends HTMLElement {
+  static get observedAttributes() {
+    return ["selected"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     display: block;
@@ -705,7 +1176,41 @@
                     <rect class="mark long"></rect>
                 </svg>
             </div>
-        `}connectedCallback(){this.inputEl=this.shadowRoot.querySelector("input"),this.checkEl=this.shadowRoot.querySelector(".checkbox"),this.updateFromAttribute(),this.checkEl.addEventListener("click",()=>this.toggle())}toggle(){this.selected=!this.selected,x();const t=this.selected,i=this.dataset.setting;i&&A.set(i,t)}updateFromAttribute(){const t=this.hasAttribute("selected");this.inputEl.checked=t,this.checkEl.classList.toggle("selected",t)}attributeChangedCallback(t,i,e){t==="selected"&&this.inputEl&&this.updateFromAttribute()}get selected(){return this.hasAttribute("selected")}set selected(t){t?this.setAttribute("selected",""):this.removeAttribute("selected")}}customElements.define("eui-checkbox",P);class L extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}render(){const t=this.getAttribute("href"),i=t?"a":"button";this.shadowRoot.innerHTML=`
+        `;
+  }
+  connectedCallback() {
+    this.inputEl = this.shadowRoot.querySelector("input"), this.checkEl = this.shadowRoot.querySelector(".checkbox"), this.updateFromAttribute(), this.checkEl.addEventListener("click", () => this.toggle());
+  }
+  toggle() {
+    this.selected = !this.selected, w();
+    const t = this.selected, i = this.dataset.setting;
+    i && k.set(i, t);
+  }
+  updateFromAttribute() {
+    const t = this.hasAttribute("selected");
+    this.inputEl.checked = t, this.checkEl.classList.toggle("selected", t);
+  }
+  attributeChangedCallback(t, i, e) {
+    t === "selected" && this.inputEl && this.updateFromAttribute();
+  }
+  get selected() {
+    return this.hasAttribute("selected");
+  }
+  set selected(t) {
+    t ? this.setAttribute("selected", "") : this.removeAttribute("selected");
+  }
+}
+customElements.define("eui-checkbox", B);
+class E extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.render();
+  }
+  render() {
+    const t = this.getAttribute("href"), i = t ? "a" : "button";
+    this.shadowRoot.innerHTML = `
             <style>
                 button, a {
                     display: flex;
@@ -811,7 +1316,30 @@
             <${i}>
                 <slot></slot>
             </${i}>
-        `;const e=this.shadowRoot.querySelector(i);t&&e.setAttribute("href",t),this.hasAttribute("type")&&e.classList.add(this.getAttribute("type")),this.hasAttribute("icon")&&e.classList.add("icon"),this.hasAttribute("width")&&(e.style.width=this.getAttribute("width")+"px"),this.hasAttribute("height")&&(e.style.height=this.getAttribute("height")+"px"),this.hasAttribute("border-radius")&&(e.style.borderRadius=this.getAttribute("border-radius")+"px"),e.addEventListener("pointerdown",s=>{const n=document.createElement("span"),l=s.currentTarget,c=l.getBoundingClientRect(),d=Math.max(l.offsetWidth,l.offsetHeight),r=d/2;n.classList.add("ripple"),n.style.width=`${d}px`,n.style.height=`${d}px`,n.style.left=`${s.clientX-c.left-r}px`,n.style.top=`${s.clientY-c.top-r}px`,e.appendChild(n),n.addEventListener("animationend",()=>{n.remove()})})}}C(L,"observedAttributes",["type","width","height","border-radius","icon","link","href"]),customElements.define("eui-button",L);class U extends HTMLElement{static get observedAttributes(){return["type","anchor"]}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render(),this.hd=this.shadowRoot.querySelector(".hd"),this.hasAttribute("type")&&this.hd.classList.add(this.getAttribute("type"))}render(){this.shadowRoot.innerHTML=`
+        `;
+    const e = this.shadowRoot.querySelector(i);
+    t && e.setAttribute("href", t), this.hasAttribute("type") && e.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && e.classList.add("icon"), this.hasAttribute("width") && (e.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (e.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (e.style.borderRadius = this.getAttribute("border-radius") + "px"), e.addEventListener("pointerdown", (s) => {
+      const r = document.createElement("span"), l = s.currentTarget, c = l.getBoundingClientRect(), d = Math.max(l.offsetWidth, l.offsetHeight), n = d / 2;
+      r.classList.add("ripple"), r.style.width = `${d}px`, r.style.height = `${d}px`, r.style.left = `${s.clientX - c.left - n}px`, r.style.top = `${s.clientY - c.top - n}px`, e.appendChild(r), r.addEventListener("animationend", () => {
+        r.remove();
+      });
+    });
+  }
+}
+v(E, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
+customElements.define("eui-button", E);
+class O extends HTMLElement {
+  static get observedAttributes() {
+    return ["type", "anchor"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.render(), this.hd = this.shadowRoot.querySelector(".hd"), this.hasAttribute("type") && this.hd.classList.add(this.getAttribute("type"));
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
             <style>
                 :host {
                     display: block;
@@ -864,12 +1392,50 @@
             <span class="hd">
                 <slot></slot>
             </span>
-            ${this.getAttribute("anchor")?`
+            ${this.getAttribute("anchor") ? `
             <a class="anchor" href="#${this.getAttribute("anchor")}" id="${this.getAttribute("anchor")}">
                 <span class="anchor-hash">#</span>
             </a>
-            `:""}
-        `}}customElements.define("eui-heading",U);function D(o){const e=Date.now()-o,s=Math.floor(e/1e3),n=Math.floor(s/60),l=Math.floor(n/60),c=Math.floor(l/24),d=Math.floor(c/30),r=Math.floor(d/12);return r>0?`${r}y`:d>0?`${d}mo`:c>0?`${c}d`:l>0?`${l}h`:n>0?`${n}m`:`${s}s`}function X(o){const e=Date.now()-o,s=Math.floor(e/1e3),n=Math.floor(s/60),l=Math.floor(n/60),c=Math.floor(l/24),d=Math.floor(c/30),r=Math.floor(d/12);return r>0?`${r} year${r>1?"s":""} ago`:d>0?`${d} month${d>1?"s":""} ago`:c>0?`${c} day${c>1?"s":""} ago`:l>0?`${l} hour${l>1?"s":""} ago`:n>0?`${n} minute${n>1?"s":""} ago`:`${s} second${s>1?"s":""} ago`}function W(o){return o.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;").replace(/`/g,"&#96;").replace(/'/g,"&#39;")}function S(o){const t=document.createElement("input");t.value=o,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}const J=Object.freeze(Object.defineProperty({__proto__:null,copystr:S,joinedAgo:X,sanitize:W,timeAgo:D},Symbol.toStringTag,{value:"Module"}));class V extends HTMLElement{static get observedAttributes(){return["copy","id","type"]}constructor(){super(),this.attachShadow({mode:"open"}),this._boundCopy=this._onCopy.bind(this),this._isRendered=!1}connectedCallback(){this._isRendered||(this.render(),this._isRendered=!0)}render(){const t=this.hasAttribute("copy");this.shadowRoot.innerHTML=`
+            ` : ""}
+        `;
+  }
+}
+customElements.define("eui-heading", O);
+function P(o) {
+  const e = Date.now() - o, s = Math.floor(e / 1e3), r = Math.floor(s / 60), l = Math.floor(r / 60), c = Math.floor(l / 24), d = Math.floor(c / 30), n = Math.floor(d / 12);
+  return n > 0 ? `${n}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : l > 0 ? `${l}h` : r > 0 ? `${r}m` : `${s}s`;
+}
+function U(o) {
+  const e = Date.now() - o, s = Math.floor(e / 1e3), r = Math.floor(s / 60), l = Math.floor(r / 60), c = Math.floor(l / 24), d = Math.floor(c / 30), n = Math.floor(d / 12);
+  return n > 0 ? `${n} year${n > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : l > 0 ? `${l} hour${l > 1 ? "s" : ""} ago` : r > 0 ? `${r} minute${r > 1 ? "s" : ""} ago` : `${s} second${s > 1 ? "s" : ""} ago`;
+}
+function D(o) {
+  return o.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/`/g, "&#96;").replace(/'/g, "&#39;");
+}
+function A(o) {
+  const t = document.createElement("input");
+  t.value = o, document.body.appendChild(t), t.select(), document.execCommand("copy"), document.body.removeChild(t);
+}
+const Q = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  copystr: A,
+  joinedAgo: U,
+  sanitize: D,
+  timeAgo: P
+}, Symbol.toStringTag, { value: "Module" }));
+class X extends HTMLElement {
+  static get observedAttributes() {
+    return ["copy", "id", "type"];
+  }
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this._boundCopy = this._onCopy.bind(this), this._isRendered = !1;
+  }
+  connectedCallback() {
+    this._isRendered || (this.render(), this._isRendered = !0);
+  }
+  render() {
+    const t = this.hasAttribute("copy");
+    this.shadowRoot.innerHTML = `
             <style>
             :host {
                 position: relative;
@@ -901,10 +1467,47 @@
                 <eui-icon name="copy" width="24" height="24"></eui-icon>
             </eui-button>
 
-            <pre class="${t?"g":""}"><code></code></pre>
-        `,this.copyBtn=this.shadowRoot.querySelector(".copy"),this.codeEl=this.shadowRoot.querySelector("code"),this.codeEl.textContent=this._getFormattedText(),t?this.copyBtn.addEventListener("click",this._boundCopy):this.copyBtn.style.display="none"}_getFormattedText(){let t=this.textContent||"";t=t.replace(/^\s*\n/,"").replace(/\n\s*$/,""),t=t.replace(/[ \t]+$/gm,"");const i=t.split(`
-`),e=i.filter(n=>n.trim()).map(n=>n.match(/^\s*/)[0].length),s=e.length?Math.min(...e):0;return t=i.map(n=>n.slice(s)).join(`
-`),t}_onCopy(){S(this._getFormattedText())}disconnectedCallback(){this.copyBtn&&this.copyBtn.removeEventListener("click",this._boundCopy)}}customElements.define("eui-code",V);class Y extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render(),this.setupEventListeners()}static get observedAttributes(){return["name"]}attributeChangedCallback(t,i,e){t==="name"&&(this.render(),this.setupEventListeners())}setupEventListeners(){const t=this.shadowRoot.querySelector("#nav-toggle");t&&t.addEventListener("click",()=>{window.dispatchEvent(new CustomEvent("toggle-nav"))})}render(){const t=this.getAttribute("name")||"Title";this.shadowRoot.innerHTML=`
+            <pre class="${t ? "g" : ""}"><code></code></pre>
+        `, this.copyBtn = this.shadowRoot.querySelector(".copy"), this.codeEl = this.shadowRoot.querySelector("code"), this.codeEl.textContent = this._getFormattedText(), t ? this.copyBtn.addEventListener("click", this._boundCopy) : this.copyBtn.style.display = "none";
+  }
+  _getFormattedText() {
+    let t = this.textContent || "";
+    t = t.replace(/^\s*\n/, "").replace(/\n\s*$/, ""), t = t.replace(/[ \t]+$/gm, "");
+    const i = t.split(`
+`), e = i.filter((r) => r.trim()).map((r) => r.match(/^\s*/)[0].length), s = e.length ? Math.min(...e) : 0;
+    return t = i.map((r) => r.slice(s)).join(`
+`), t;
+  }
+  _onCopy() {
+    A(this._getFormattedText());
+  }
+  disconnectedCallback() {
+    this.copyBtn && this.copyBtn.removeEventListener("click", this._boundCopy);
+  }
+}
+customElements.define("eui-code", X);
+class W extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.render(), this.setupEventListeners();
+  }
+  static get observedAttributes() {
+    return ["name"];
+  }
+  attributeChangedCallback(t, i, e) {
+    t === "name" && (this.render(), this.setupEventListeners());
+  }
+  setupEventListeners() {
+    const t = this.shadowRoot.querySelector("#nav-toggle");
+    t && t.addEventListener("click", () => {
+      window.dispatchEvent(new CustomEvent("toggle-nav"));
+    });
+  }
+  render() {
+    const t = this.getAttribute("name") || "Title";
+    this.shadowRoot.innerHTML = `
         <style>
             :host {
                 display: block;
@@ -996,7 +1599,34 @@
                 <slot></slot>
             </div>
         </div>
-        `}}customElements.define("eui-app-titlebar",Y);class K extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this._handleMouseDown=this._addRipple.bind(this)}connectedCallback(){this.render(),this.setupEventListeners()}static get observedAttributes(){return["elevated","interactive","ripple"]}attributeChangedCallback(t,i,e){i!==e&&t==="ripple"&&this.setupEventListeners()}setupEventListeners(){this.removeEventListener("mousedown",this._handleMouseDown),this.hasAttribute("ripple")&&this.addEventListener("mousedown",this._handleMouseDown)}_addRipple(t){const i=this.getBoundingClientRect(),e=document.createElement("span"),s=Math.max(i.width,i.height),n=s/2;e.style.width=e.style.height=`${s}px`,e.style.left=`${t.clientX-i.left-n}px`,e.style.top=`${t.clientY-i.top-n}px`,e.classList.add("ripple"),this.shadowRoot.querySelector(".surface").appendChild(e),e.addEventListener("animationend",()=>{e.remove()})}render(){this.shadowRoot.innerHTML=`
+        `;
+  }
+}
+customElements.define("eui-app-titlebar", W);
+class J extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
+  }
+  connectedCallback() {
+    this.render(), this.setupEventListeners();
+  }
+  static get observedAttributes() {
+    return ["elevated", "interactive", "ripple"];
+  }
+  attributeChangedCallback(t, i, e) {
+    i !== e && t === "ripple" && this.setupEventListeners();
+  }
+  setupEventListeners() {
+    this.removeEventListener("mousedown", this._handleMouseDown), this.hasAttribute("ripple") && this.addEventListener("mousedown", this._handleMouseDown);
+  }
+  _addRipple(t) {
+    const i = this.getBoundingClientRect(), e = document.createElement("span"), s = Math.max(i.width, i.height), r = s / 2;
+    e.style.width = e.style.height = `${s}px`, e.style.left = `${t.clientX - i.left - r}px`, e.style.top = `${t.clientY - i.top - r}px`, e.classList.add("ripple"), this.shadowRoot.querySelector(".surface").appendChild(e), e.addEventListener("animationend", () => {
+      e.remove();
+    });
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
         <style>
             :host {
                 display: block;
@@ -1057,4 +1687,17 @@
         <div class="surface">
             <slot></slot>
         </div>
-        `}}customElements.define("eui-surface",K),typeof window<"u"&&console.log("ErisUI loaded successfully"),h.device=$,h.haptics=_,h.icons=b,h.loadPage=j,h.router=w,h.storage=I,h.utils=J,Object.defineProperty(h,Symbol.toStringTag,{value:"Module"})}));
+        `;
+  }
+}
+customElements.define("eui-surface", J);
+typeof window < "u" && console.log("ErisUI loaded successfully");
+export {
+  Y as device,
+  K as haptics,
+  b as icons,
+  G as loadPage,
+  C as router,
+  Z as storage,
+  Q as utils
+};
