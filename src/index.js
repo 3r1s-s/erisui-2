@@ -23,6 +23,7 @@ import * as haptics from './scripts/haptics.js';
 import * as icons from './scripts/icons.js';
 import * as storage from './scripts/storage.js';
 import * as utils from './scripts/utils.js';
+import * as icons from './scripts/icons.js';
 
 export { router, loadPage, device, haptics, icons, storage, utils };
 
