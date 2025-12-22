@@ -1,7 +1,7 @@
 var S = Object.defineProperty;
-var z = (o, t, i) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : o[t] = i;
-var v = (o, t, i) => z(o, typeof t != "symbol" ? t + "" : t, i);
-class M extends HTMLElement {
+var M = (o, t, e) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
+var v = (o, t, e) => M(o, typeof t != "symbol" ? t + "" : t, e);
+class z extends HTMLElement {
   static get observedAttributes() {
     return ["size", "border-radius", "name", "color"];
   }
@@ -55,29 +55,29 @@ class M extends HTMLElement {
   }
   connectedCallback() {
     this.avatar = this.shadowRoot.querySelector(".avatar"), this.initials = this.shadowRoot.querySelector("#initials");
-    const t = this.shadowRoot.querySelector("slot"), i = t && t.assignedNodes().length > 0;
-    if (i) {
-      const e = t.assignedNodes()[0];
-      e && e.tagName === "IMG" && (this.initials.style.display = "none", this.avatar.style.backgroundColor = "transparent");
+    const t = this.shadowRoot.querySelector("slot"), e = t && t.assignedNodes().length > 0;
+    if (e) {
+      const i = t.assignedNodes()[0];
+      i && i.tagName === "IMG" && (this.initials.style.display = "none", this.avatar.style.backgroundColor = "transparent");
     } else
       this.hasAttribute("color") && (this.avatar.style.backgroundColor = this.getAttribute("color"));
     if (this.hasAttribute("color") && (this.avatar.style.backgroundColor = this.getAttribute("color")), this.hasAttribute("size")) {
-      const e = this.getAttribute("size");
-      this.avatar.style.width = e + "px", this.avatar.style.height = e + "px", this.initials.style.fontSize = e / 2 + "px";
+      const i = this.getAttribute("size");
+      this.avatar.style.width = i + "px", this.avatar.style.height = i + "px", this.initials.style.fontSize = i / 2 + "px";
     }
-    if (this.hasAttribute("border-radius") && (this.avatar.style.borderRadius = this.getAttribute("border-radius") + "px"), this.hasAttribute("name") && (this.avatar.title = this.getAttribute("name")), !i && this.hasAttribute("name")) {
-      const s = this.getAttribute("name").trim().split(/\s+/);
-      let n = "";
-      s.length === 1 ? n = s[0][0] || "" : n = (s[0][0] || "") + (s[s.length - 1][0] || ""), this.initials.textContent = n.toUpperCase();
+    if (this.hasAttribute("border-radius") && (this.avatar.style.borderRadius = this.getAttribute("border-radius") + "px"), this.hasAttribute("name") && (this.avatar.title = this.getAttribute("name")), !e && this.hasAttribute("name")) {
+      const n = this.getAttribute("name").trim().split(/\s+/);
+      let s = "";
+      n.length === 1 ? s = n[0][0] || "" : s = (n[0][0] || "") + (n[n.length - 1][0] || ""), this.initials.textContent = s.toUpperCase();
     }
   }
 }
-customElements.define("eui-avatar", M);
+customElements.define("eui-avatar", z);
 const u = /* @__PURE__ */ (() => {
   let o = {};
   return {
-    register(t, i) {
-      o[t] = i;
+    register(t, e) {
+      o[t] = e;
     },
     get(t) {
       return o[t] || "";
@@ -92,7 +92,8 @@ u.register("home", '<svg width="22" height="21" viewBox="0 0 22 21" fill="none" 
 u.register("copy", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11C2 11.7956 2.31607 12.5587 2.87868 13.1213C3.44129 13.6839 4.20435 14 5 14H11C11.7956 14 12.5587 13.6839 13.1213 13.1213C13.6839 12.5587 14 11.7956 14 11V8H11.75C10.7554 8 9.80161 7.60491 9.09835 6.90165C8.39509 6.19839 8 5.24456 8 4.25V2H5C4.20435 2 3.44129 2.31607 2.87868 2.87868C2.31607 3.44129 2 4.20435 2 5V11Z" fill="currentColor"/><path d="M13.7975 6.49965C13.6881 6.25457 13.5357 6.03105 13.3475 5.83965L10.16 2.65965C9.96921 2.4688 9.74565 2.31384 9.5 2.20215V4.24965C9.5 4.54512 9.5582 4.8377 9.67127 5.11069C9.78434 5.38367 9.95008 5.63171 10.159 5.84064C10.3679 6.04957 10.616 6.2153 10.889 6.32838C11.1619 6.44145 11.4545 6.49965 11.75 6.49965H13.7975Z" fill="currentColor"/></svg>');
 u.register("arrow", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>');
 u.register("back", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg)"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>');
-class $ extends HTMLElement {
+u.register("check", '<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.86368 9.12226C3.82463 9.16131 3.76131 9.16131 3.72226 9.12226L0.146522 5.54652C-0.0487403 5.35126 -0.0487401 5.03468 0.146522 4.83942L0.839416 4.14652C1.03468 3.95126 1.35126 3.95126 1.54652 4.14652L3.72226 6.32226C3.76131 6.36131 3.82463 6.36131 3.86368 6.32226L10.0394 0.146522C10.2347 -0.0487398 10.5513 -0.0487399 10.7465 0.146522L11.4394 0.839416C11.6347 1.03468 11.6347 1.35126 11.4394 1.54652L3.86368 9.12226Z" fill="currentColor"/></svg>');
+class T extends HTMLElement {
   static get observedAttributes() {
     return ["name", "width", "height"];
   }
@@ -106,23 +107,23 @@ class $ extends HTMLElement {
     this.render();
   }
   render() {
-    const t = this.getAttribute("name"), i = u.get(t);
-    if (!i) {
+    const t = this.getAttribute("name"), e = u.get(t);
+    if (!e) {
       this.shadowRoot.innerHTML = '<span style="color:red;">?</span>';
       return;
     }
-    const e = document.createElement("template");
-    e.innerHTML = i.trim();
-    const s = e.content.cloneNode(!0), n = s.firstElementChild;
-    if (n && n.style) {
-      const l = this.getAttribute("width"), c = this.getAttribute("height");
-      l && n.setAttribute("width", l), c && n.setAttribute("height", c), n.style.display = "block";
+    const i = document.createElement("template");
+    i.innerHTML = e.trim();
+    const n = i.content.cloneNode(!0), s = n.firstElementChild;
+    if (s && s.style) {
+      const r = this.getAttribute("width"), c = this.getAttribute("height");
+      r && s.setAttribute("width", r), c && s.setAttribute("height", c), s.style.display = "block";
     }
-    this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(s);
+    this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(n);
   }
 }
-customElements.define("eui-icon", $);
-class T extends HTMLElement {
+customElements.define("eui-icon", T);
+class $ extends HTMLElement {
   static get observedAttributes() {
     return ["label", "value", "id", "type", "filled"];
   }
@@ -234,17 +235,17 @@ class T extends HTMLElement {
       this.setAttribute("value", this.inputEl.value);
     });
   }
-  attributeChangedCallback(t, i, e) {
+  attributeChangedCallback(t, e, i) {
     if (!(!this.inputEl || !this.labelEl))
       switch (t) {
         case "value":
-          this.inputEl.value !== e && (this.inputEl.value = e);
+          this.inputEl.value !== i && (this.inputEl.value = i);
           break;
         case "id":
-          this.inputEl.id = e;
+          this.inputEl.id = i;
           break;
         case "label":
-          this.labelEl.textContent = e;
+          this.labelEl.textContent = i;
           break;
       }
   }
@@ -255,7 +256,7 @@ class T extends HTMLElement {
     this.setAttribute("value", t);
   }
 }
-customElements.define("eui-input", T);
+customElements.define("eui-input", $);
 class R extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
@@ -406,25 +407,25 @@ function _() {
 function w(o) {
   x.supports.haptics ? navigator.vibrate(o || 50) : x.is.iPhone && _();
 }
-const Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   haptic: w
 }, Symbol.toStringTag, { value: "Module" })), y = (() => {
   let o = {}, t;
   try {
     o = JSON.parse(localStorage.getItem(t) || "{}");
-  } catch (i) {
-    console.error(i);
+  } catch (e) {
+    console.error(e);
   }
   return {
-    get(i) {
-      return o[i];
+    get(e) {
+      return o[e];
     },
-    set(i, e) {
-      o[i] = e, localStorage.setItem(t, JSON.stringify(o));
+    set(e, i) {
+      o[e] = i, localStorage.setItem(t, JSON.stringify(o));
     },
-    delete(i) {
-      delete o[i], localStorage.setItem(t, JSON.stringify(o));
+    delete(e) {
+      delete o[e], localStorage.setItem(t, JSON.stringify(o));
     },
     all() {
       return o;
@@ -432,23 +433,23 @@ const Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     clear() {
       o = {}, localStorage.setItem(t, JSON.stringify(o));
     },
-    name(i) {
-      t = i;
+    name(e) {
+      t = e;
       try {
         o = JSON.parse(localStorage.getItem(t) || "{}");
-      } catch (e) {
-        console.error(e);
+      } catch (i) {
+        console.error(i);
       }
     },
     settings: {
-      get(i) {
-        return o && o.settings && o.settings[i];
+      get(e) {
+        return o && o.settings && o.settings[e];
       },
-      set(i, e) {
-        o.settings || (o.settings = {}), o.settings[i] = e, localStorage.setItem(t, JSON.stringify(o));
+      set(e, i) {
+        o.settings || (o.settings = {}), o.settings[e] = i, localStorage.setItem(t, JSON.stringify(o));
       },
-      delete(i) {
-        o.settings && (delete o.settings[i], localStorage.setItem(t, JSON.stringify(o)));
+      delete(e) {
+        o.settings && (delete o.settings[e], localStorage.setItem(t, JSON.stringify(o)));
       },
       all() {
         return o.settings || {};
@@ -458,12 +459,12 @@ const Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       }
     }
   };
-})(), k = y.settings, K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+})(), k = y.settings, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   settings: k,
   storage: y
 }, Symbol.toStringTag, { value: "Module" }));
-class I extends HTMLElement {
+class F extends HTMLElement {
   static get observedAttributes() {
     return ["selected"];
   }
@@ -549,7 +550,7 @@ class I extends HTMLElement {
     const t = this.hasAttribute("selected");
     this.inputEl.checked = t, this.switchEl.classList.toggle("selected", t);
   }
-  attributeChangedCallback(t, i, e) {
+  attributeChangedCallback(t, e, i) {
     t === "selected" && this.inputEl && this.updateFromAttribute();
   }
   get selected() {
@@ -559,8 +560,8 @@ class I extends HTMLElement {
     t ? this.setAttribute("selected", "") : this.removeAttribute("selected");
   }
 }
-customElements.define("eui-switch", I);
-class F extends HTMLElement {
+customElements.define("eui-switch", F);
+class I extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -611,97 +612,97 @@ class F extends HTMLElement {
             </style>
             <slot></slot>
         `, this.addEventListener("pointerdown", (t) => {
-      const i = document.createElement("span"), e = t.currentTarget, s = Math.max(e.offsetWidth, e.offsetHeight);
-      i.classList.add("ripple"), i.style.left = t.clientX - e.getBoundingClientRect().left - s / 2 + "px", i.style.top = t.clientY - e.getBoundingClientRect().top - s / 2 + "px", i.style.width = s + "px", i.style.height = s + "px", this.shadowRoot.appendChild(i), setTimeout(() => {
-        i.remove();
+      const e = document.createElement("span"), i = t.currentTarget, n = Math.max(i.offsetWidth, i.offsetHeight);
+      e.classList.add("ripple"), e.style.left = t.clientX - i.getBoundingClientRect().left - n / 2 + "px", e.style.top = t.clientY - i.getBoundingClientRect().top - n / 2 + "px", e.style.width = n + "px", e.style.height = n + "px", this.shadowRoot.appendChild(e), setTimeout(() => {
+        e.remove();
       }, 600);
     });
   }
 }
-customElements.define("eui-chip", F);
-const b = "", C = (() => {
+customElements.define("eui-chip", I);
+const m = "", C = (() => {
   const o = [];
-  function t(r, a) {
-    const h = [], g = r.replace(/:([^/]+)/g, (m, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${b}${g}$`);
-    o.push({ regex: p, paramNames: h, renderFn: a });
+  function t(a, l) {
+    const h = [], g = a.replace(/:([^/]+)/g, (b, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${m}${g}$`);
+    o.push({ regex: p, paramNames: h, renderFn: l });
   }
-  function i(r) {
-    for (const { regex: a, paramNames: h, renderFn: g } of o) {
-      const p = r.match(a);
+  function e(a) {
+    for (const { regex: l, paramNames: h, renderFn: g } of o) {
+      const p = a.match(l);
       if (p) {
-        const m = {};
+        const b = {};
         return h.forEach((f, L) => {
-          m[f] = decodeURIComponent(p[L + 1]);
-        }), { renderFn: g, params: m };
+          b[f] = decodeURIComponent(p[L + 1]);
+        }), { renderFn: g, params: b };
       }
     }
     return null;
   }
-  function e(r, a = !0) {
-    r.startsWith(b) || (r = b + (r.startsWith("/") ? "" : "/") + r);
-    const h = r.split(/[?#]/)[0];
-    if (h === window.location.pathname && r.includes("#")) {
-      a && history.pushState({}, "", r);
-      const p = "#" + r.split("#")[1];
-      s(p);
+  function i(a, l = !0) {
+    a.startsWith(m) || (a = m + (a.startsWith("/") ? "" : "/") + a);
+    const h = a.split(/[?#]/)[0];
+    if (h === window.location.pathname && a.includes("#")) {
+      l && history.pushState({}, "", a);
+      const p = "#" + a.split("#")[1];
+      n(p);
       return;
     }
-    const g = i(h);
+    const g = e(h);
     if (g)
-      if (a && history.pushState({}, "", r), g.renderFn(g.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: r } })), r.includes("#")) {
-        const p = "#" + r.split("#")[1];
-        setTimeout(() => s(p), 100);
+      if (l && history.pushState({}, "", a), g.renderFn(g.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: a } })), a.includes("#")) {
+        const p = "#" + a.split("#")[1];
+        setTimeout(() => n(p), 100);
       } else {
         const p = document.getElementById("main");
         p && p.scrollTo(0, 0);
       }
-    else n ? (a && history.pushState({}, "", r), n()) : console.warn(`No route found for ${h}`);
+    else s ? (l && history.pushState({}, "", a), s()) : console.warn(`No route found for ${h}`);
   }
-  function s(r) {
-    if (r)
+  function n(a) {
+    if (a)
       try {
-        const a = document.querySelector(r);
-        a && a.scrollIntoView({ behavior: "smooth" });
+        const l = document.querySelector(a);
+        l && l.scrollIntoView({ behavior: "smooth" });
       } catch {
-        console.warn("Invalid hash:", r);
+        console.warn("Invalid hash:", a);
       }
   }
-  let n = null;
-  function l(r) {
-    n = r;
+  let s = null;
+  function r(a) {
+    s = a;
   }
   function c() {
     history.back();
   }
   function d() {
-    return window.location.pathname.replace(b, "") || "/";
+    return window.location.pathname.replace(m, "") || "/";
   }
   return window.addEventListener("popstate", () => {
-    const r = window.location.pathname + window.location.search + window.location.hash;
-    e(r, !1);
-  }), window.addEventListener("click", (r) => {
-    if (r.button !== 0 || r.metaKey || r.altKey || r.ctrlKey || r.shiftKey) return;
-    const a = r.target.closest("a");
-    if (!a || a.hasAttribute("download") || a.getAttribute("target") === "_blank") return;
-    const h = a.getAttribute("href");
+    const a = window.location.pathname + window.location.search + window.location.hash;
+    i(a, !1);
+  }), window.addEventListener("click", (a) => {
+    if (a.button !== 0 || a.metaKey || a.altKey || a.ctrlKey || a.shiftKey) return;
+    const l = a.target.closest("a");
+    if (!l || l.hasAttribute("download") || l.getAttribute("target") === "_blank") return;
+    const h = l.getAttribute("href");
     if (!(!h || h.startsWith("http") && !h.startsWith(window.location.origin))) {
-      if (r.preventDefault(), h.startsWith("#")) {
-        history.pushState({}, "", h), s(h);
+      if (a.preventDefault(), h.startsWith("#")) {
+        history.pushState({}, "", h), n(h);
         return;
       }
-      e(h);
+      i(h);
     }
-  }), { add: t, navigate: e, back: c, location: d, setNotFound: l };
+  }), { add: t, navigate: i, back: c, location: d, setNotFound: r };
 })();
 async function G(o) {
   try {
     const t = document.getElementById("main");
-    t.classList.add("fade-out"), await new Promise((e) => setTimeout(e, 200));
-    const i = await fetch(`/src/pages/${o}.html`).then((e) => e.text());
-    t.innerHTML = i, t.classList.remove("fade-out"), t.classList.add("fade-in"), window.location.hash ? setTimeout(() => {
+    t.classList.add("fade-out"), await new Promise((i) => setTimeout(i, 200));
+    const e = await fetch(`/src/pages/${o}.html`).then((i) => i.text());
+    t.innerHTML = e, t.classList.remove("fade-out"), t.classList.add("fade-in"), window.location.hash ? setTimeout(() => {
       try {
-        const e = document.querySelector(window.location.hash);
-        e && e.scrollIntoView({ behavior: "smooth" });
+        const i = document.querySelector(window.location.hash);
+        i && i.scrollIntoView({ behavior: "smooth" });
       } catch {
       }
     }, 100) : t && t.scrollTo(0, 0), setTimeout(() => {
@@ -711,12 +712,12 @@ async function G(o) {
     console.error("Page load failed:", t);
   }
 }
-class q extends HTMLElement {
+class j extends HTMLElement {
   constructor() {
     super();
     v(this, "handleClick", () => {
-      const i = this.getAttribute("path");
-      i && C.navigate(i);
+      const e = this.getAttribute("path");
+      e && C.navigate(e);
     });
     this.attachShadow({ mode: "open" });
   }
@@ -729,42 +730,42 @@ class q extends HTMLElement {
   disconnectedCallback() {
     this.removeEventListener("click", this.handleClick);
   }
-  attributeChangedCallback(i, e, s) {
-    if (e !== s && this.hasRendered) {
-      if (i === "active")
+  attributeChangedCallback(e, i, n) {
+    if (i !== n && this.hasRendered) {
+      if (e === "active")
         return;
       this.updateContent();
     }
   }
   setupEventListeners() {
-    this.addEventListener("pointerdown", (i) => {
-      const e = document.createElement("span"), s = i.currentTarget, n = s.getBoundingClientRect(), l = Math.max(s.offsetWidth, s.offsetHeight), c = l / 2;
-      e.classList.add("ripple"), e.style.width = `${l}px`, e.style.height = `${l}px`, e.style.left = `${i.clientX - n.left - c}px`, e.style.top = `${i.clientY - n.top - c}px`, this.shadowRoot.appendChild(e), e.addEventListener("animationend", () => {
-        e.remove();
+    this.addEventListener("pointerdown", (e) => {
+      const i = document.createElement("span"), n = e.currentTarget, s = n.getBoundingClientRect(), r = Math.max(n.offsetWidth, n.offsetHeight), c = r / 2;
+      i.classList.add("ripple"), i.style.width = `${r}px`, i.style.height = `${r}px`, i.style.left = `${e.clientX - s.left - c}px`, i.style.top = `${e.clientY - s.top - c}px`, this.shadowRoot.appendChild(i), i.addEventListener("animationend", () => {
+        i.remove();
       });
     });
   }
   updateContent() {
-    const i = this.getAttribute("icon"), e = this.getAttribute("avatar-src"), s = this.getAttribute("avatar-name"), n = this.getAttribute("label") || "", l = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
-    if (l)
+    const e = this.getAttribute("icon"), i = this.getAttribute("avatar-src"), n = this.getAttribute("avatar-name"), s = this.getAttribute("label") || "", r = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
+    if (r)
       if (c)
-        c.textContent = l;
+        c.textContent = r;
       else {
-        const a = document.createElement("span");
-        a.className = "badge", a.textContent = l, this.shadowRoot.appendChild(a);
+        const l = document.createElement("span");
+        l.className = "badge", l.textContent = r, this.shadowRoot.appendChild(l);
       }
     else c && c.remove();
     const d = this.shadowRoot.querySelector("slot[name='icon']");
     if (d)
-      if (e || s) {
-        let a = '<eui-avatar size="24"';
-        s && (a += ` name="${s}"`), a += ">", e && (a += `<img src="${e}" alt="${s || "Avatar"}" />`), a += "</eui-avatar>", d.innerHTML = a;
+      if (i || n) {
+        let l = '<eui-avatar size="24"';
+        n && (l += ` name="${n}"`), l += ">", i && (l += `<img src="${i}" alt="${n || "Avatar"}" />`), l += "</eui-avatar>", d.innerHTML = l;
       } else {
-        const a = d.querySelector("eui-icon");
-        i && a ? a.getAttribute("name") !== i && a.setAttribute("name", i) : i ? d.innerHTML = `<eui-icon width="24" height="24" name="${i}"></eui-icon>` : d.innerHTML = "";
+        const l = d.querySelector("eui-icon");
+        e && l ? l.getAttribute("name") !== e && l.setAttribute("name", e) : e ? d.innerHTML = `<eui-icon width="24" height="24" name="${e}"></eui-icon>` : d.innerHTML = "";
       }
-    const r = this.shadowRoot.querySelector(".label");
-    r && (r.textContent = n);
+    const a = this.shadowRoot.querySelector(".label");
+    a && (a.textContent = s);
   }
   render() {
     this.shadowRoot.innerHTML = `
@@ -875,8 +876,8 @@ class q extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-nav-item", q);
-class j extends HTMLElement {
+customElements.define("eui-nav-item", j);
+class q extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -985,11 +986,11 @@ class j extends HTMLElement {
             <a href="#content" id="skip_navigation_link">Skip To Content</a>
             <div class="nav-items">
                 ${this.navItems.map((t) => {
-      var s, n;
+      var n, s;
       if (t.type === "divider")
         return '<div style="height: 1px; background: var(--app-300); margin: 0.5rem 0;"></div>';
-      const i = ((s = t.avatar) == null ? void 0 : s.src) || "", e = ((n = t.avatar) == null ? void 0 : n.name) || "";
-      return `<eui-nav-item path="${t.path}" icon="${t.icon}" avatar-src="${i}" avatar-name="${e}" label="${t.label}"></eui-nav-item>`;
+      const e = ((n = t.avatar) == null ? void 0 : n.src) || "", i = ((s = t.avatar) == null ? void 0 : s.name) || "";
+      return `<eui-nav-item path="${t.path}" icon="${t.icon}" avatar-src="${e}" avatar-name="${i}" label="${t.label}"></eui-nav-item>`;
     }).join("")}
             </div>
         </div>
@@ -1002,12 +1003,12 @@ class j extends HTMLElement {
     return this._navItems || [];
   }
   updateActiveState(t) {
-    t || (t = C.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((e) => {
-      e.getAttribute("path") === t ? e.setAttribute("active", "") : e.removeAttribute("active");
+    t || (t = C.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((i) => {
+      i.getAttribute("path") === t ? i.setAttribute("active", "") : i.removeAttribute("active");
     });
   }
 }
-customElements.define("eui-app-nav", j);
+customElements.define("eui-app-nav", q);
 class B extends HTMLElement {
   static get observedAttributes() {
     return ["type", "title", "subtitle", "img"];
@@ -1087,9 +1088,9 @@ class B extends HTMLElement {
   connectedCallback() {
     this.hd = this.shadowRoot.querySelector(".header"), this.hasAttribute("type") && this.hd.classList.add(this.getAttribute("type"));
   }
-  attributeChangedCallback(t, i, e) {
-    const s = this.shadowRoot.querySelector("h1"), n = this.shadowRoot.querySelector("p"), l = this.shadowRoot.querySelector(".img");
-    t === "title" && (s.textContent = e), t === "subtitle" && (n.textContent = e), t === "img" && (l.style.backgroundImage = e ? `url(${e})` : "");
+  attributeChangedCallback(t, e, i) {
+    const n = this.shadowRoot.querySelector("h1"), s = this.shadowRoot.querySelector("p"), r = this.shadowRoot.querySelector(".img");
+    t === "title" && (n.textContent = i), t === "subtitle" && (s.textContent = i), t === "img" && (r.style.backgroundImage = i ? `url(${i})` : "");
   }
 }
 customElements.define("eui-header", B);
@@ -1188,14 +1189,14 @@ class N extends HTMLElement {
   }
   toggle() {
     this.selected = !this.selected, w();
-    const t = this.selected, i = this.dataset.setting;
-    i && k.set(i, t);
+    const t = this.selected, e = this.dataset.setting;
+    e && k.set(e, t);
   }
   updateFromAttribute() {
     const t = this.hasAttribute("selected");
     this.inputEl.checked = t, this.checkEl.classList.toggle("selected", t);
   }
-  attributeChangedCallback(t, i, e) {
+  attributeChangedCallback(t, e, i) {
     t === "selected" && this.inputEl && this.updateFromAttribute();
   }
   get selected() {
@@ -1206,7 +1207,7 @@ class N extends HTMLElement {
   }
 }
 customElements.define("eui-checkbox", N);
-class A extends HTMLElement {
+class E extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1214,7 +1215,7 @@ class A extends HTMLElement {
     this.render();
   }
   render() {
-    const t = this.getAttribute("href"), i = t ? "a" : "button";
+    const t = this.getAttribute("href"), e = t ? "a" : "button";
     this.shadowRoot.innerHTML = `
             <style>
                 button, a {
@@ -1318,21 +1319,21 @@ class A extends HTMLElement {
                 }
 
             </style>
-            <${i}>
+            <${e}>
                 <slot></slot>
-            </${i}>
+            </${e}>
         `;
-    const e = this.shadowRoot.querySelector(i);
-    t && e.setAttribute("href", t), this.hasAttribute("type") && e.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && e.classList.add("icon"), this.hasAttribute("width") && (e.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (e.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (e.style.borderRadius = this.getAttribute("border-radius") + "px"), e.addEventListener("pointerdown", (s) => {
-      const n = document.createElement("span"), l = s.currentTarget, c = l.getBoundingClientRect(), d = Math.max(l.offsetWidth, l.offsetHeight), r = d / 2;
-      n.classList.add("ripple"), n.style.width = `${d}px`, n.style.height = `${d}px`, n.style.left = `${s.clientX - c.left - r}px`, n.style.top = `${s.clientY - c.top - r}px`, e.appendChild(n), n.addEventListener("animationend", () => {
-        n.remove();
+    const i = this.shadowRoot.querySelector(e);
+    t && i.setAttribute("href", t), this.hasAttribute("type") && i.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && i.classList.add("icon"), this.hasAttribute("width") && (i.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (i.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (i.style.borderRadius = this.getAttribute("border-radius") + "px"), i.addEventListener("pointerdown", (n) => {
+      const s = document.createElement("span"), r = n.currentTarget, c = r.getBoundingClientRect(), d = Math.max(r.offsetWidth, r.offsetHeight), a = d / 2;
+      s.classList.add("ripple"), s.style.width = `${d}px`, s.style.height = `${d}px`, s.style.left = `${n.clientX - c.left - a}px`, s.style.top = `${n.clientY - c.top - a}px`, i.appendChild(s), s.addEventListener("animationend", () => {
+        s.remove();
       });
     });
   }
 }
-v(A, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
-customElements.define("eui-button", A);
+v(E, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
+customElements.define("eui-button", E);
 class O extends HTMLElement {
   static get observedAttributes() {
     return ["type", "anchor"];
@@ -1407,28 +1408,28 @@ class O extends HTMLElement {
 }
 customElements.define("eui-heading", O);
 function P(o) {
-  const e = Date.now() - o, s = Math.floor(e / 1e3), n = Math.floor(s / 60), l = Math.floor(n / 60), c = Math.floor(l / 24), d = Math.floor(c / 30), r = Math.floor(d / 12);
-  return r > 0 ? `${r}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : l > 0 ? `${l}h` : n > 0 ? `${n}m` : `${s}s`;
+  const i = Date.now() - o, n = Math.floor(i / 1e3), s = Math.floor(n / 60), r = Math.floor(s / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
+  return a > 0 ? `${a}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : r > 0 ? `${r}h` : s > 0 ? `${s}m` : `${n}s`;
 }
 function V(o) {
-  const e = Date.now() - o, s = Math.floor(e / 1e3), n = Math.floor(s / 60), l = Math.floor(n / 60), c = Math.floor(l / 24), d = Math.floor(c / 30), r = Math.floor(d / 12);
-  return r > 0 ? `${r} year${r > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : l > 0 ? `${l} hour${l > 1 ? "s" : ""} ago` : n > 0 ? `${n} minute${n > 1 ? "s" : ""} ago` : `${s} second${s > 1 ? "s" : ""} ago`;
+  const i = Date.now() - o, n = Math.floor(i / 1e3), s = Math.floor(n / 60), r = Math.floor(s / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
+  return a > 0 ? `${a} year${a > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : r > 0 ? `${r} hour${r > 1 ? "s" : ""} ago` : s > 0 ? `${s} minute${s > 1 ? "s" : ""} ago` : `${n} second${n > 1 ? "s" : ""} ago`;
 }
-function U(o) {
+function D(o) {
   return o.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/`/g, "&#96;").replace(/'/g, "&#39;");
 }
-function E(o) {
+function A(o) {
   const t = document.createElement("input");
   t.value = o, document.body.appendChild(t), t.select(), document.execCommand("copy"), document.body.removeChild(t);
 }
 const Q = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  copystr: E,
+  copystr: A,
   joinedAgo: V,
-  sanitize: U,
+  sanitize: D,
   timeAgo: P
 }, Symbol.toStringTag, { value: "Module" }));
-class Z extends HTMLElement {
+class U extends HTMLElement {
   static get observedAttributes() {
     return ["copy", "id", "type", "language"];
   }
@@ -1438,11 +1439,11 @@ class Z extends HTMLElement {
   connectedCallback() {
     this._isRendered || (this.render(), this._isRendered = !0);
   }
-  attributeChangedCallback(t, i, e) {
-    this._isRendered && i !== e && this.render();
+  attributeChangedCallback(t, e, i) {
+    this._isRendered && e !== i && this.render();
   }
   render() {
-    const t = this.hasAttribute("copy"), i = this.getAttribute("language") || "text";
+    const t = this.hasAttribute("copy"), e = this.getAttribute("language") || "text";
     this.shadowRoot.innerHTML = `
             <style>
             :host {
@@ -1480,14 +1481,14 @@ class Z extends HTMLElement {
             }
 
             .token.comment { color: var(--app-700); font-style: italic; }
-            .token.string { color: var(--app-green); }
-            .token.number { color: var(--app-orange); }
-            .token.keyword { color: var(--app-purple); font-weight: bold; }
-            .token.function { color: var(--app-blue); }
-            .token.tag { color: var(--app-red); }
-            .token.attr-name { color: var(--app-yellow); }
-            .token.attr-value { color: var(--app-green); }
-            .token.boolean { color: var(--app-orange); }
+            .token.string { color: #9ECE6A; }
+            .token.number { color: #F97C5F; }
+            .token.keyword { color: #7DCFFF; }
+            .token.function { color: #7DCFFF; }
+            .token.tag { color: #DE5971; }
+            .token.attr-name { color: #BB9AF7; }
+            .token.attr-value { color: #9ECE6A; }
+            .token.boolean { color: #F97C5F; }
             </style>
 
             <eui-button class="copy" width="36" height="36" border-radius="100">
@@ -1496,34 +1497,47 @@ class Z extends HTMLElement {
 
             <pre class="${t ? "g" : ""}"><code></code></pre>
         `, this.copyBtn = this.shadowRoot.querySelector(".copy"), this.codeEl = this.shadowRoot.querySelector("code");
-    const e = this._getFormattedText();
-    this.codeEl.innerHTML = this._highlight(e, i), t ? this.copyBtn.addEventListener("click", this._boundCopy) : this.copyBtn.style.display = "none";
+    const i = this._getFormattedText();
+    this.codeEl.innerHTML = this._highlight(i, e), t ? this.copyBtn.addEventListener("click", this._boundCopy) : this.copyBtn.style.display = "none";
   }
   _getFormattedText() {
-    let t = this.textContent || "";
-    t = t.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
-    const i = t.split(`
-`), e = i.filter((n) => n.trim()).map((n) => n.match(/^\s*/)[0].length), s = e.length ? Math.min(...e) : 0;
-    return i.map((n) => n.slice(s)).join(`
+    let e = (this.querySelector("code") || this).innerHTML || "";
+    e = this._unescapeHtml(e), e = e.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
+    const i = e.split(`
+`), n = i.filter((r) => r.trim()).map((r) => r.match(/^\s*/)[0].length), s = n.length ? Math.min(...n) : 0;
+    return i.map((r) => r.slice(s)).join(`
 `);
   }
-  _highlight(t, i) {
-    return t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"), i === "javascript" || i === "js" || i === "json" ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, '<span class="token string">$1</span>'), t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, '<span class="token comment">$1</span>'), t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : i === "bash" || i === "sh" ? (t = t.replace(/(#.*$)/gm, '<span class="token comment">$1</span>'), t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, '<span class="token string">$1</span>'), t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : i === "html" || i === "xml" ? (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="token comment">$1</span>'), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, '<span class="token tag">$1</span>'), t = t.replace(/\s([a-z0-9:-]+)=/gi, ' <span class="token attr-name">$1</span>='), t = t.replace(/(".*?")/g, '<span class="token attr-value">$1</span>'), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : i === "css" && (t = t.replace(/(\/\*[\s\S]*?\*\/)/g, '<span class="token comment">$1</span>'), t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), t;
+  _unescapeHtml(t) {
+    const e = document.createElement("textarea");
+    return e.innerHTML = t, e.value;
+  }
+  _highlight(t, e) {
+    t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const i = {};
+    let n = 0;
+    function s(r, c) {
+      const d = `__TOKEN_${c}_${n++}__`;
+      return i[d] = `<span class="token ${c}">${r}</span>`, d;
+    }
+    return ["javascript", "js", "json", "bash", "sh", "css"].includes(e) ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (r) => s(r, "string")), e === "bash" || e === "sh" ? t = t.replace(/(#.*$)/gm, (r) => s(r, "comment")) : e === "css" ? t = t.replace(/(\/\*[\s\S]*?\*\/)/g, (r) => s(r, "comment")) : t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, (r) => s(r, "comment"))) : ["html", "xml"].includes(e) && (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (r) => s(r, "comment")), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, (r) => s(r, "tag"))), e === "javascript" || e === "js" || e === "json" ? (t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : e === "bash" || e === "sh" ? (t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : e === "html" || e === "xml" ? (t = t.replace(/\s([a-z0-9:-]+)=/gi, (r, c) => " " + s(c, "attr-name") + "="), t = t.replace(/(".*?")/g, (r) => s(r, "attr-value")), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : e === "css" && (t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), Object.keys(i).reverse().forEach((r) => {
+      t = t.replace(r, i[r]);
+    }), t;
   }
   _onCopy() {
-    E(this._getFormattedText());
+    A(this._getFormattedText());
     const t = this.copyBtn.querySelector("eui-icon");
     if (t) {
-      const i = t.getAttribute("name");
-      t.setAttribute("name", "check"), setTimeout(() => t.setAttribute("name", i), 2e3);
+      const e = t.getAttribute("name");
+      t.setAttribute("name", "check"), setTimeout(() => t.setAttribute("name", e), 2e3);
     }
   }
   disconnectedCallback() {
     this.copyBtn && this.copyBtn.removeEventListener("click", this._boundCopy);
   }
 }
-customElements.define("eui-code", Z);
-class D extends HTMLElement {
+customElements.define("eui-code", U);
+class Z extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1533,7 +1547,7 @@ class D extends HTMLElement {
   static get observedAttributes() {
     return ["name"];
   }
-  attributeChangedCallback(t, i, e) {
+  attributeChangedCallback(t, e, i) {
     t === "name" && (this.render(), this.setupEventListeners());
   }
   setupEventListeners() {
@@ -1639,7 +1653,7 @@ class D extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-app-titlebar", D);
+customElements.define("eui-app-titlebar", Z);
 class X extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
@@ -1650,16 +1664,16 @@ class X extends HTMLElement {
   static get observedAttributes() {
     return ["elevated", "interactive", "ripple"];
   }
-  attributeChangedCallback(t, i, e) {
-    i !== e && t === "ripple" && this.setupEventListeners();
+  attributeChangedCallback(t, e, i) {
+    e !== i && t === "ripple" && this.setupEventListeners();
   }
   setupEventListeners() {
     this.removeEventListener("mousedown", this._handleMouseDown), this.hasAttribute("ripple") && this.addEventListener("mousedown", this._handleMouseDown);
   }
   _addRipple(t) {
-    const i = this.getBoundingClientRect(), e = document.createElement("span"), s = Math.max(i.width, i.height), n = s / 2;
-    e.style.width = e.style.height = `${s}px`, e.style.left = `${t.clientX - i.left - n}px`, e.style.top = `${t.clientY - i.top - n}px`, e.classList.add("ripple"), this.shadowRoot.querySelector(".surface").appendChild(e), e.addEventListener("animationend", () => {
-      e.remove();
+    const e = this.getBoundingClientRect(), i = document.createElement("span"), n = Math.max(e.width, e.height), s = n / 2;
+    i.style.width = i.style.height = `${n}px`, i.style.left = `${t.clientX - e.left - s}px`, i.style.top = `${t.clientY - e.top - s}px`, i.classList.add("ripple"), this.shadowRoot.querySelector(".surface").appendChild(i), i.addEventListener("animationend", () => {
+      i.remove();
     });
   }
   render() {
@@ -1731,10 +1745,10 @@ customElements.define("eui-surface", X);
 typeof window < "u" && console.log("ErisUI loaded successfully");
 export {
   J as device,
-  Y as haptics,
+  K as haptics,
   u as icons,
   G as loadPage,
   C as router,
-  K as storage,
+  Y as storage,
   Q as utils
 };
