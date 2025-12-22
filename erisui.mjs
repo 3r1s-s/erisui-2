@@ -1,7 +1,7 @@
 var S = Object.defineProperty;
-var M = (o, t, e) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
-var v = (o, t, e) => M(o, typeof t != "symbol" ? t + "" : t, e);
-class z extends HTMLElement {
+var z = (o, t, e) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
+var v = (o, t, e) => z(o, typeof t != "symbol" ? t + "" : t, e);
+class M extends HTMLElement {
   static get observedAttributes() {
     return ["size", "border-radius", "name", "color"];
   }
@@ -72,7 +72,7 @@ class z extends HTMLElement {
     }
   }
 }
-customElements.define("eui-avatar", z);
+customElements.define("eui-avatar", M);
 const u = /* @__PURE__ */ (() => {
   let o = {};
   return {
@@ -1078,16 +1078,17 @@ class B extends HTMLElement {
                 @media (max-width: 768px) {
                     .header {
                         padding: 1rem;
-                    }
-
-                    .hero {
                         align-items: center;
                         justify-content: center;
                         text-align: center;
                     }
 
-                    .large h1, .hero h1 {
+                    .hero h1 {
                         font-size: 4rem;
+                    }
+
+                    .large h1 {
+                        font-size: 2.5rem;
                     }
                 }
             </style>

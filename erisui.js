@@ -618,16 +618,17 @@
                 @media (max-width: 768px) {
                     .header {
                         padding: 1rem;
-                    }
-
-                    .hero {
                         align-items: center;
                         justify-content: center;
                         text-align: center;
                     }
 
-                    .large h1, .hero h1 {
+                    .hero h1 {
                         font-size: 4rem;
+                    }
+
+                    .large h1 {
+                        font-size: 2.5rem;
                     }
                 }
             </style>
