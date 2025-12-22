@@ -215,3 +215,31 @@ eui-app-nav.expanded+.app-wrapper {
     transform: translateY(1rem);
     transition: none;
 }
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .app-wrapper {
+        margin-left: 0;
+        padding: 0;
+        padding-top: var(--titlebar-height);
+    }
+
+    .main-wrapper {
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    eui-app-nav.expanded+.app-wrapper {
+        margin-left: 0;
+    }
+
+    eui-app-nav {
+        width: 0;
+        overflow: hidden;
+    }
+
+    eui-app-nav.expanded {
+        width: var(--nav-expanded-width);
+        border-radius: 0 2rem 2rem 0;
+    }
+}

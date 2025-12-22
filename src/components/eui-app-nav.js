@@ -36,6 +36,7 @@ class AppNav extends HTMLElement {
 
             .app-nav-container {
                 width: 100%;
+                min-width: var(--nav-width, 75px);
                 height: 100%;
                 box-sizing: border-box;
                 background-color: var(--app-200);
