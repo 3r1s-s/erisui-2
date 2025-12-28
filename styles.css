@@ -27,6 +27,7 @@
     --nav-expanded-width: 250px;
     --titlebar-height: 65px;
     --content-width: 100%;
+    --tab-bar-height: 0px;
 
     --app-accent: #6366f1;
 
@@ -131,7 +132,7 @@ button {
     margin-left: var(--nav-width);
     display: flex;
     flex-direction: column;
-    padding: var(--titlebar-height) 0.5rem 0.5rem 0rem;
+    padding: var(--titlebar-height) 0.5rem calc(var(--tab-bar-height) + 0.5rem) 0.5rem;
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
@@ -221,12 +222,11 @@ eui-app-nav.expanded+.app-wrapper {
 @media (max-width: 768px) {
     .app-wrapper {
         margin-left: 0;
-        padding: 0;
-        padding-top: var(--titlebar-height);
+        padding: var(--titlebar-height) 0 var(--tab-bar-height) 0;
     }
 
     .main-wrapper {
-        border-radius: 2rem 2rem 0 0;
+        border-radius: 0;
     }
 
     eui-app-nav.expanded+.app-wrapper {

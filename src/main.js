@@ -10,6 +10,8 @@ import "./components/eui-switch.js";
 import "./components/eui-chip.js";
 import "./components/eui-app-nav.js";
 import "./components/eui-app-titlebar.js";
+import "./components/eui-tab-bar.js";
+import "./components/eui-tab-item.js";
 import "./components/eui-checkbox.js";
 import "./components/eui-button.js";
 import "./components/eui-heading.js";
@@ -29,6 +31,9 @@ const navItems = [
 window.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector("eui-app-nav");
     if (nav) nav.navItems = navItems;
+
+    const tabBar = document.querySelector("eui-tab-bar");
+    if (tabBar) tabBar.tabItems = tabBarItems;
 
     router.navigate(window.location.pathname, false);
 });
