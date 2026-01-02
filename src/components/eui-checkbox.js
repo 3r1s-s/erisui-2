@@ -16,14 +16,14 @@ class Checkbox extends HTMLElement {
                     vertical-align: bottom;
                     position: relative;
                     cursor: pointer;
-                    width: 24px;
-                    height: 24px;
+                    width: 20px;
+                    height: 20px;
                 }
 
                 .checkbox {
                     position: relative;
-                    width: 24px;
-                    height: 24px;
+                    width: 20px;
+                    height: 20px;
                     display: flex;
                     align-items: center;
                     justify-content: center;

@@ -58,6 +58,26 @@ class EUIProgressBar extends HTMLElement {
         this.setAttribute("value", val);
     }
 
+    set intermediate(val) {
+        if (val) {
+            this.setAttribute("intermediate", "");
+        } else {
+            this.removeAttribute("intermediate");
+        }
+    }
+
+    set id(val) {
+        this.setAttribute("id", val);
+    }
+
+    get intermediate() {
+        return this.hasAttribute("intermediate");
+    }
+
+    get value() {
+        return this.getAttribute("value");
+    }
+
     attributeChangedCallback() {
         this.connectedCallback();
     }
@@ -65,9 +85,19 @@ class EUIProgressBar extends HTMLElement {
     connectedCallback() {
         const progress = this.shadowRoot.querySelector(".progress");
 
-        if (this.hasAttribute('id')) progress.id = this.getAttribute('id');
-        if (this.hasAttribute('intermediate')) progress.classList.add('intermediate');
-        if (this.hasAttribute('value')) progress.style.width = this.getAttribute('value') + '%';
+        if (this.hasAttribute('id')) {
+            progress.id = this.getAttribute('id');
+        }
+
+        if (this.hasAttribute('intermediate')) {
+            progress.classList.add('intermediate');
+        } else {
+            progress.classList.remove('intermediate');
+        }
+
+        if (this.hasAttribute('value')) {
+            progress.style.width = this.getAttribute('value') + '%';
+        }
     }
 }
 
