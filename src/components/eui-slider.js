@@ -23,7 +23,6 @@ class EUISlider extends HTMLElement {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    color: var(--app-400, #999);
                     font-size: 0.85rem;
                     font-weight: 500;
                     padding: 0 4px;
@@ -55,7 +54,7 @@ class EUISlider extends HTMLElement {
                     position: absolute;
                     height: 4px;
                     width: 100%;
-                    background: var(--app-200, #333);
+                    background: var(--slider-track, #333);
                     border-radius: 3px;
                     overflow: hidden;
                     pointer-events: none;

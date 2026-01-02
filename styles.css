@@ -54,6 +54,8 @@
 
     --transition-function: cubic-bezier(.4, 0, .2, 1);
     --specular-highlight: -.5px -.5px 1px #ffffff52 inset, 1px 1px .5px #ffffff52 inset, 0 4px 24px #0000003d;
+
+    --slider-track: var(--app-200);
 }
 
 :root {
