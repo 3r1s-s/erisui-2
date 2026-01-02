@@ -3,7 +3,7 @@
 # ErisUI 2
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://semver.org)
+[![Version](https://img.shields.io/badge/version-1.0.15-green.svg)](https://semver.org)
 
 ErisUI 2 is a very simple and easy to use UI Framework for building pretty and speedy user interfaces.
 
