@@ -369,7 +369,7 @@ class R extends HTMLElement {
   }
   connectedCallback() {
     const t = this.shadowRoot.querySelector(".progress");
-    this.hasAttribute("id") && (this.progress.id = this.getAttribute("id")), this.hasAttribute("intermediate") && t.classList.add("intermediate"), this.hasAttribute("value") && (t.style.width = this.getAttribute("value") + "%");
+    this.hasAttribute("id") && (t.id = this.getAttribute("id")), this.hasAttribute("intermediate") && t.classList.add("intermediate"), this.hasAttribute("value") && (t.style.width = this.getAttribute("value") + "%");
   }
 }
 customElements.define("eui-progressbar", R);
