@@ -1,7 +1,7 @@
-var S = Object.defineProperty;
-var z = (o, t, e) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
-var v = (o, t, e) => z(o, typeof t != "symbol" ? t + "" : t, e);
-class M extends HTMLElement {
+var L = Object.defineProperty;
+var S = (o, t, e) => t in o ? L(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
+var v = (o, t, e) => S(o, typeof t != "symbol" ? t + "" : t, e);
+class z extends HTMLElement {
   static get observedAttributes() {
     return ["size", "border-radius", "name", "color"];
   }
@@ -66,13 +66,13 @@ class M extends HTMLElement {
       this.avatar.style.width = i + "px", this.avatar.style.height = i + "px", this.initials.style.fontSize = i / 2 + "px";
     }
     if (this.hasAttribute("border-radius") && (this.avatar.style.borderRadius = this.getAttribute("border-radius") + "px"), this.hasAttribute("name") && (this.avatar.title = this.getAttribute("name")), !e && this.hasAttribute("name")) {
-      const n = this.getAttribute("name").trim().split(/\s+/);
+      const r = this.getAttribute("name").trim().split(/\s+/);
       let s = "";
-      n.length === 1 ? s = n[0][0] || "" : s = (n[0][0] || "") + (n[n.length - 1][0] || ""), this.initials.textContent = s.toUpperCase();
+      r.length === 1 ? s = r[0][0] || "" : s = (r[0][0] || "") + (r[r.length - 1][0] || ""), this.initials.textContent = s.toUpperCase();
     }
   }
 }
-customElements.define("eui-avatar", M);
+customElements.define("eui-avatar", z);
 const u = /* @__PURE__ */ (() => {
   let o = {};
   return {
@@ -93,7 +93,7 @@ u.register("copy", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="1
 u.register("arrow", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>');
 u.register("back", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg)"><path d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z"></path></svg>');
 u.register("check", '<svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.86368 9.12226C3.82463 9.16131 3.76131 9.16131 3.72226 9.12226L0.146522 5.54652C-0.0487403 5.35126 -0.0487401 5.03468 0.146522 4.83942L0.839416 4.14652C1.03468 3.95126 1.35126 3.95126 1.54652 4.14652L3.72226 6.32226C3.76131 6.36131 3.82463 6.36131 3.86368 6.32226L10.0394 0.146522C10.2347 -0.0487398 10.5513 -0.0487399 10.7465 0.146522L11.4394 0.839416C11.6347 1.03468 11.6347 1.35126 11.4394 1.54652L3.86368 9.12226Z" fill="currentColor"/></svg>');
-class T extends HTMLElement {
+class M extends HTMLElement {
   static get observedAttributes() {
     return ["name", "width", "height"];
   }
@@ -114,16 +114,16 @@ class T extends HTMLElement {
     }
     const i = document.createElement("template");
     i.innerHTML = e.trim();
-    const n = i.content.cloneNode(!0), s = n.firstElementChild;
+    const r = i.content.cloneNode(!0), s = r.firstElementChild;
     if (s && s.style) {
-      const r = this.getAttribute("width"), c = this.getAttribute("height");
-      r && s.setAttribute("width", r), c && s.setAttribute("height", c), s.style.display = "block";
+      const n = this.getAttribute("width"), c = this.getAttribute("height");
+      n && s.setAttribute("width", n), c && s.setAttribute("height", c), s.style.display = "block";
     }
-    this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(n);
+    this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(r);
   }
 }
-customElements.define("eui-icon", T);
-class $ extends HTMLElement {
+customElements.define("eui-icon", M);
+class T extends HTMLElement {
   static get observedAttributes() {
     return ["label", "value", "id", "type", "filled"];
   }
@@ -231,8 +231,10 @@ class $ extends HTMLElement {
         `;
   }
   connectedCallback() {
-    this.form = this.shadowRoot.querySelector(".form"), this.inputEl = this.shadowRoot.querySelector(".form-input"), this.labelEl = this.shadowRoot.querySelector("label"), this.hasAttribute("value") && (this.inputEl.value = this.getAttribute("value")), this.hasAttribute("id") && (this.inputEl.id = this.getAttribute("id")), this.hasAttribute("label") && (this.labelEl.textContent = this.getAttribute("label")), this.hasAttribute("type") && (this.inputEl.type = this.getAttribute("type")), this.hasAttribute("filled") && this.form.classList.add("filled"), this.inputEl.addEventListener("input", () => {
-      this.setAttribute("value", this.inputEl.value);
+    this.form = this.shadowRoot.querySelector(".form"), this.inputEl = this.shadowRoot.querySelector(".form-input"), this.labelEl = this.shadowRoot.querySelector("label"), this.hasAttribute("value") && (this.inputEl.value = this.getAttribute("value")), this.hasAttribute("id") && (this.inputEl.id = this.getAttribute("id")), this.hasAttribute("label") && (this.labelEl.textContent = this.getAttribute("label")), this.hasAttribute("type") && (this.inputEl.type = this.getAttribute("type")), this.hasAttribute("filled") && this.form.classList.add("filled"), this.inputEl.addEventListener("input", (t) => {
+      this.setAttribute("value", this.inputEl.value), this.dispatchEvent(new Event("input", { bubbles: !0, composed: !0 }));
+    }), this.inputEl.addEventListener("change", (t) => {
+      this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
     });
   }
   attributeChangedCallback(t, e, i) {
@@ -256,8 +258,8 @@ class $ extends HTMLElement {
     this.setAttribute("value", t);
   }
 }
-customElements.define("eui-input", $);
-class R extends HTMLElement {
+customElements.define("eui-input", T);
+class $ extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
@@ -307,8 +309,8 @@ class R extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-loader", R);
-class H extends HTMLElement {
+customElements.define("eui-loader", $);
+class R extends HTMLElement {
   static get observedAttributes() {
     return ["value", "intermediate", "id"];
   }
@@ -370,7 +372,7 @@ class H extends HTMLElement {
     this.hasAttribute("id") && (this.progress.id = this.getAttribute("id")), this.hasAttribute("intermediate") && t.classList.add("intermediate"), this.hasAttribute("value") && (t.style.width = this.getAttribute("value") + "%");
   }
 }
-customElements.define("eui-progressbar", H);
+customElements.define("eui-progressbar", R);
 const x = {
   is: {
     iPhone: /iPhone/.test(navigator.userAgent),
@@ -395,7 +397,7 @@ const x = {
   __proto__: null,
   device: x
 }, Symbol.toStringTag, { value: "Module" }));
-function _() {
+function H() {
   try {
     const o = document.createElement("label");
     o.ariaHidden = "true", o.style.display = "none";
@@ -405,7 +407,7 @@ function _() {
   }
 }
 function w(o) {
-  x.supports.haptics ? navigator.vibrate(o || 50) : x.is.iPhone && _();
+  x.supports.haptics ? navigator.vibrate(o || 50) : x.is.iPhone && H();
 }
 const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -459,9 +461,9 @@ const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       }
     }
   };
-})(), k = y.settings, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+})(), _ = y.settings, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  settings: k,
+  settings: _,
   storage: y
 }, Symbol.toStringTag, { value: "Module" }));
 class F extends HTMLElement {
@@ -544,7 +546,7 @@ class F extends HTMLElement {
     this.inputEl = this.shadowRoot.querySelector("input"), this.switchEl = this.shadowRoot.querySelector(".switch"), this.updateFromAttribute(), this.switchEl.addEventListener("click", () => this.toggle());
   }
   toggle() {
-    this.selected = !this.selected, w();
+    this.selected = !this.selected, w(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
   }
   updateFromAttribute() {
     const t = this.hasAttribute("selected");
@@ -612,53 +614,53 @@ class I extends HTMLElement {
             </style>
             <slot></slot>
         `, this.addEventListener("pointerdown", (t) => {
-      const e = document.createElement("span"), i = t.currentTarget, n = Math.max(i.offsetWidth, i.offsetHeight);
-      e.classList.add("ripple"), e.style.left = t.clientX - i.getBoundingClientRect().left - n / 2 + "px", e.style.top = t.clientY - i.getBoundingClientRect().top - n / 2 + "px", e.style.width = n + "px", e.style.height = n + "px", this.shadowRoot.appendChild(e), setTimeout(() => {
+      const e = document.createElement("span"), i = t.currentTarget, r = Math.max(i.offsetWidth, i.offsetHeight);
+      e.classList.add("ripple"), e.style.left = t.clientX - i.getBoundingClientRect().left - r / 2 + "px", e.style.top = t.clientY - i.getBoundingClientRect().top - r / 2 + "px", e.style.width = r + "px", e.style.height = r + "px", this.shadowRoot.appendChild(e), setTimeout(() => {
         e.remove();
       }, 600);
     });
   }
 }
 customElements.define("eui-chip", I);
-const m = "", C = (() => {
+const b = "", k = (() => {
   const o = [];
   function t(a, l) {
-    const h = [], g = a.replace(/:([^/]+)/g, (b, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${m}${g}$`);
+    const h = [], g = a.replace(/:([^/]+)/g, (m, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${b}${g}$`);
     o.push({ regex: p, paramNames: h, renderFn: l });
   }
   function e(a) {
     for (const { regex: l, paramNames: h, renderFn: g } of o) {
       const p = a.match(l);
       if (p) {
-        const b = {};
-        return h.forEach((f, L) => {
-          b[f] = decodeURIComponent(p[L + 1]);
-        }), { renderFn: g, params: b };
+        const m = {};
+        return h.forEach((f, A) => {
+          m[f] = decodeURIComponent(p[A + 1]);
+        }), { renderFn: g, params: m };
       }
     }
     return null;
   }
   function i(a, l = !0) {
-    a.startsWith(m) || (a = m + (a.startsWith("/") ? "" : "/") + a);
+    a.startsWith(b) || (a = b + (a.startsWith("/") ? "" : "/") + a);
     const h = a.split(/[?#]/)[0];
     if (h === window.location.pathname && a.includes("#")) {
       l && history.pushState({}, "", a);
       const p = "#" + a.split("#")[1];
-      n(p);
+      r(p);
       return;
     }
     const g = e(h);
     if (g)
       if (l && history.pushState({}, "", a), g.renderFn(g.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: a } })), a.includes("#")) {
         const p = "#" + a.split("#")[1];
-        setTimeout(() => n(p), 100);
+        setTimeout(() => r(p), 100);
       } else {
         const p = document.getElementById("main");
         p && p.scrollTo(0, 0);
       }
     else s ? (l && history.pushState({}, "", a), s()) : console.warn(`No route found for ${h}`);
   }
-  function n(a) {
+  function r(a) {
     if (a)
       try {
         const l = document.querySelector(a);
@@ -668,14 +670,14 @@ const m = "", C = (() => {
       }
   }
   let s = null;
-  function r(a) {
+  function n(a) {
     s = a;
   }
   function c() {
     history.back();
   }
   function d() {
-    return window.location.pathname.replace(m, "") || "/";
+    return window.location.pathname.replace(b, "") || "/";
   }
   return window.addEventListener("popstate", () => {
     const a = window.location.pathname + window.location.search + window.location.hash;
@@ -687,12 +689,12 @@ const m = "", C = (() => {
     const h = l.getAttribute("href");
     if (!(!h || h.startsWith("http") && !h.startsWith(window.location.origin))) {
       if (a.preventDefault(), h.startsWith("#")) {
-        history.pushState({}, "", h), n(h);
+        history.pushState({}, "", h), r(h);
         return;
       }
       i(h);
     }
-  }), { add: t, navigate: i, back: c, location: d, setNotFound: r };
+  }), { add: t, navigate: i, back: c, location: d, setNotFound: n };
 })();
 async function G(o) {
   try {
@@ -717,7 +719,7 @@ class j extends HTMLElement {
     super();
     v(this, "handleClick", () => {
       const e = this.getAttribute("path");
-      e && C.navigate(e);
+      e && k.navigate(e);
     });
     this.attachShadow({ mode: "open" });
   }
@@ -730,8 +732,8 @@ class j extends HTMLElement {
   disconnectedCallback() {
     this.removeEventListener("click", this.handleClick);
   }
-  attributeChangedCallback(e, i, n) {
-    if (i !== n && this.hasRendered) {
+  attributeChangedCallback(e, i, r) {
+    if (i !== r && this.hasRendered) {
       if (e === "active")
         return;
       this.updateContent();
@@ -739,27 +741,27 @@ class j extends HTMLElement {
   }
   setupEventListeners() {
     this.addEventListener("pointerdown", (e) => {
-      const i = document.createElement("span"), n = e.currentTarget, s = n.getBoundingClientRect(), r = Math.max(n.offsetWidth, n.offsetHeight), c = r / 2;
-      i.classList.add("ripple"), i.style.width = `${r}px`, i.style.height = `${r}px`, i.style.left = `${e.clientX - s.left - c}px`, i.style.top = `${e.clientY - s.top - c}px`, this.shadowRoot.appendChild(i), i.addEventListener("animationend", () => {
+      const i = document.createElement("span"), r = e.currentTarget, s = r.getBoundingClientRect(), n = Math.max(r.offsetWidth, r.offsetHeight), c = n / 2;
+      i.classList.add("ripple"), i.style.width = `${n}px`, i.style.height = `${n}px`, i.style.left = `${e.clientX - s.left - c}px`, i.style.top = `${e.clientY - s.top - c}px`, this.shadowRoot.appendChild(i), i.addEventListener("animationend", () => {
         i.remove();
       });
     });
   }
   updateContent() {
-    const e = this.getAttribute("icon"), i = this.getAttribute("avatar-src"), n = this.getAttribute("avatar-name"), s = this.getAttribute("label") || "", r = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
-    if (r)
+    const e = this.getAttribute("icon"), i = this.getAttribute("avatar-src"), r = this.getAttribute("avatar-name"), s = this.getAttribute("label") || "", n = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
+    if (n)
       if (c)
-        c.textContent = r;
+        c.textContent = n;
       else {
         const l = document.createElement("span");
-        l.className = "badge", l.textContent = r, this.shadowRoot.appendChild(l);
+        l.className = "badge", l.textContent = n, this.shadowRoot.appendChild(l);
       }
     else c && c.remove();
     const d = this.shadowRoot.querySelector("slot[name='icon']");
     if (d)
-      if (i || n) {
+      if (i || r) {
         let l = '<eui-avatar size="24"';
-        n && (l += ` name="${n}"`), l += ">", i && (l += `<img src="${i}" alt="${n || "Avatar"}" />`), l += "</eui-avatar>", d.innerHTML = l;
+        r && (l += ` name="${r}"`), l += ">", i && (l += `<img src="${i}" alt="${r || "Avatar"}" />`), l += "</eui-avatar>", d.innerHTML = l;
       } else {
         const l = d.querySelector("eui-icon");
         e && l ? l.getAttribute("name") !== e && l.setAttribute("name", e) : e ? d.innerHTML = `<eui-icon width="24" height="24" name="${e}"></eui-icon>` : d.innerHTML = "";
@@ -986,10 +988,10 @@ class q extends HTMLElement {
             <a href="#content" id="skip_navigation_link">Skip To Content</a>
             <div class="nav-items">
                 ${this.navItems.map((t) => {
-      var n, s;
+      var r, s;
       if (t.type === "divider")
         return '<div style="height: 1px; background: var(--app-300); margin: 0.5rem 0;"></div>';
-      const e = ((n = t.avatar) == null ? void 0 : n.src) || "", i = ((s = t.avatar) == null ? void 0 : s.name) || "";
+      const e = ((r = t.avatar) == null ? void 0 : r.src) || "", i = ((s = t.avatar) == null ? void 0 : s.name) || "";
       return `<eui-nav-item path="${t.path}" icon="${t.icon}" avatar-src="${e}" avatar-name="${i}" label="${t.label}"></eui-nav-item>`;
     }).join("")}
             </div>
@@ -1003,7 +1005,7 @@ class q extends HTMLElement {
     return this._navItems || [];
   }
   updateActiveState(t) {
-    t || (t = C.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((i) => {
+    t || (t = k.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((i) => {
       i.getAttribute("path") === t ? i.setAttribute("active", "") : i.removeAttribute("active");
     });
   }
@@ -1106,8 +1108,8 @@ class B extends HTMLElement {
     this.hd = this.shadowRoot.querySelector(".header"), this.hasAttribute("type") && this.hd.classList.add(this.getAttribute("type"));
   }
   attributeChangedCallback(t, e, i) {
-    const n = this.shadowRoot.querySelector("h1"), s = this.shadowRoot.querySelector("p"), r = this.shadowRoot.querySelector(".img");
-    t === "title" && (n.textContent = i), t === "subtitle" && (s.textContent = i), t === "img" && (r.style.backgroundImage = i ? `url(${i})` : "");
+    const r = this.shadowRoot.querySelector("h1"), s = this.shadowRoot.querySelector("p"), n = this.shadowRoot.querySelector(".img");
+    t === "title" && (r.textContent = i), t === "subtitle" && (s.textContent = i), t === "img" && (n.style.backgroundImage = i ? `url(${i})` : "");
   }
 }
 customElements.define("eui-header", B);
@@ -1119,7 +1121,8 @@ class N extends HTMLElement {
     super(), this.attachShadow({ mode: "open" }), this.shadowRoot.innerHTML = `
             <style>
                 :host {
-                    display: block;
+                    display: inline-block;
+                    vertical-align: bottom;
                     position: relative;
                     cursor: pointer;
                     width: 24px;
@@ -1205,9 +1208,7 @@ class N extends HTMLElement {
     this.inputEl = this.shadowRoot.querySelector("input"), this.checkEl = this.shadowRoot.querySelector(".checkbox"), this.updateFromAttribute(), this.checkEl.addEventListener("click", () => this.toggle());
   }
   toggle() {
-    this.selected = !this.selected, w();
-    const t = this.selected, e = this.dataset.setting;
-    e && k.set(e, t);
+    this.selected = !this.selected, w(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
   }
   updateFromAttribute() {
     const t = this.hasAttribute("selected");
@@ -1224,7 +1225,7 @@ class N extends HTMLElement {
   }
 }
 customElements.define("eui-checkbox", N);
-class E extends HTMLElement {
+class C extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1341,16 +1342,16 @@ class E extends HTMLElement {
             </${e}>
         `;
     const i = this.shadowRoot.querySelector(e);
-    t && i.setAttribute("href", t), this.hasAttribute("type") && i.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && i.classList.add("icon"), this.hasAttribute("width") && (i.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (i.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (i.style.borderRadius = this.getAttribute("border-radius") + "px"), i.addEventListener("pointerdown", (n) => {
-      const s = document.createElement("span"), r = n.currentTarget, c = r.getBoundingClientRect(), d = Math.max(r.offsetWidth, r.offsetHeight), a = d / 2;
-      s.classList.add("ripple"), s.style.width = `${d}px`, s.style.height = `${d}px`, s.style.left = `${n.clientX - c.left - a}px`, s.style.top = `${n.clientY - c.top - a}px`, i.appendChild(s), s.addEventListener("animationend", () => {
+    t && i.setAttribute("href", t), this.hasAttribute("type") && i.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && i.classList.add("icon"), this.hasAttribute("width") && (i.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (i.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (i.style.borderRadius = this.getAttribute("border-radius") + "px"), i.addEventListener("pointerdown", (r) => {
+      const s = document.createElement("span"), n = r.currentTarget, c = n.getBoundingClientRect(), d = Math.max(n.offsetWidth, n.offsetHeight), a = d / 2;
+      s.classList.add("ripple"), s.style.width = `${d}px`, s.style.height = `${d}px`, s.style.left = `${r.clientX - c.left - a}px`, s.style.top = `${r.clientY - c.top - a}px`, i.appendChild(s), s.addEventListener("animationend", () => {
         s.remove();
       });
     });
   }
 }
-v(E, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
-customElements.define("eui-button", E);
+v(C, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
+customElements.define("eui-button", C);
 class O extends HTMLElement {
   static get observedAttributes() {
     return ["type", "anchor"];
@@ -1425,23 +1426,23 @@ class O extends HTMLElement {
 }
 customElements.define("eui-heading", O);
 function P(o) {
-  const i = Date.now() - o, n = Math.floor(i / 1e3), s = Math.floor(n / 60), r = Math.floor(s / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
-  return a > 0 ? `${a}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : r > 0 ? `${r}h` : s > 0 ? `${s}m` : `${n}s`;
+  const i = Date.now() - o, r = Math.floor(i / 1e3), s = Math.floor(r / 60), n = Math.floor(s / 60), c = Math.floor(n / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
+  return a > 0 ? `${a}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : n > 0 ? `${n}h` : s > 0 ? `${s}m` : `${r}s`;
 }
 function V(o) {
-  const i = Date.now() - o, n = Math.floor(i / 1e3), s = Math.floor(n / 60), r = Math.floor(s / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
-  return a > 0 ? `${a} year${a > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : r > 0 ? `${r} hour${r > 1 ? "s" : ""} ago` : s > 0 ? `${s} minute${s > 1 ? "s" : ""} ago` : `${n} second${n > 1 ? "s" : ""} ago`;
+  const i = Date.now() - o, r = Math.floor(i / 1e3), s = Math.floor(r / 60), n = Math.floor(s / 60), c = Math.floor(n / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
+  return a > 0 ? `${a} year${a > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : n > 0 ? `${n} hour${n > 1 ? "s" : ""} ago` : s > 0 ? `${s} minute${s > 1 ? "s" : ""} ago` : `${r} second${r > 1 ? "s" : ""} ago`;
 }
 function D(o) {
   return o.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/`/g, "&#96;").replace(/'/g, "&#39;");
 }
-function A(o) {
+function E(o) {
   const t = document.createElement("input");
   t.value = o, document.body.appendChild(t), t.select(), document.execCommand("copy"), document.body.removeChild(t);
 }
 const Q = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  copystr: A,
+  copystr: E,
   joinedAgo: V,
   sanitize: D,
   timeAgo: P
@@ -1521,8 +1522,8 @@ class U extends HTMLElement {
     let e = (this.querySelector("code") || this).innerHTML || "";
     e = this._unescapeHtml(e), e = e.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
     const i = e.split(`
-`), n = i.filter((r) => r.trim()).map((r) => r.match(/^\s*/)[0].length), s = n.length ? Math.min(...n) : 0;
-    return i.map((r) => r.slice(s)).join(`
+`), r = i.filter((n) => n.trim()).map((n) => n.match(/^\s*/)[0].length), s = r.length ? Math.min(...r) : 0;
+    return i.map((n) => n.slice(s)).join(`
 `);
   }
   _unescapeHtml(t) {
@@ -1532,17 +1533,17 @@ class U extends HTMLElement {
   _highlight(t, e) {
     t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const i = {};
-    let n = 0;
-    function s(r, c) {
-      const d = `__TOKEN_${c}_${n++}__`;
-      return i[d] = `<span class="token ${c}">${r}</span>`, d;
+    let r = 0;
+    function s(n, c) {
+      const d = `__TOKEN_${c}_${r++}__`;
+      return i[d] = `<span class="token ${c}">${n}</span>`, d;
     }
-    return ["javascript", "js", "json", "bash", "sh", "css"].includes(e) ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (r) => s(r, "string")), e === "bash" || e === "sh" ? t = t.replace(/(#.*$)/gm, (r) => s(r, "comment")) : e === "css" ? t = t.replace(/(\/\*[\s\S]*?\*\/)/g, (r) => s(r, "comment")) : t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, (r) => s(r, "comment"))) : ["html", "xml"].includes(e) && (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (r) => s(r, "comment")), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, (r) => s(r, "tag"))), e === "javascript" || e === "js" || e === "json" ? (t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : e === "bash" || e === "sh" ? (t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : e === "html" || e === "xml" ? (t = t.replace(/\s([a-z0-9:-]+)=/gi, (r, c) => " " + s(c, "attr-name") + "="), t = t.replace(/(".*?")/g, (r) => s(r, "attr-value")), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : e === "css" && (t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), Object.keys(i).reverse().forEach((r) => {
-      t = t.replace(r, i[r]);
+    return ["javascript", "js", "json", "bash", "sh", "css"].includes(e) ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (n) => s(n, "string")), e === "bash" || e === "sh" ? t = t.replace(/(#.*$)/gm, (n) => s(n, "comment")) : e === "css" ? t = t.replace(/(\/\*[\s\S]*?\*\/)/g, (n) => s(n, "comment")) : t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, (n) => s(n, "comment"))) : ["html", "xml"].includes(e) && (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (n) => s(n, "comment")), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, (n) => s(n, "tag"))), e === "javascript" || e === "js" || e === "json" ? (t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : e === "bash" || e === "sh" ? (t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : e === "html" || e === "xml" ? (t = t.replace(/\s([a-z0-9:-]+)=/gi, (n, c) => " " + s(c, "attr-name") + "="), t = t.replace(/(".*?")/g, (n) => s(n, "attr-value")), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : e === "css" && (t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), Object.keys(i).reverse().forEach((n) => {
+      t = t.replace(n, i[n]);
     }), t;
   }
   _onCopy() {
-    A(this._getFormattedText());
+    E(this._getFormattedText());
     const t = this.copyBtn.querySelector("eui-icon");
     if (t) {
       const e = t.getAttribute("name");
@@ -1688,8 +1689,8 @@ class X extends HTMLElement {
     this.removeEventListener("mousedown", this._handleMouseDown), this.hasAttribute("ripple") && this.addEventListener("mousedown", this._handleMouseDown);
   }
   _addRipple(t) {
-    const e = this.getBoundingClientRect(), i = document.createElement("span"), n = Math.max(e.width, e.height), s = n / 2;
-    i.style.width = i.style.height = `${n}px`, i.style.left = `${t.clientX - e.left - s}px`, i.style.top = `${t.clientY - e.top - s}px`, i.classList.add("ripple"), this.shadowRoot.querySelector(".surface").appendChild(i), i.addEventListener("animationend", () => {
+    const e = this.getBoundingClientRect(), i = document.createElement("span"), r = Math.max(e.width, e.height), s = r / 2;
+    i.style.width = i.style.height = `${r}px`, i.style.left = `${t.clientX - e.left - s}px`, i.style.top = `${t.clientY - e.top - s}px`, i.classList.add("ripple"), this.shadowRoot.querySelector(".surface").appendChild(i), i.addEventListener("animationend", () => {
       i.remove();
     });
   }
@@ -1765,7 +1766,7 @@ export {
   K as haptics,
   u as icons,
   G as loadPage,
-  C as router,
+  k as router,
   Y as storage,
   Q as utils
 };
