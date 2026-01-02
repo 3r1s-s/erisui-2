@@ -121,8 +121,13 @@ class EUIInput extends HTMLElement {
         if (this.hasAttribute('type')) this.inputEl.type = this.getAttribute('type');
         if (this.hasAttribute('filled')) this.form.classList.add('filled');
 
-        this.inputEl.addEventListener('input', () => {
+        this.inputEl.addEventListener('input', (e) => {
             this.setAttribute('value', this.inputEl.value);
+            this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+        });
+
+        this.inputEl.addEventListener('change', (e) => {
+            this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
         });
     }
 

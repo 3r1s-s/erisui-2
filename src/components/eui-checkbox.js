@@ -1,5 +1,4 @@
 import { haptic } from '../scripts/haptics.js';
-import { storage, settings } from '../scripts/storage.js';
 
 class Checkbox extends HTMLElement {
     static get observedAttributes() {
@@ -13,7 +12,8 @@ class Checkbox extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
-                    display: block;
+                    display: inline-block;
+                    vertical-align: bottom;
                     position: relative;
                     cursor: pointer;
                     width: 24px;
@@ -109,12 +109,7 @@ class Checkbox extends HTMLElement {
         this.selected = !this.selected;
         haptic();
 
-        const newState = this.selected;
-
-        const setting = this.dataset.setting;
-        if (setting) {
-            settings.set(setting, newState);
-        }
+        this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
     }
 
     updateFromAttribute() {

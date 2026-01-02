@@ -17,6 +17,7 @@ import "./components/eui-button.js";
 import "./components/eui-heading.js";
 import "./components/eui-code.js";
 import "./components/eui-surface.js";
+import "./components/eui-slider.js";
 
 router.add("/", () => loadPage("index"));
 

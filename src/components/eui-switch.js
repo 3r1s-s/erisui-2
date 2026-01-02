@@ -94,6 +94,8 @@ class Switch extends HTMLElement {
     toggle() {
         this.selected = !this.selected;
         haptic();
+
+        this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
     }
 
     updateFromAttribute() {
