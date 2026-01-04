@@ -405,7 +405,7 @@ const x = {
     haptics: "vibrate" in navigator || "Vibrate" in window || typeof window.navigator.vibrate == "function"
   },
   userAgent: navigator.userAgent
-}, K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   device: x
 }, Symbol.toStringTag, { value: "Module" }));
@@ -421,7 +421,7 @@ function H() {
 function w(s) {
   x.supports.haptics ? navigator.vibrate(s || 50) : x.is.iPhone && H();
 }
-const Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   haptic: w
 }, Symbol.toStringTag, { value: "Module" })), y = (() => {
@@ -1810,14 +1810,29 @@ class W extends HTMLElement {
                     appearance: none;
                     opacity: 0;
                     width: 100%;
-                    height: 4px;
-                    background: var(--app-300, #333);
-                    border-radius: 3px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    background: transparent;
                     outline: none;
                     margin: 0;
                     cursor: pointer;
                     position: relative;
                     z-index: 1;
+                }
+
+                input[type="range"]::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 20px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    cursor: pointer;
+                }
+
+                input[type="range"]::-moz-range-thumb {
+                    width: 20px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    cursor: pointer;
+                    border: none;
+                    background: transparent;
                 }
 
                 .track {
@@ -1850,6 +1865,8 @@ class W extends HTMLElement {
                     pointer-events: none;
                     z-index: 0;
                     left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
                 }
 
                 .slider-thumb.active {
@@ -1902,8 +1919,8 @@ class W extends HTMLElement {
 customElements.define("eui-slider", W);
 typeof window < "u" && console.log("ErisUI loaded successfully");
 export {
-  K as device,
-  Y as haptics,
+  Y as device,
+  K as haptics,
   u as icons,
   Q as loadPage,
   k as router,
