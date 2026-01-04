@@ -40,14 +40,29 @@ class EUISlider extends HTMLElement {
                     appearance: none;
                     opacity: 0;
                     width: 100%;
-                    height: 4px;
-                    background: var(--app-300, #333);
-                    border-radius: 3px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    background: transparent;
                     outline: none;
                     margin: 0;
                     cursor: pointer;
                     position: relative;
                     z-index: 1;
+                }
+
+                input[type="range"]::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 20px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    cursor: pointer;
+                }
+
+                input[type="range"]::-moz-range-thumb {
+                    width: 20px;
+                    height: var(--eui-slider-touch-target-size, 44px);
+                    cursor: pointer;
+                    border: none;
+                    background: transparent;
                 }
 
                 .track {
@@ -80,6 +95,8 @@ class EUISlider extends HTMLElement {
                     pointer-events: none;
                     z-index: 0;
                     left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
                 }
 
                 .slider-thumb.active {
