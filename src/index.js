@@ -17,6 +17,8 @@ import './components/eui-code.js';
 import './components/eui-app-titlebar.js';
 import './components/eui-surface.js';
 import './components/eui-slider.js';
+import './components/eui-tab-bar.js';
+import './components/eui-tab-item.js';
 
 import { router, loadPage } from './scripts/router.js';
 import * as device from './scripts/device.js';
