@@ -1,6 +1,6 @@
 var L = Object.defineProperty;
 var S = (s, t, i) => t in s ? L(s, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : s[t] = i;
-var v = (s, t, i) => S(s, typeof t != "symbol" ? t + "" : t, i);
+var b = (s, t, i) => S(s, typeof t != "symbol" ? t + "" : t, i);
 class z extends HTMLElement {
   static get observedAttributes() {
     return ["size", "border-radius", "name", "color"];
@@ -116,8 +116,8 @@ class T extends HTMLElement {
     e.innerHTML = i.trim();
     const n = e.content.cloneNode(!0), o = n.firstElementChild;
     if (o && o.style) {
-      const r = this.getAttribute("width"), c = this.getAttribute("height");
-      r && o.setAttribute("width", r), c && o.setAttribute("height", c), o.style.display = "block";
+      const a = this.getAttribute("width"), c = this.getAttribute("height");
+      a && o.setAttribute("width", a), c && o.setAttribute("height", c), o.style.display = "block";
     }
     this.shadowRoot.innerHTML = "", this.shadowRoot.appendChild(n);
   }
@@ -385,7 +385,7 @@ class R extends HTMLElement {
   }
 }
 customElements.define("eui-progressbar", R);
-const x = {
+const w = {
   is: {
     iPhone: /iPhone/.test(navigator.userAgent),
     iPad: /iPad/.test(navigator.userAgent),
@@ -405,9 +405,9 @@ const x = {
     haptics: "vibrate" in navigator || "Vibrate" in window || typeof window.navigator.vibrate == "function"
   },
   userAgent: navigator.userAgent
-}, Y = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, G = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  device: x
+  device: w
 }, Symbol.toStringTag, { value: "Module" }));
 function H() {
   try {
@@ -418,13 +418,13 @@ function H() {
   } catch {
   }
 }
-function w(s) {
-  x.supports.haptics ? navigator.vibrate(s || 50) : x.is.iPhone && H();
+function y(s) {
+  w.supports.haptics ? navigator.vibrate(s || 50) : w.is.iPhone && H();
 }
-const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Q = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  haptic: w
-}, Symbol.toStringTag, { value: "Module" })), y = (() => {
+  haptic: y
+}, Symbol.toStringTag, { value: "Module" })), k = (() => {
   let s = {}, t;
   try {
     s = JSON.parse(localStorage.getItem(t) || "{}");
@@ -473,10 +473,10 @@ const K = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       }
     }
   };
-})(), _ = y.settings, G = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+})(), _ = k.settings, tt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   settings: _,
-  storage: y
+  storage: k
 }, Symbol.toStringTag, { value: "Module" }));
 class F extends HTMLElement {
   static get observedAttributes() {
@@ -558,7 +558,7 @@ class F extends HTMLElement {
     this.inputEl = this.shadowRoot.querySelector("input"), this.switchEl = this.shadowRoot.querySelector(".switch"), this.updateFromAttribute(), this.switchEl.addEventListener("click", () => this.toggle());
   }
   toggle() {
-    this.selected = !this.selected, w(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
+    this.selected = !this.selected, y(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
   }
   updateFromAttribute() {
     const t = this.hasAttribute("selected");
@@ -634,81 +634,81 @@ class I extends HTMLElement {
   }
 }
 customElements.define("eui-chip", I);
-const b = "", k = (() => {
+const m = "", f = (() => {
   const s = [];
-  function t(a, l) {
-    const h = [], g = a.replace(/:([^/]+)/g, (m, f) => (h.push(f), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${b}${g}$`);
+  function t(r, l) {
+    const h = [], g = r.replace(/:([^/]+)/g, (v, x) => (h.push(x), "([^/]+)")).replace(/\//g, "\\/"), p = new RegExp(`^${m}${g}$`);
     s.push({ regex: p, paramNames: h, renderFn: l });
   }
-  function i(a) {
+  function i(r) {
     for (const { regex: l, paramNames: h, renderFn: g } of s) {
-      const p = a.match(l);
+      const p = r.match(l);
       if (p) {
-        const m = {};
-        return h.forEach((f, A) => {
-          m[f] = decodeURIComponent(p[A + 1]);
-        }), { renderFn: g, params: m };
+        const v = {};
+        return h.forEach((x, A) => {
+          v[x] = decodeURIComponent(p[A + 1]);
+        }), { renderFn: g, params: v };
       }
     }
     return null;
   }
-  function e(a, l = !0) {
-    a.startsWith(b) || (a = b + (a.startsWith("/") ? "" : "/") + a);
-    const h = a.split(/[?#]/)[0];
-    if (h === window.location.pathname && a.includes("#")) {
-      l && history.pushState({}, "", a);
-      const p = "#" + a.split("#")[1];
+  function e(r, l = !0) {
+    r.startsWith(m) || (r = m + (r.startsWith("/") ? "" : "/") + r);
+    const h = r.split(/[?#]/)[0];
+    if (h === window.location.pathname && r.includes("#")) {
+      l && history.pushState({}, "", r);
+      const p = "#" + r.split("#")[1];
       n(p);
       return;
     }
     const g = i(h);
     if (g)
-      if (l && history.pushState({}, "", a), g.renderFn(g.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: a } })), a.includes("#")) {
-        const p = "#" + a.split("#")[1];
+      if (l && history.pushState({}, "", r), g.renderFn(g.params), window.dispatchEvent(new CustomEvent("route-changed", { detail: { path: r } })), r.includes("#")) {
+        const p = "#" + r.split("#")[1];
         setTimeout(() => n(p), 100);
       } else {
         const p = document.getElementById("main");
         p && p.scrollTo(0, 0);
       }
-    else o ? (l && history.pushState({}, "", a), o()) : console.warn(`No route found for ${h}`);
+    else o ? (l && history.pushState({}, "", r), o()) : console.warn(`No route found for ${h}`);
   }
-  function n(a) {
-    if (a)
+  function n(r) {
+    if (r)
       try {
-        const l = document.querySelector(a);
+        const l = document.querySelector(r);
         l && l.scrollIntoView({ behavior: "smooth" });
       } catch {
-        console.warn("Invalid hash:", a);
+        console.warn("Invalid hash:", r);
       }
   }
   let o = null;
-  function r(a) {
-    o = a;
+  function a(r) {
+    o = r;
   }
   function c() {
     history.back();
   }
   function d() {
-    return window.location.pathname.replace(b, "") || "/";
+    return window.location.pathname.replace(m, "") || "/";
   }
   return window.addEventListener("popstate", () => {
-    const a = window.location.pathname + window.location.search + window.location.hash;
-    e(a, !1);
-  }), window.addEventListener("click", (a) => {
-    if (a.button !== 0 || a.metaKey || a.altKey || a.ctrlKey || a.shiftKey) return;
-    const l = a.target.closest("a");
+    const r = window.location.pathname + window.location.search + window.location.hash;
+    e(r, !1);
+  }), window.addEventListener("click", (r) => {
+    if (r.button !== 0 || r.metaKey || r.altKey || r.ctrlKey || r.shiftKey) return;
+    const l = r.target.closest("a");
     if (!l || l.hasAttribute("download") || l.getAttribute("target") === "_blank") return;
     const h = l.getAttribute("href");
     if (!(!h || h.startsWith("http") && !h.startsWith(window.location.origin))) {
-      if (a.preventDefault(), h.startsWith("#")) {
+      if (r.preventDefault(), h.startsWith("#")) {
         history.pushState({}, "", h), n(h);
         return;
       }
       e(h);
     }
-  }), { add: t, navigate: e, back: c, location: d, setNotFound: r };
+  }), { add: t, navigate: e, back: c, location: d, setNotFound: a };
 })();
-async function Q(s) {
+async function et(s) {
   try {
     const t = document.getElementById("main");
     t.classList.add("fade-out"), await new Promise((e) => setTimeout(e, 200));
@@ -726,12 +726,12 @@ async function Q(s) {
     console.error("Page load failed:", t);
   }
 }
-class q extends HTMLElement {
+class j extends HTMLElement {
   constructor() {
     super();
-    v(this, "handleClick", () => {
+    b(this, "handleClick", () => {
       const i = this.getAttribute("path");
-      i && k.navigate(i);
+      i && f.navigate(i);
     });
     this.attachShadow({ mode: "open" });
   }
@@ -753,20 +753,20 @@ class q extends HTMLElement {
   }
   setupEventListeners() {
     this.addEventListener("pointerdown", (i) => {
-      const e = document.createElement("span"), n = i.currentTarget, o = n.getBoundingClientRect(), r = Math.max(n.offsetWidth, n.offsetHeight), c = r / 2;
-      e.classList.add("ripple"), e.style.width = `${r}px`, e.style.height = `${r}px`, e.style.left = `${i.clientX - o.left - c}px`, e.style.top = `${i.clientY - o.top - c}px`, this.shadowRoot.appendChild(e), e.addEventListener("animationend", () => {
+      const e = document.createElement("span"), n = i.currentTarget, o = n.getBoundingClientRect(), a = Math.max(n.offsetWidth, n.offsetHeight), c = a / 2;
+      e.classList.add("ripple"), e.style.width = `${a}px`, e.style.height = `${a}px`, e.style.left = `${i.clientX - o.left - c}px`, e.style.top = `${i.clientY - o.top - c}px`, this.shadowRoot.appendChild(e), e.addEventListener("animationend", () => {
         e.remove();
       });
     });
   }
   updateContent() {
-    const i = this.getAttribute("icon"), e = this.getAttribute("avatar-src"), n = this.getAttribute("avatar-name"), o = this.getAttribute("label") || "", r = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
-    if (r)
+    const i = this.getAttribute("icon"), e = this.getAttribute("avatar-src"), n = this.getAttribute("avatar-name"), o = this.getAttribute("label") || "", a = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
+    if (a)
       if (c)
-        c.textContent = r;
+        c.textContent = a;
       else {
         const l = document.createElement("span");
-        l.className = "badge", l.textContent = r, this.shadowRoot.appendChild(l);
+        l.className = "badge", l.textContent = a, this.shadowRoot.appendChild(l);
       }
     else c && c.remove();
     const d = this.shadowRoot.querySelector("slot[name='icon']");
@@ -778,8 +778,8 @@ class q extends HTMLElement {
         const l = d.querySelector("eui-icon");
         i && l ? l.getAttribute("name") !== i && l.setAttribute("name", i) : i ? d.innerHTML = `<eui-icon width="24" height="24" name="${i}"></eui-icon>` : d.innerHTML = "";
       }
-    const a = this.shadowRoot.querySelector(".label");
-    a && (a.textContent = o);
+    const r = this.shadowRoot.querySelector(".label");
+    r && (r.textContent = o);
   }
   render() {
     this.shadowRoot.innerHTML = `
@@ -890,8 +890,8 @@ class q extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-nav-item", q);
-class j extends HTMLElement {
+customElements.define("eui-nav-item", j);
+class q extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1017,12 +1017,12 @@ class j extends HTMLElement {
     return this._navItems || [];
   }
   updateActiveState(t) {
-    t || (t = k.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((e) => {
+    t || (t = f.location()), t.startsWith("/") || (t = "/" + t), this.shadowRoot.querySelectorAll("eui-nav-item").forEach((e) => {
       e.getAttribute("path") === t ? e.setAttribute("active", "") : e.removeAttribute("active");
     });
   }
 }
-customElements.define("eui-app-nav", j);
+customElements.define("eui-app-nav", q);
 class B extends HTMLElement {
   static get observedAttributes() {
     return ["type", "title", "subtitle", "img"];
@@ -1120,8 +1120,8 @@ class B extends HTMLElement {
     this.hd = this.shadowRoot.querySelector(".header"), this.hasAttribute("type") && this.hd.classList.add(this.getAttribute("type"));
   }
   attributeChangedCallback(t, i, e) {
-    const n = this.shadowRoot.querySelector("h1"), o = this.shadowRoot.querySelector("p"), r = this.shadowRoot.querySelector(".img");
-    t === "title" && (n.textContent = e), t === "subtitle" && (o.textContent = e), t === "img" && (r.style.backgroundImage = e ? `url(${e})` : "");
+    const n = this.shadowRoot.querySelector("h1"), o = this.shadowRoot.querySelector("p"), a = this.shadowRoot.querySelector(".img");
+    t === "title" && (n.textContent = e), t === "subtitle" && (o.textContent = e), t === "img" && (a.style.backgroundImage = e ? `url(${e})` : "");
   }
 }
 customElements.define("eui-header", B);
@@ -1220,7 +1220,7 @@ class N extends HTMLElement {
     this.inputEl = this.shadowRoot.querySelector("input"), this.checkEl = this.shadowRoot.querySelector(".checkbox"), this.updateFromAttribute(), this.checkEl.addEventListener("click", () => this.toggle());
   }
   toggle() {
-    this.selected = !this.selected, w(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
+    this.selected = !this.selected, y(), this.dispatchEvent(new Event("change", { bubbles: !0, composed: !0 }));
   }
   updateFromAttribute() {
     const t = this.hasAttribute("selected");
@@ -1355,14 +1355,14 @@ class C extends HTMLElement {
         `;
     const e = this.shadowRoot.querySelector(i);
     t && e.setAttribute("href", t), this.hasAttribute("type") && e.classList.add(this.getAttribute("type")), this.hasAttribute("icon") && e.classList.add("icon"), this.hasAttribute("width") && (e.style.width = this.getAttribute("width") + "px"), this.hasAttribute("height") && (e.style.height = this.getAttribute("height") + "px"), this.hasAttribute("border-radius") && (e.style.borderRadius = this.getAttribute("border-radius") + "px"), e.addEventListener("pointerdown", (n) => {
-      const o = document.createElement("span"), r = n.currentTarget, c = r.getBoundingClientRect(), d = Math.max(r.offsetWidth, r.offsetHeight), a = d / 2;
-      o.classList.add("ripple"), o.style.width = `${d}px`, o.style.height = `${d}px`, o.style.left = `${n.clientX - c.left - a}px`, o.style.top = `${n.clientY - c.top - a}px`, e.appendChild(o), o.addEventListener("animationend", () => {
+      const o = document.createElement("span"), a = n.currentTarget, c = a.getBoundingClientRect(), d = Math.max(a.offsetWidth, a.offsetHeight), r = d / 2;
+      o.classList.add("ripple"), o.style.width = `${d}px`, o.style.height = `${d}px`, o.style.left = `${n.clientX - c.left - r}px`, o.style.top = `${n.clientY - c.top - r}px`, e.appendChild(o), o.addEventListener("animationend", () => {
         o.remove();
       });
     });
   }
 }
-v(C, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
+b(C, "observedAttributes", ["type", "width", "height", "border-radius", "icon", "link", "href"]);
 customElements.define("eui-button", C);
 class O extends HTMLElement {
   static get observedAttributes() {
@@ -1438,12 +1438,12 @@ class O extends HTMLElement {
 }
 customElements.define("eui-heading", O);
 function U(s) {
-  const e = Date.now() - s, n = Math.floor(e / 1e3), o = Math.floor(n / 60), r = Math.floor(o / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
-  return a > 0 ? `${a}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : r > 0 ? `${r}h` : o > 0 ? `${o}m` : `${n}s`;
+  const e = Date.now() - s, n = Math.floor(e / 1e3), o = Math.floor(n / 60), a = Math.floor(o / 60), c = Math.floor(a / 24), d = Math.floor(c / 30), r = Math.floor(d / 12);
+  return r > 0 ? `${r}y` : d > 0 ? `${d}mo` : c > 0 ? `${c}d` : a > 0 ? `${a}h` : o > 0 ? `${o}m` : `${n}s`;
 }
 function P(s) {
-  const e = Date.now() - s, n = Math.floor(e / 1e3), o = Math.floor(n / 60), r = Math.floor(o / 60), c = Math.floor(r / 24), d = Math.floor(c / 30), a = Math.floor(d / 12);
-  return a > 0 ? `${a} year${a > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : r > 0 ? `${r} hour${r > 1 ? "s" : ""} ago` : o > 0 ? `${o} minute${o > 1 ? "s" : ""} ago` : `${n} second${n > 1 ? "s" : ""} ago`;
+  const e = Date.now() - s, n = Math.floor(e / 1e3), o = Math.floor(n / 60), a = Math.floor(o / 60), c = Math.floor(a / 24), d = Math.floor(c / 30), r = Math.floor(d / 12);
+  return r > 0 ? `${r} year${r > 1 ? "s" : ""} ago` : d > 0 ? `${d} month${d > 1 ? "s" : ""} ago` : c > 0 ? `${c} day${c > 1 ? "s" : ""} ago` : a > 0 ? `${a} hour${a > 1 ? "s" : ""} ago` : o > 0 ? `${o} minute${o > 1 ? "s" : ""} ago` : `${n} second${n > 1 ? "s" : ""} ago`;
 }
 function V(s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/`/g, "&#96;").replace(/'/g, "&#39;");
@@ -1452,7 +1452,7 @@ function E(s) {
   const t = document.createElement("input");
   t.value = s, document.body.appendChild(t), t.select(), document.execCommand("copy"), document.body.removeChild(t);
 }
-const tt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const it = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   copystr: E,
   joinedAgo: P,
@@ -1534,8 +1534,8 @@ class D extends HTMLElement {
     let i = (this.querySelector("code") || this).innerHTML || "";
     i = this._unescapeHtml(i), i = i.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
     const e = i.split(`
-`), n = e.filter((r) => r.trim()).map((r) => r.match(/^\s*/)[0].length), o = n.length ? Math.min(...n) : 0;
-    return e.map((r) => r.slice(o)).join(`
+`), n = e.filter((a) => a.trim()).map((a) => a.match(/^\s*/)[0].length), o = n.length ? Math.min(...n) : 0;
+    return e.map((a) => a.slice(o)).join(`
 `);
   }
   _unescapeHtml(t) {
@@ -1546,12 +1546,12 @@ class D extends HTMLElement {
     t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const e = {};
     let n = 0;
-    function o(r, c) {
+    function o(a, c) {
       const d = `__TOKEN_${c}_${n++}__`;
-      return e[d] = `<span class="token ${c}">${r}</span>`, d;
+      return e[d] = `<span class="token ${c}">${a}</span>`, d;
     }
-    return ["javascript", "js", "json", "bash", "sh", "css"].includes(i) ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (r) => o(r, "string")), i === "bash" || i === "sh" ? t = t.replace(/(#.*$)/gm, (r) => o(r, "comment")) : i === "css" ? t = t.replace(/(\/\*[\s\S]*?\*\/)/g, (r) => o(r, "comment")) : t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, (r) => o(r, "comment"))) : ["html", "xml"].includes(i) && (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (r) => o(r, "comment")), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, (r) => o(r, "tag"))), i === "javascript" || i === "js" || i === "json" ? (t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : i === "bash" || i === "sh" ? (t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : i === "html" || i === "xml" ? (t = t.replace(/\s([a-z0-9:-]+)=/gi, (r, c) => " " + o(c, "attr-name") + "="), t = t.replace(/(".*?")/g, (r) => o(r, "attr-value")), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : i === "css" && (t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), Object.keys(e).reverse().forEach((r) => {
-      t = t.replace(r, e[r]);
+    return ["javascript", "js", "json", "bash", "sh", "css"].includes(i) ? (t = t.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (a) => o(a, "string")), i === "bash" || i === "sh" ? t = t.replace(/(#.*$)/gm, (a) => o(a, "comment")) : i === "css" ? t = t.replace(/(\/\*[\s\S]*?\*\/)/g, (a) => o(a, "comment")) : t = t.replace(/(\/\/.*$|\/\*[\s\S]*?\*\/)/gm, (a) => o(a, "comment"))) : ["html", "xml"].includes(i) && (t = t.replace(/(&lt;!--[\s\S]*?--&gt;)/g, (a) => o(a, "comment")), t = t.replace(/(&lt;\/?[a-z0-9:-]+)/gi, (a) => o(a, "tag"))), i === "javascript" || i === "js" || i === "json" ? (t = t.replace(/\b(const|let|var|if|else|for|while|return|function|class|import|export|from|default|switch|case|break|continue|new|this|async|await)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(true|false|null|undefined)\b/g, '<span class="token boolean">$1</span>'), t = t.replace(/\b([a-zA-Z0-9_]+)\s*(?=\()/g, '<span class="token function">$1</span>')) : i === "bash" || i === "sh" ? (t = t.replace(/\b(npm|npx|node|git|cd|ls|mkdir|rm|mv|cp|echo|cat|sudo|docker|brew|grep|curl|wget|chmod|chown|touch)\b/g, '<span class="token keyword">$1</span>'), t = t.replace(/\b(install|run|build|start|test|dev|init|clone|pull|push|commit|add|checkout|branch|merge)\b/g, '<span class="token function">$1</span>'), t = t.replace(/(\s-+[a-zA-Z0-9-]+)/g, '<span class="token attr-name">$1</span>'), t = t.replace(/(\$[A-Z0-9_]+)/g, '<span class="token number">$1</span>')) : i === "html" || i === "xml" ? (t = t.replace(/\s([a-z0-9:-]+)=/gi, (a, c) => " " + o(c, "attr-name") + "="), t = t.replace(/(".*?")/g, (a) => o(a, "attr-value")), t = t.replace(/&gt;/g, '<span class="token tag">&gt;</span>')) : i === "css" && (t = t.replace(/([a-z-]+)(?=:)/g, '<span class="token keyword">$1</span>')), Object.keys(e).reverse().forEach((a) => {
+      t = t.replace(a, e[a]);
     }), t;
   }
   _onCopy() {
@@ -1567,7 +1567,7 @@ class D extends HTMLElement {
   }
 }
 customElements.define("eui-code", D);
-class Z extends HTMLElement {
+class W extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1683,8 +1683,8 @@ class Z extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-app-titlebar", Z);
-class X extends HTMLElement {
+customElements.define("eui-app-titlebar", W);
+class Z extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
   }
@@ -1771,8 +1771,8 @@ class X extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-surface", X);
-class W extends HTMLElement {
+customElements.define("eui-surface", Z);
+class X extends HTMLElement {
   static get observedAttributes() {
     return ["value", "min", "max", "step", "label"];
   }
@@ -1916,14 +1916,240 @@ class W extends HTMLElement {
     this.setAttribute("value", t);
   }
 }
-customElements.define("eui-slider", W);
+customElements.define("eui-slider", X);
+class J extends HTMLElement {
+  constructor() {
+    super(), this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    this.render();
+  }
+  set tabItems(t) {
+    this._tabItems = t, this.render();
+  }
+  get tabItems() {
+    return this._tabItems || [];
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: var(--tab-bar-height);
+                    z-index: 100;
+                    background-color: var(--app-200);
+                    padding-bottom: env(safe-area-inset-bottom);
+                    box-sizing: border-box;
+                }
+
+                .inner {
+                    width: 100%;
+                    max-width: 600px;
+                    height: 100%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: stretch;
+                    padding: 0 8px;
+                    box-sizing: border-box;
+                }
+            </style>
+            <div class="inner">
+                <slot>
+                    ${this.tabItems.map((t) => {
+      var n, o;
+      const i = ((n = t.avatar) == null ? void 0 : n.src) || "", e = ((o = t.avatar) == null ? void 0 : o.name) || "";
+      return `<eui-tab-item path="${t.path}" icon="${t.icon}" avatar-src="${i}" avatar-name="${e}" label="${t.label}" badge="${t.badge || ""}"></eui-tab-item>`;
+    }).join("")}
+                </slot>
+            </div>
+        `;
+  }
+}
+customElements.define("eui-tab-bar", J);
+class Y extends HTMLElement {
+  constructor() {
+    super();
+    b(this, "handleClick", () => {
+      const i = this.getAttribute("path");
+      i && f.navigate(i);
+    });
+    this.attachShadow({ mode: "open" });
+  }
+  static get observedAttributes() {
+    return ["path", "icon", "label", "badge", "active", "avatar-src", "avatar-name"];
+  }
+  connectedCallback() {
+    this.hasRendered || (this.render(), this.setupEventListeners(), this.hasRendered = !0), this.updateContent(), this.updateActiveState(), this.addEventListener("click", this.handleClick), this._onRouteSubstitute = () => this.updateActiveState(), window.addEventListener("popstate", this._onRouteSubstitute), window.addEventListener("route-changed", this._onRouteSubstitute);
+  }
+  disconnectedCallback() {
+    this.removeEventListener("click", this.handleClick), window.removeEventListener("popstate", this._onRouteSubstitute), window.removeEventListener("route-changed", this._onRouteSubstitute);
+  }
+  attributeChangedCallback(i, e, n) {
+    if (e !== n && this.hasRendered) {
+      if (i === "active") return;
+      this.updateContent(), i === "path" && this.updateActiveState();
+    }
+  }
+  updateActiveState() {
+    let i = f.location(), e = this.getAttribute("path");
+    i.startsWith("/") || (i = "/" + i), e && !e.startsWith("/") && (e = "/" + e), e && i === e ? this.setAttribute("active", "") : this.removeAttribute("active");
+  }
+  setupEventListeners() {
+    this.addEventListener("pointerdown", (i) => {
+      const e = document.createElement("span"), n = i.currentTarget, o = n.getBoundingClientRect(), a = Math.max(n.offsetWidth, n.offsetHeight), c = a / 2;
+      e.classList.add("ripple"), e.style.width = `${a}px`, e.style.height = `${a}px`, e.style.left = `${i.clientX - o.left - c}px`, e.style.top = `${i.clientY - o.top - c}px`, this.shadowRoot.appendChild(e), e.addEventListener("animationend", () => {
+        e.remove();
+      });
+    });
+  }
+  updateContent() {
+    const i = this.getAttribute("icon"), e = this.getAttribute("avatar-src"), n = this.getAttribute("avatar-name"), o = this.getAttribute("label") || "", a = this.getAttribute("badge"), c = this.shadowRoot.querySelector(".badge");
+    if (a)
+      if (c)
+        c.textContent = a;
+      else {
+        const l = document.createElement("span");
+        l.className = "badge", l.textContent = a, this.shadowRoot.appendChild(l);
+      }
+    else c && c.remove();
+    const d = this.shadowRoot.querySelector("slot[name='icon']");
+    if (d)
+      if (e || n) {
+        let l = '<eui-avatar size="24"';
+        n && (l += ` name="${n}"`), l += ">", e && (l += `<img src="${e}" alt="${n || "Avatar"}" />`), l += "</eui-avatar>", d.innerHTML = l;
+      } else i ? d.innerHTML = `<eui-icon width="20" height="20" name="${i}"></eui-icon>` : d.innerHTML = "";
+    const r = this.shadowRoot.querySelector(".label");
+    r && (r.textContent = o);
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                    height: 100%;
+                    cursor: pointer;
+                    padding: 4px 0;
+                    box-sizing: border-box;
+                    color: var(--app-700);
+                    transition: color 0.2s var(--transition-function);
+                    -webkit-tap-highlight-color: transparent;
+                    user-select: none;
+                }
+
+                :host([active]) {
+                    color: var(--app-link);
+                }
+
+                .icon-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 30px;
+                    height: 30px;
+                    transition: transform 0.2s var(--transition-function);
+                }
+
+                .label {
+                    font-size: 12px;
+                    font-weight: 500;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    padding: 0 4px;
+                }
+
+                :host([active]) .label {
+                    font-weight: 600;
+                }
+
+                .badge {
+                    position: absolute;
+                    top: 6px;
+                    left: 50%;
+                    margin-left: 8px;
+                    min-width: 16px;
+                    height: 16px;
+                    padding: 0 4px;
+                    border-radius: 8px;
+                    background-color: var(--app-red);
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: 700;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                    pointer-events: none;
+                    z-index: 2;
+                }
+
+                .ripple {
+                    position: absolute;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    opacity: 0.15;
+                    animation: ripple 600ms linear forwards;
+                    background-color: currentColor; 
+                    pointer-events: none;
+                    z-index: 0;
+                }
+
+                .inner {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 32px;
+                    width: 56px;
+                    border-radius: 100px;
+                    cursor: pointer;
+                    margin-bottom: 4px;
+                    box-sizing: border-box;
+                    transition: color 0.2s var(--transition-function);
+                    -webkit-tap-highlight-color: transparent;
+                    user-select: none;
+                }
+
+                :host([active]) .inner {
+                    background-color: color-mix(in srgb, var(--app-link) 25%, transparent 100%);
+                }
+
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            </style>
+            <div class="inner">
+                <div class="icon-container">
+                    <slot name="icon"></slot>
+                </div>
+                </div>
+                <span class="label"></span>
+            <slot></slot>
+        `;
+  }
+}
+customElements.define("eui-tab-item", Y);
 typeof window < "u" && console.log("ErisUI loaded successfully");
 export {
-  Y as device,
-  K as haptics,
+  G as device,
+  Q as haptics,
   u as icons,
-  Q as loadPage,
-  k as router,
-  G as storage,
-  tt as utils
+  et as loadPage,
+  f as router,
+  tt as storage,
+  it as utils
 };
