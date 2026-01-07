@@ -1,0 +1,47 @@
+<div class="eui-page">
+    <eui-header type="large" title="Sliders" subtitle="Sliders allow users to make selections from a range of values."></eui-header>
+    <eui-heading type="h2" anchor="demo" id="demo">Demo</eui-heading>
+    <div class="flex-card outlined row" style="display: flex; flex-direction: column; gap: 2rem;">
+        <eui-slider value="50"></eui-slider>
+        <eui-slider value="75" min="0" max="100" step="10"></eui-slider>
+        <eui-slider disabled value="30"></eui-slider>
+    </div>
+    <eui-heading type="h2" anchor="usage" id="usage">Usage</eui-heading>
+    <p>Sliders reflect a range of values along a bar, from which users may select a single value.</p>
+    <eui-code copy language="html">
+        &lt;eui-slider value="50"&gt;&lt;/eui-slider&gt;
+        &lt;eui-slider value="75" min="0" max="100" step="10"&gt;&lt;/eui-slider&gt;
+        &lt;eui-slider disabled value="30"&gt;&lt;/eui-slider&gt;
+    </eui-code>
+    <eui-heading type="h2" anchor="attributes" id="attributes">Attributes</eui-heading>
+    <table class="eui-table" style="width: 100%; text-align: left; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+            <tr style="border-bottom: 1px solid #333;">
+                <th style="padding: 8px;">Attribute</th>
+                <th style="padding: 8px;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 8px;"><code>value</code></td>
+                <td style="padding: 8px;">The current value of the slider.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 8px;"><code>min</code></td>
+                <td style="padding: 8px;">The minimum value (default: 0).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 8px;"><code>max</code></td>
+                <td style="padding: 8px;">The maximum value (default: 100).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 8px;"><code>step</code></td>
+                <td style="padding: 8px;">The step interval (default: 1).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #333;">
+                <td style="padding: 8px;"><code>disabled</code></td>
+                <td style="padding: 8px;">Whether the slider is disabled.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

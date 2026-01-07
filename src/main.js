@@ -12,6 +12,7 @@ router.add("/components/avatar", () => loadPage("avatar"));
 router.add("/components/chips", () => loadPage("chips"));
 router.add("/components/app-nav", () => loadPage("app-nav"));
 router.add("/components/surface", () => loadPage("surface"));
+router.add("/components/sliders", () => loadPage("sliders"));
 router.add("/getting-started", () => loadPage("getting-started"));
 
 router.add("/core/router", () => loadPage("router"));
