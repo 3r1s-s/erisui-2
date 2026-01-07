@@ -31,10 +31,10 @@ const navItems = [
 
 window.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector("eui-app-nav");
-    if (nav) nav.navItems = navItems;
+    if (nav && navItems) nav.navItems = navItems;
 
     const tabBar = document.querySelector("eui-tab-bar");
-    if (tabBar) tabBar.tabItems = tabBarItems;
+    if (tabBar && tabBarItems) tabBar.tabItems = tabBarItems;
 
     router.navigate(window.location.pathname, false);
 });

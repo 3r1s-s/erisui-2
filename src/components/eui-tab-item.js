@@ -208,6 +208,7 @@ class TabItem extends HTMLElement {
                 }
 
                 .inner {
+                    position: relative;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -218,12 +219,28 @@ class TabItem extends HTMLElement {
                     cursor: pointer;
                     margin-bottom: 4px;
                     box-sizing: border-box;
-                    transition: color 0.2s var(--transition-function);
+
                     -webkit-tap-highlight-color: transparent;
                     user-select: none;
                 }
 
-                :host([active]) .inner {
+                .inner::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transform: scaleX(.9);
+                    border-radius: 100px;
+                    background-color: transparent;
+                    transition: color 0.2s var(--transition-function),
+                    transform 0.2s var(--transition-function);
+                    z-index: -1;
+                }
+
+                :host([active]) .inner::before {
+                    transform: scaleX(1);
                     background-color: color-mix(in srgb, var(--app-link) 25%, transparent 100%);
                 }
 
