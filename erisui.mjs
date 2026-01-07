@@ -1567,7 +1567,7 @@ class D extends HTMLElement {
   }
 }
 customElements.define("eui-code", D);
-class W extends HTMLElement {
+class X extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1683,8 +1683,8 @@ class W extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-app-titlebar", W);
-class Z extends HTMLElement {
+customElements.define("eui-app-titlebar", X);
+class W extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
   }
@@ -1771,8 +1771,8 @@ class Z extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-surface", Z);
-class X extends HTMLElement {
+customElements.define("eui-surface", W);
+class Z extends HTMLElement {
   static get observedAttributes() {
     return ["value", "min", "max", "step", "label"];
   }
@@ -1916,7 +1916,7 @@ class X extends HTMLElement {
     this.setAttribute("value", t);
   }
 }
-customElements.define("eui-slider", X);
+customElements.define("eui-slider", Z);
 class J extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
@@ -2106,6 +2106,7 @@ class Y extends HTMLElement {
                 }
 
                 .inner {
+                    position: relative;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -2116,12 +2117,28 @@ class Y extends HTMLElement {
                     cursor: pointer;
                     margin-bottom: 4px;
                     box-sizing: border-box;
-                    transition: color 0.2s var(--transition-function);
+
                     -webkit-tap-highlight-color: transparent;
                     user-select: none;
                 }
 
-                :host([active]) .inner {
+                .inner::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transform: scaleX(.9);
+                    border-radius: 100px;
+                    background-color: transparent;
+                    transition: color 0.2s var(--transition-function),
+                    transform 0.2s var(--transition-function);
+                    z-index: -1;
+                }
+
+                :host([active]) .inner::before {
+                    transform: scaleX(1);
                     background-color: color-mix(in srgb, var(--app-link) 25%, transparent 100%);
                 }
 
