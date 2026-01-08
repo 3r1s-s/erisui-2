@@ -1822,7 +1822,7 @@ class V extends HTMLElement {
 
                 .slider-container {
                     position: relative;
-                    height: 32px;
+                    min-height: var(--thumb-size);
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -1875,7 +1875,7 @@ class V extends HTMLElement {
                 }
 
                 .track {
-                    position: absolute;
+                    position: relative;
                     height: var(--track-thickness);
                     width: 100%;
                     background: var(--slider-track, #333);
