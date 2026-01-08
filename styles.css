@@ -180,24 +180,6 @@ eui-app-nav.expanded+.app-wrapper {
     margin: 0 auto;
 }
 
-.content-header h1 {
-    font-size: 2.375rem;
-}
-
-.content-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.content-sidebar-inner {
-    width: 300px;
-    margin: 0 auto;
-    border-radius: 12px;
-    background-color: var(--app-200);
-    height: 100%;
-}
-
 /* Animation */
 
 @keyframes ripple {
