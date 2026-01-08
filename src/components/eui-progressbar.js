@@ -14,7 +14,7 @@ class EUIProgressBar extends HTMLElement {
                     height: 5px;
                     overflow: hidden;
                     position: relative;
-                    background: var(--app-300, #333);
+                    background: var(--app-200, #333);
                     border-radius: 4px;
                 }
 
