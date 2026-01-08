@@ -137,7 +137,7 @@ button {
     margin-left: var(--nav-width);
     display: flex;
     flex-direction: column;
-    padding: var(--titlebar-height) 0.5rem calc(var(--tab-bar-height) + 0.5rem) 0.5rem;
+    padding: var(--titlebar-height) 0.5rem calc(var(--tab-bar-height) + 0.5rem) 0;
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
