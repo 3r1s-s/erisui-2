@@ -82,6 +82,10 @@
     --banner-color: #d3e3fd;
 }
 
+.app {
+    padding-left: 0 !important;
+}
+
 /* Elements */
 
 body {
@@ -133,7 +137,7 @@ button {
     margin-left: var(--nav-width);
     display: flex;
     flex-direction: column;
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
+
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;
