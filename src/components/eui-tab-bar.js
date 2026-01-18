@@ -29,7 +29,6 @@ export class EuiTabBar extends HTMLElement {
                     z-index: 100;
                     background-color: var(--app-200);
                     padding-bottom: env(safe-area-inset-bottom);
-                    box-sizing: border-box;
                 }
 
                 .inner {
