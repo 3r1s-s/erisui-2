@@ -189,9 +189,8 @@ class TabItem extends HTMLElement {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: 10px;
+                    font-size: 12px;
                     font-weight: 700;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
                     pointer-events: none;
                     z-index: 2;
                 }

@@ -17,6 +17,22 @@ export class EuiTabBar extends HTMLElement {
         return this._tabItems || [];
     }
 
+    badge(path, value) {
+        const i = this.tabItems.findIndex(i => i.path === path);
+        if (i > -1) {
+            this.tabItems[i].badge = value;
+        }
+
+        const tabItem = this.shadowRoot.querySelector(`eui-tab-item[path="${path}"]`);
+        if (tabItem) {
+            if (value) {
+                tabItem.setAttribute('badge', value);
+            } else {
+                tabItem.removeAttribute('badge');
+            }
+        }
+    }
+
     render() {
         this.shadowRoot.innerHTML = `
             <style>
