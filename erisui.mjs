@@ -2012,6 +2012,12 @@ class J extends HTMLElement {
   get tabItems() {
     return this._tabItems || [];
   }
+  badge(t, i) {
+    const e = this.tabItems.findIndex((o) => o.path === t);
+    e > -1 && (this.tabItems[e].badge = i);
+    const n = this.shadowRoot.querySelector(`eui-tab-item[path="${t}"]`);
+    n && (i ? n.setAttribute("badge", i) : n.removeAttribute("badge"));
+  }
   render() {
     this.shadowRoot.innerHTML = `
             <style>
@@ -2168,9 +2174,8 @@ class Y extends HTMLElement {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: 10px;
+                    font-size: 12px;
                     font-weight: 700;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
                     pointer-events: none;
                     z-index: 2;
                 }
