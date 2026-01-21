@@ -2261,7 +2261,7 @@ class A extends HTMLElement {
     this.render(), this.setupResultListeners(), this.hasAttribute("open") && this.open();
   }
   attributeChangedCallback(t, i, e) {
-    i !== e && (t === "open" ? e !== null ? this.open() : this.close() : t === "width" ? this.modal && (this.modal.style.width = e) : t === "height" ? this.modal && (this.modal.style.height = e) : t === "return" && (this._returnValue = e || ""));
+    i !== e && (t === "open" ? e !== null ? this.open() : this.classList.contains("closing") || this.close() : t === "width" ? this.modal && (this.modal.style.width = e) : t === "height" ? this.modal && (this.modal.style.height = e) : t === "return" && (this._returnValue = e || ""));
   }
   render() {
     this.shadowRoot.innerHTML = `
@@ -2597,14 +2597,17 @@ class A extends HTMLElement {
     this._returnValue = "", this.hasAttribute("open") || this.setAttribute("open", ""), v(), this.modal && (window.innerWidth <= 768 && this.getAttribute("type") !== "alert" ? (this.modal.style.height = "90%", this.modal.style.transform = "translateY(0)") : (this.modal.style.height = this.getAttribute("height") || "auto", this.modal.style.transform = ""));
   }
   close(t) {
-    t !== void 0 && (this.returnValue = t), this.classList.add("closing"), this.modal && (this.modal.style.transform = "", this.modal.style.transition = ""), setTimeout(() => {
-      const i = this.hasAttribute("open");
-      this.removeAttribute("open"), this.classList.remove("closing"), this.modal && (this.modal.style.height = "", this.modal.style.transform = "", this.modal.style.transition = ""), i && this.dispatchEvent(new CustomEvent("close", {
+    if (this.classList.contains("closing")) return;
+    t !== void 0 && (this.returnValue = t), this.classList.add("closing"), this.modal && (this.modal.style.transform = "", this.modal.style.transition = "");
+    const i = window.innerWidth <= 768 ? 400 : 200;
+    setTimeout(() => {
+      const e = this.hasAttribute("open");
+      this.removeAttribute("open"), this.classList.remove("closing"), this.modal && (this.modal.style.height = "", this.modal.style.transform = "", this.modal.style.transition = ""), e && this.dispatchEvent(new CustomEvent("close", {
         detail: { returnValue: this.returnValue },
         bubbles: !0,
         composed: !0
       }));
-    }, 200);
+    }, i);
   }
 }
 m(A, "observedAttributes", ["width", "height", "open", "type", "return"]);
