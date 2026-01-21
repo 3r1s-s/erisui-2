@@ -484,7 +484,7 @@ class EUIModal extends HTMLElement {
         if (!this.modal) return;
 
         if (window.innerWidth <= 768 && this.getAttribute("type") !== "alert") {
-            this.modal.style.height = "90%";
+            this.modal.style.height = this.getAttribute("height") || "90%";
             this.modal.style.transform = "translateY(0)";
         } else {
             this.modal.style.height = this.getAttribute("height") || "auto";
