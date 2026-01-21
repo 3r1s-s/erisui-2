@@ -16,12 +16,29 @@
         <div class="app-wrapper">
             <div class="main-wrapper">
                 <div class="main" id="main">
-
                 </div>
             </div>
         </div>
     </div>
+    <eui-modal id="modal-example">
+        <span slot="header-title">hello</span>
+        <eui-button slot="header-right" onclick="closeMyModal()" border-radius="100" width="50" height="50">
+            <eui-icon name="cross"></eui-icon>
+        </eui-button>
+        <p>this is an example modal.</p>
+        <eui-button slot="footer" onclick="closeMyModal()" border-radius="100">Close</eui-button>
+    </eui-modal>
+
 </body>
+<script>
+    function closeMyModal() {
+        document.getElementById("modal-example").close();
+    }
+
+    function openMyModal() {
+        document.getElementById("modal-example").open();
+    }
+</script>
 
 <script type="module" src="/src/main.js"></script>
 

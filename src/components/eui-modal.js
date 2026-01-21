@@ -39,6 +39,10 @@ class EUIModal extends HTMLElement {
     connectedCallback() {
         this.render();
         this.setupResultListeners();
+
+        if (this.hasAttribute("open")) {
+            this.open();
+        }
     }
 
     attributeChangedCallback(name, oldv, newv) {
@@ -125,15 +129,14 @@ class EUIModal extends HTMLElement {
                     left: 0;
                     right: 0;
                     width: 100%;
-                    height: 30px;
-                    padding-bottom: 30px;
+                    height: 60px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     flex-shrink: 0;
                     cursor: grab;
                     touch-action: none;
-                    z-index: 0;
+                    z-index: 1;
                 }
 
                 .modal-handle {
@@ -142,14 +145,15 @@ class EUIModal extends HTMLElement {
                     background: var(--app-text);
                     opacity: 0.2;
                     border-radius: 100px;
-
                     pointer-events: none;
+                    margin-top: -30px;
                 }
 
                 .modal-body {
                     flex: 1;
                     overflow-y: auto;
                     padding: 28px;
+                    padding-top: 0;
                     scrollbar-width: none;
                     position: relative;
                     z-index: -1;
@@ -166,6 +170,7 @@ class EUIModal extends HTMLElement {
                     box-shadow: 0 10px 10px var(--modal-bg);
                     position: relative;
                     z-index: 2;
+                    pointer-events: none;
                 }
 
                 slot[name="header-title"] {
@@ -186,6 +191,7 @@ class EUIModal extends HTMLElement {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
+                    pointer-events: auto;
                 }
 
                 slot[name="header-right"] {
@@ -193,6 +199,7 @@ class EUIModal extends HTMLElement {
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
+                    pointer-events: auto;
                 }
 
                 .modal-footer {
@@ -259,7 +266,7 @@ class EUIModal extends HTMLElement {
 
                 /* Alert Closing State */
                 :host([type="alert"].closing) .modal {
-                    height: auto !important; /* Prevent shrink */
+                    height: auto !important;
                     transform: scale(0.95);
                     opacity: 0;
                     transition: var(--trans-scale-exit);
@@ -381,6 +388,15 @@ class EUIModal extends HTMLElement {
         if (window.innerWidth > 768) return;
         if (this.getAttribute("type") === "alert") return;
 
+        const path = e.composedPath();
+        const isInteractive = path.some(el =>
+            el instanceof HTMLButtonElement ||
+            el instanceof HTMLAnchorElement ||
+            (el.getAttribute && el.getAttribute('role') === 'button') ||
+            (el.tagName && el.tagName.toLowerCase().includes('button'))
+        );
+        if (isInteractive) return;
+
         this.isDragging = true;
         const currentY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
         this.sy = currentY;
@@ -452,6 +468,8 @@ class EUIModal extends HTMLElement {
             this.setAttribute("open", "");
         }
         haptic();
+
+        if (!this.modal) return;
 
         if (window.innerWidth <= 768 && this.getAttribute("type") !== "alert") {
             this.modal.style.height = "90%";
