@@ -2594,7 +2594,7 @@ class A extends HTMLElement {
     this.vel < -0.5 || t < 200 ? this.close() : this.vel > 0.5 ? this.modal.style.height = "90%" : t > window.innerHeight * 0.5 ? this.modal.style.height = "90%" : this.close(), this.vel = 0;
   }
   open() {
-    this._returnValue = "", this.hasAttribute("open") || this.setAttribute("open", ""), v(), this.modal && (window.innerWidth <= 768 && this.getAttribute("type") !== "alert" ? (this.modal.style.height = "90%", this.modal.style.transform = "translateY(0)") : (this.modal.style.height = this.getAttribute("height") || "auto", this.modal.style.transform = ""));
+    this._returnValue = "", this.hasAttribute("open") || this.setAttribute("open", ""), v(), this.modal && (window.innerWidth <= 768 && this.getAttribute("type") !== "alert" ? (this.modal.style.height = this.getAttribute("height") || "90%", this.modal.style.transform = "translateY(0)") : (this.modal.style.height = this.getAttribute("height") || "auto", this.modal.style.transform = ""));
   }
   close(t) {
     if (this.classList.contains("closing")) return;
