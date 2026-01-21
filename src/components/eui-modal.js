@@ -51,7 +51,7 @@ class EUIModal extends HTMLElement {
         if (name === "open") {
             if (newv !== null) {
                 this.open();
-            } else {
+            } else if (!this.classList.contains('closing')) {
                 this.close();
             }
         } else if (name === "width") {
@@ -493,6 +493,8 @@ class EUIModal extends HTMLElement {
     }
 
     close(result) {
+        if (this.classList.contains('closing')) return;
+
         if (result !== undefined) {
             this.returnValue = result;
         }
@@ -503,6 +505,8 @@ class EUIModal extends HTMLElement {
             this.modal.style.transform = "";
             this.modal.style.transition = "";
         }
+
+        const duration = window.innerWidth <= 768 ? 400 : 200;
 
         setTimeout(() => {
             const wasOpen = this.hasAttribute("open");
@@ -522,7 +526,7 @@ class EUIModal extends HTMLElement {
                     composed: true
                 }));
             }
-        }, 200);
+        }, duration);
     }
 }
 
