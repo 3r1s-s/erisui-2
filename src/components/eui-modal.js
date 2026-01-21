@@ -142,6 +142,8 @@ class EUIModal extends HTMLElement {
                     background: var(--app-text);
                     opacity: 0.2;
                     border-radius: 100px;
+
+                    pointer-events: none;
                 }
 
                 .modal-body {
@@ -211,11 +213,8 @@ class EUIModal extends HTMLElement {
                     border-radius: 40px 40px 0 0;
                     padding-bottom: env(safe-area-inset-bottom, 20px);
                     
-                    /* Visuals */
-                    /* Shadow + Extra block at bottom to plug bounce gaps */
                     box-shadow: 0 100px 0 var(--modal-bg);
 
-                    /* Entry State */
                     transform: translateY(100%);
                     transition: var(--trans-mobile-enter);
                     position: relative;
@@ -242,6 +241,7 @@ class EUIModal extends HTMLElement {
                     border-radius: 20px;
                     padding-bottom: 0;
                     border: 3px solid var(--app-200);
+                    box-shadow: none !important;
 
                     transform: scale(0.95);
                     opacity: 0;
@@ -277,11 +277,8 @@ class EUIModal extends HTMLElement {
                         border-radius: 30px;
                         border: 3px solid var(--app-200);
                         padding-bottom: 0;
-
-                        /* Standard Shadow */
                         box-shadow: 0 -4px 20px rgba(0,0,0,0.3); 
 
-                        /* Unified Desktop Animation */
                         transform: scale(0.95);
                         opacity: 0;
                         transition: var(--trans-scale-enter);
@@ -299,7 +296,6 @@ class EUIModal extends HTMLElement {
                         transform: scale(0.95);
                         opacity: 0;
                         transition: var(--trans-scale-exit);
-                        /* Ensure height doesn't animate */
                         height: auto !important;
                     }
 
@@ -451,7 +447,7 @@ class EUIModal extends HTMLElement {
     }
 
     open() {
-        this._returnValue = ""; // Matching native dialog behavior
+        this._returnValue = "";
         if (!this.hasAttribute("open")) {
             this.setAttribute("open", "");
         }
