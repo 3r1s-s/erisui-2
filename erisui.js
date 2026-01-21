@@ -1567,6 +1567,10 @@
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
+                    pointer-events: none;
+                }
+
+                slot[name="header-left"]::slotted(*) {
                     pointer-events: auto;
                 }
 
@@ -1575,6 +1579,10 @@
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
+                    pointer-events: none;
+                }
+
+                slot[name="header-right"]::slotted(*) {
                     pointer-events: auto;
                 }
 
@@ -1638,6 +1646,10 @@
 
                 :host([type="alert"]) .modal-handle-area {
                     display: none;
+                }
+
+                :host([type="alert"]) .modal-body {
+                    padding-bottom: 0;
                 }
 
                 /* Alert Closing State */
