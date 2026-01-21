@@ -1460,7 +1460,7 @@ const st = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   sanitize: V,
   timeAgo: U
 }, Symbol.toStringTag, { value: "Module" }));
-class Y extends HTMLElement {
+class W extends HTMLElement {
   static get observedAttributes() {
     return ["copy", "id", "type", "language"];
   }
@@ -1567,8 +1567,8 @@ class Y extends HTMLElement {
     this.copyBtn && this.copyBtn.removeEventListener("click", this._boundCopy);
   }
 }
-customElements.define("eui-code", Y);
-class W extends HTMLElement {
+customElements.define("eui-code", W);
+class Y extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1684,7 +1684,7 @@ class W extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-app-titlebar", W);
+customElements.define("eui-app-titlebar", Y);
 class X extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
@@ -2291,7 +2291,7 @@ class A extends HTMLElement {
                     --trans-scale-exit: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
                 }
 
-                :host([open]) {
+                :host([open]), :host(.closing) {
                     visibility: visible;
                     pointer-events: auto;
                 }
@@ -2311,6 +2311,7 @@ class A extends HTMLElement {
 
                 :host(.closing) .modal-outer {
                     background-color: transparent;
+                    transition: background 0.4s var(--ease-smooth), opacity 0.4s var(--ease-smooth);
                 }
 
                 .modal {
@@ -2431,19 +2432,19 @@ class A extends HTMLElement {
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    transition: var(--trans-mobile-enter);
+                    
                     position: relative;
                 }
 
                 :host([open]) .modal {
-                    transform: translateY(0);
+                    transition: var(--trans-mobile-enter);
                 }
 
                 :host(.closing) .modal {
                     height: 0 !important;
                     min-height: 0;
-                    transform: translateY(0);
-                    transition: var(--trans-mobile-exit);
+                    transform: translateY(0) !important;
+                    transition: height 0.4s var(--ease-spring-exit);
                 }
 
                 /* Alert Layout */
@@ -2602,7 +2603,9 @@ class A extends HTMLElement {
     const i = window.innerWidth <= 768 ? 400 : 200;
     setTimeout(() => {
       const e = this.hasAttribute("open");
-      this.removeAttribute("open"), this.classList.remove("closing"), this.modal && (this.modal.style.height = "", this.modal.style.transform = "", this.modal.style.transition = ""), e && this.dispatchEvent(new CustomEvent("close", {
+      this.removeAttribute("open"), requestAnimationFrame(() => {
+        this.classList.remove("closing"), this.modal && (this.modal.style.height = "", this.modal.style.transform = "", this.modal.style.transition = "");
+      }), e && this.dispatchEvent(new CustomEvent("close", {
         detail: { returnValue: this.returnValue },
         bubbles: !0,
         composed: !0
