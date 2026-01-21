@@ -91,7 +91,7 @@ class EUIModal extends HTMLElement {
                     --trans-scale-exit: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
                 }
 
-                :host([open]) {
+                :host([open]), :host(.closing) {
                     visibility: visible;
                     pointer-events: auto;
                 }
@@ -111,6 +111,7 @@ class EUIModal extends HTMLElement {
 
                 :host(.closing) .modal-outer {
                     background-color: transparent;
+                    transition: background 0.4s var(--ease-smooth), opacity 0.4s var(--ease-smooth);
                 }
 
                 .modal {
@@ -231,19 +232,19 @@ class EUIModal extends HTMLElement {
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    transition: var(--trans-mobile-enter);
+                    
                     position: relative;
                 }
 
                 :host([open]) .modal {
-                    transform: translateY(0);
+                    transition: var(--trans-mobile-enter);
                 }
 
                 :host(.closing) .modal {
                     height: 0 !important;
                     min-height: 0;
-                    transform: translateY(0);
-                    transition: var(--trans-mobile-exit);
+                    transform: translateY(0) !important;
+                    transition: height 0.4s var(--ease-spring-exit);
                 }
 
                 /* Alert Layout */
@@ -511,13 +512,15 @@ class EUIModal extends HTMLElement {
         setTimeout(() => {
             const wasOpen = this.hasAttribute("open");
             this.removeAttribute("open");
-            this.classList.remove('closing');
 
-            if (this.modal) {
-                this.modal.style.height = "";
-                this.modal.style.transform = "";
-                this.modal.style.transition = "";
-            }
+            requestAnimationFrame(() => {
+                this.classList.remove('closing');
+                if (this.modal) {
+                    this.modal.style.height = "";
+                    this.modal.style.transform = "";
+                    this.modal.style.transition = "";
+                }
+            });
 
             if (wasOpen) {
                 this.dispatchEvent(new CustomEvent("close", {
