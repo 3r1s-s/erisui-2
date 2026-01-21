@@ -232,11 +232,13 @@ class EUIModal extends HTMLElement {
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    
+                    opacity: 0;
                     position: relative;
                 }
 
                 :host([open]) .modal {
+                    transform: translateY(0);
+                    opacity: 1;
                     transition: var(--trans-mobile-enter);
                 }
 
@@ -275,6 +277,15 @@ class EUIModal extends HTMLElement {
 
                 :host([type="alert"]) .modal-body {
                     padding-bottom: 0;
+                }
+
+                :host([type="alert"]) .modal-header {
+                    padding-bottom: 18px;
+                    box-shadow: none;
+                }
+
+                :host([type="alert"]) .modal-footer {
+                    padding: 18px;
                 }
 
                 /* Alert Closing State */
