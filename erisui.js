@@ -888,7 +888,7 @@
                 <span class="anchor-hash">#</span>
             </a>
             `:""}
-        `}}customElements.define("eui-heading",U);function V(n){const e=Date.now()-n,s=Math.floor(e/1e3),o=Math.floor(s/60),a=Math.floor(o/60),l=Math.floor(a/24),d=Math.floor(l/30),r=Math.floor(d/12);return r>0?`${r}y`:d>0?`${d}mo`:l>0?`${l}d`:a>0?`${a}h`:o>0?`${o}m`:`${s}s`}function W(n){const e=Date.now()-n,s=Math.floor(e/1e3),o=Math.floor(s/60),a=Math.floor(o/60),l=Math.floor(a/24),d=Math.floor(l/30),r=Math.floor(d/12);return r>0?`${r} year${r>1?"s":""} ago`:d>0?`${d} month${d>1?"s":""} ago`:l>0?`${l} day${l>1?"s":""} ago`:a>0?`${a} hour${a>1?"s":""} ago`:o>0?`${o} minute${o>1?"s":""} ago`:`${s} second${s>1?"s":""} ago`}function Y(n){return n.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;").replace(/`/g,"&#96;").replace(/'/g,"&#39;")}function L(n){const t=document.createElement("input");t.value=n,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}const X=Object.freeze(Object.defineProperty({__proto__:null,copystr:L,joinedAgo:W,sanitize:Y,timeAgo:V},Symbol.toStringTag,{value:"Module"}));class Z extends HTMLElement{static get observedAttributes(){return["copy","id","type","language"]}constructor(){super(),this.attachShadow({mode:"open"}),this._boundCopy=this._onCopy.bind(this),this._isRendered=!1}connectedCallback(){this._isRendered||(this.render(),this._isRendered=!0)}attributeChangedCallback(t,i,e){this._isRendered&&i!==e&&this.render()}render(){const t=this.hasAttribute("copy"),i=this.getAttribute("language")||"text";this.shadowRoot.innerHTML=`
+        `}}customElements.define("eui-heading",U);function V(n){const e=Date.now()-n,s=Math.floor(e/1e3),o=Math.floor(s/60),a=Math.floor(o/60),l=Math.floor(a/24),d=Math.floor(l/30),r=Math.floor(d/12);return r>0?`${r}y`:d>0?`${d}mo`:l>0?`${l}d`:a>0?`${a}h`:o>0?`${o}m`:`${s}s`}function Y(n){const e=Date.now()-n,s=Math.floor(e/1e3),o=Math.floor(s/60),a=Math.floor(o/60),l=Math.floor(a/24),d=Math.floor(l/30),r=Math.floor(d/12);return r>0?`${r} year${r>1?"s":""} ago`:d>0?`${d} month${d>1?"s":""} ago`:l>0?`${l} day${l>1?"s":""} ago`:a>0?`${a} hour${a>1?"s":""} ago`:o>0?`${o} minute${o>1?"s":""} ago`:`${s} second${s>1?"s":""} ago`}function W(n){return n.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;").replace(/`/g,"&#96;").replace(/'/g,"&#39;")}function L(n){const t=document.createElement("input");t.value=n,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)}const X=Object.freeze(Object.defineProperty({__proto__:null,copystr:L,joinedAgo:Y,sanitize:W,timeAgo:V},Symbol.toStringTag,{value:"Module"}));class Z extends HTMLElement{static get observedAttributes(){return["copy","id","type","language"]}constructor(){super(),this.attachShadow({mode:"open"}),this._boundCopy=this._onCopy.bind(this),this._isRendered=!1}connectedCallback(){this._isRendered||(this.render(),this._isRendered=!0)}attributeChangedCallback(t,i,e){this._isRendered&&i!==e&&this.render()}render(){const t=this.hasAttribute("copy"),i=this.getAttribute("language")||"text";this.shadowRoot.innerHTML=`
             <style>
             :host {
                 position: relative;
@@ -1608,11 +1608,13 @@
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    
+                    opacity: 0;
                     position: relative;
                 }
 
                 :host([open]) .modal {
+                    transform: translateY(0);
+                    opacity: 1;
                     transition: var(--trans-mobile-enter);
                 }
 
@@ -1651,6 +1653,15 @@
 
                 :host([type="alert"]) .modal-body {
                     padding-bottom: 0;
+                }
+
+                :host([type="alert"]) .modal-header {
+                    padding-bottom: 18px;
+                    box-shadow: none;
+                }
+
+                :host([type="alert"]) .modal-footer {
+                    padding: 18px;
                 }
 
                 /* Alert Closing State */

@@ -1460,7 +1460,7 @@ const st = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   sanitize: V,
   timeAgo: U
 }, Symbol.toStringTag, { value: "Module" }));
-class W extends HTMLElement {
+class Y extends HTMLElement {
   static get observedAttributes() {
     return ["copy", "id", "type", "language"];
   }
@@ -1567,8 +1567,8 @@ class W extends HTMLElement {
     this.copyBtn && this.copyBtn.removeEventListener("click", this._boundCopy);
   }
 }
-customElements.define("eui-code", W);
-class Y extends HTMLElement {
+customElements.define("eui-code", Y);
+class W extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" });
   }
@@ -1684,7 +1684,7 @@ class Y extends HTMLElement {
         `;
   }
 }
-customElements.define("eui-app-titlebar", Y);
+customElements.define("eui-app-titlebar", W);
 class X extends HTMLElement {
   constructor() {
     super(), this.attachShadow({ mode: "open" }), this._handleMouseDown = this._addRipple.bind(this);
@@ -2432,11 +2432,13 @@ class A extends HTMLElement {
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    
+                    opacity: 0;
                     position: relative;
                 }
 
                 :host([open]) .modal {
+                    transform: translateY(0);
+                    opacity: 1;
                     transition: var(--trans-mobile-enter);
                 }
 
@@ -2475,6 +2477,15 @@ class A extends HTMLElement {
 
                 :host([type="alert"]) .modal-body {
                     padding-bottom: 0;
+                }
+
+                :host([type="alert"]) .modal-header {
+                    padding-bottom: 18px;
+                    box-shadow: none;
+                }
+
+                :host([type="alert"]) .modal-footer {
+                    padding: 18px;
                 }
 
                 /* Alert Closing State */
