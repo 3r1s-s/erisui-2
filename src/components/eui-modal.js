@@ -157,7 +157,8 @@ class EUIModal extends HTMLElement {
                     padding-top: 0;
                     scrollbar-width: none;
                     position: relative;
-                    z-index: -1;
+                    z-index: 1;
+                    overscroll-behavior: none;
                 }
 
                 .modal-header {
@@ -232,8 +233,8 @@ class EUIModal extends HTMLElement {
                     box-shadow: 0 100px 0 var(--modal-bg);
 
                     transform: translateY(100%);
-                    opacity: 0;
                     position: relative;
+                    will-change: transform, height;
                 }
 
                 :host([open]) .modal {
@@ -243,10 +244,8 @@ class EUIModal extends HTMLElement {
                 }
 
                 :host(.closing) .modal {
-                    height: 0 !important;
-                    min-height: 0;
-                    transform: translateY(0) !important;
-                    transition: height 0.4s var(--ease-spring-exit);
+                    transform: translateY(100%) !important;
+                    transition: transform 0.4s var(--ease-spring-exit), opacity 0.4s var(--ease-smooth);
                 }
 
                 /* Alert Layout */
@@ -327,7 +326,6 @@ class EUIModal extends HTMLElement {
                         transform: scale(0.95);
                         opacity: 0;
                         transition: var(--trans-scale-exit);
-                        height: auto !important;
                     }
 
                     .modal-handle-area {
@@ -375,10 +373,11 @@ class EUIModal extends HTMLElement {
         this.modal = this.shadowRoot.querySelector(".modal");
         this.modalOuter = this.shadowRoot.querySelector(".modal-outer");
         this.handleArea = this.shadowRoot.querySelector("#drag-handle");
+        this.modalBody = this.shadowRoot.querySelector(".modal-body");
 
         this.modalOuter.addEventListener("click", this.onOutsideClick);
-        this.handleArea.addEventListener("mousedown", this.startDrag);
-        this.handleArea.addEventListener("touchstart", this.startDrag, { passive: false });
+        this.modal.addEventListener("mousedown", this.startDrag);
+        this.modal.addEventListener("touchstart", this.startDrag, { passive: false });
 
         if (this.hasAttribute("width")) {
             this.modal.style.width = this.getAttribute("width");
@@ -416,10 +415,17 @@ class EUIModal extends HTMLElement {
         const isInteractive = path.some(el =>
             el instanceof HTMLButtonElement ||
             el instanceof HTMLAnchorElement ||
+            el instanceof HTMLInputElement ||
+            el instanceof HTMLTextAreaElement ||
+            el instanceof HTMLSelectElement ||
             (el.getAttribute && el.getAttribute('role') === 'button') ||
             (el.tagName && el.tagName.toLowerCase().includes('button'))
         );
         if (isInteractive) return;
+        const isInBody = path.some(el => el === this.modalBody);
+        if (isInBody && this.modalBody.scrollTop > 0) {
+            return;
+        }
 
         this.isDragging = true;
         const currentY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
